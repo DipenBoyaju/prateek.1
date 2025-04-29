@@ -1,6 +1,6 @@
 const BlogNewsCard = () => {
   return (
-    <div className="p-5 backdrop-blur-3xl rounded-md">
+    <div className="p-5 backdrop-blur-3xl rounded-md shadow-lg border border-zinc-800/10">
       <div className="w-full h-[35vh] bg-zinc-400"></div>
       <div className="flex flex-col gap-4">
         <div className="flex justify-between items-center pt-4">

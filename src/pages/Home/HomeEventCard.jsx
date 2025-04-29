@@ -2,12 +2,12 @@ import { CalendarRange, Clock, Map } from "lucide-react"
 
 const HomeEventCard = () => {
   return (
-    <div className="backdrop-blur-3xl shadow-md p-3 rounded-md">
+    <div className="backdrop-blur-3xl shadow-md p-6 rounded-md border-2 border-zinc-800/10">
       <div className="grid md:grid-cols-5 gap-6">
-        <div className="col-span-2">
-          <div className="w-full h-full bg-zinc-200"></div>
+        <div className="md:col-span-2">
+          <div className="w-full h-[35vh] md:h-full bg-zinc-200"></div>
         </div>
-        <div className="col-span-3">
+        <div className="md:col-span-3">
           <div className="flex flex-col gap-5">
             <h4 className="font-quicksand font-bold text-xl text-zinc-800 pt-3">Help for Language. Volunteer</h4>
             <p className="text-sm text-zinc-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos in, aliquam maiores ut iure quod?</p>
