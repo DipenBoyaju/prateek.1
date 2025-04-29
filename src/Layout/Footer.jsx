@@ -15,10 +15,13 @@ const Footer = () => {
   };
   return (
     <div className="bg-[#f9f7f6]" style={{ backgroundImage: 'url("./line-bg.png")', backgroundRepeat: 'no-repeat', backgroundPosition: 'top center', }}>
-      <div className="container mx-auto px-4 md:px-0">
+      <div className="container mx-auto px-4 md:px-8">
         <div className="md:grid md:grid-cols-12 border-b border-zinc-300 py-14 md:py-24">
           <div className="col-span-12 md:col-span-7">
-            <p className="uppercase text-2xl font-bold font-ubuntu text-cyan-300">Prateek</p>
+            <div className="flex gap-1 py-1 items-center">
+              <img src="/images/prateek.png" className="size-8" alt="" />
+              <h2 className="font-quicksand font-bold text-[24px] text-[#1796AE]"> Prateek</h2>
+            </div>
             <p className="text-zinc-600 md:w-2/3 mt-8">Prateek AI is an AI R&D hub dedicated to empowering differently abled and underserved communities through inclusive, innovative and ethical AI solutions. </p>
           </div>
           <div className="md:col-span-5 mt-8 md:mt-0">
@@ -78,7 +81,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="py-4 md:py-8 flex flex-col md:flex md:flex-row justify-between items-center">
-          <p className="uppercase text-[12px] text-white/40 font-ubuntu tracking-wider">© 2025 <span className="text-cyan-300">Prateek</span>. All rights reserved.</p>
+          <p className="uppercase text-[12px] text-zinc-700 font-ubuntu tracking-wider">© 2025 <span className="text-cyan-300">Prateek</span>. All rights reserved.</p>
           <p className="text-zinc-700 font-quicksand font-bold text-sm cursor-pointer hover:text-cyan-300 transition-colors ease-in-out duration-300" onClick={scrollTop}>Back to Top</p>
         </div>
       </div>

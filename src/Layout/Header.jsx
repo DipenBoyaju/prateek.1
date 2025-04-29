@@ -21,9 +21,9 @@ const Header = () => {
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
       <div className="container mx-auto flex justify-between items-center px-4 md:px-8 py-3">
-        <div className="flex gap-1 items-center">
-          <img src="/images/prateek.png" alt="" className="w-10 md:w-12" />
-          <img src="/images/logotext.png" alt="" className="w-32 md:w-42" />
+        <div className="flex gap-1 py-1 items-center">
+          <img src="/images/prateek.png" className="size-8" alt="" />
+          <h2 className="font-quicksand font-bold text-[24px] text-[#1796AE]"> Prateek</h2>
         </div>
         <div className="">
           <Navbar isOpen={isOpen} scrolled={scrolled} onLinkClick={() => setIsOpen(false)} />
