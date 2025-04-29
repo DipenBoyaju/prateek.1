@@ -2,7 +2,7 @@ import { CalendarRange, Clock, Map } from "lucide-react"
 
 const HomeEventCard = () => {
   return (
-    <div className="backdrop-blur-3xl shadow-md p-6 rounded-md border-2 border-zinc-800/10">
+    <div className="bg-white shadow-md p-6 rounded-md border-2 border-zinc-800/10">
       <div className="grid md:grid-cols-5 gap-6">
         <div className="md:col-span-2">
           <div className="w-full h-[35vh] md:h-full bg-zinc-200"></div>
