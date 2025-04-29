@@ -8,10 +8,12 @@ import {
   motion,
   animate,
 } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 
 const Hero = () => {
+  const nav = useNavigate()
   const color = useMotionValue(COLORS_TOP[0]);
 
   useEffect(() => {
@@ -55,8 +57,8 @@ const Hero = () => {
           whileTap={{
             scale: 0.985,
           }}
-          className="group relative flex w-fit items-center gap-1.5 rounded-full bg-gray-950/10 py-4 px-12 text-gray-50 transition-colors hover:bg-gray-950/50"
-        >
+          className="group relative flex w-fit items-center gap-1.5 rounded-full bg-gray-950/10 py-4 px-12 text-gray-50 transition-colors hover:bg-gray-950/50 cursor-pointer"
+          onClick={() => nav('/research')}>
           Explore
           <FiArrowRight className="transition-transform group-hover:-rotate-45 group-active:-rotate-12" />
         </motion.button>

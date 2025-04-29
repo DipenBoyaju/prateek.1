@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom"
+
 const AboutUs = () => {
+  const nav = useNavigate()
   return (
     <div className="bg-[#f9f7f6] py-10 md:py-30 relative overflow-hidden">
       <img src="/shape.png" alt="" className="absolute bottom-30 right-0 rotate-180" />
@@ -7,7 +10,7 @@ const AboutUs = () => {
           <div className="md:col-span-4">
             <p className="text-cyan-300 font-quicksand font-bold text-lg">About Us</p>
             <h3 className="font-quicksand font-bold tracking-wide uppercase text-2xl md:text-4xl pt-7">Empowering Communities with Inclusive and Ethical AI Solutions</h3>
-            <button className="uppercase border-2 rounded-full py-5 px-10 cursor-pointer hover:shadow-2xl border-cyan-300 text-sm font-quicksand font-semibold text-zinc-700 hover:bg-cyan-300  transition-all duration-500 ease-in-out hover:text-primary hover:pb-4 hover:px-9 mt-10">More About</button>
+            <button className="uppercase border-2 rounded-full py-5 px-10 cursor-pointer hover:shadow-2xl border-cyan-300 text-sm font-quicksand font-semibold text-zinc-700 hover:bg-cyan-300  transition-all duration-500 ease-in-out hover:text-primary hover:pb-4 hover:px-9 mt-10" onClick={() => nav('/about')}>More About</button>
           </div>
           <div className="md:col-span-7">
             <span className="font-semibold text-[#515266] text-lg">Prateek AI is an AI R&D hub dedicated to empowering differently abled and underserved communities through inclusive, innovative and ethical AI solutions.</span>
