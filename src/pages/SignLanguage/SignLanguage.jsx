@@ -97,11 +97,11 @@ const SignLanguage = () => {
               </div>
             ) : (
               <div className="w-full h-full flex items-center justify-center">
-                <div className="flex justify-center flex-col items-center bg-zinc-100 md:p-10 p-4 rounded-xl gap-4">
-                  <Camera size={52} className="text-amber-800 bg-amber p-3 rounded-full" />
+                <div className="flex justify-center flex-col items-center bg-zinc-100/10 md:p-10 p-4 rounded-xl gap-4">
+                  <Camera size={52} className="text-purple-400 bg-amber p-3 rounded-full" />
                   <button
                     onClick={toggleCamera}
-                    className="bg-amber-500 hover:bg-amber-600 cursor-pointer text-white py-2 px-4 rounded-lg font-[500] text-sm md:text-base"
+                    className="bg-cyan-500 hover:bg-cyan-600 cursor-pointer text-white py-2 px-4 rounded-lg font-[500] text-sm md:text-base"
                   >
                     Enable Camera
                   </button>

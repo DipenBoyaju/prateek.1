@@ -12,8 +12,8 @@ const ContactForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="shadow-2xl p-8 space-y-4  border border-zinc-200 rounded-lg w-full">
       <div className="">
-        <h3 className='text-3xl text-primary font-ubuntu font-medium'>Get in Touch</h3>
-        <p className='text-sm text-white/40'>You can reach us anytime</p>
+        <h3 className='text-3xl text-zinc-800 font-ubuntu font-medium'>Get in Touch</h3>
+        <p className='text-sm text-zinc-600'>You can reach us anytime</p>
       </div>
 
       <div className="flex justify-between gap-3 w-full">
