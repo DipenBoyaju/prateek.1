@@ -46,22 +46,41 @@ const Hero = () => {
         {/* <p className="my-6 max-w-3xl text-center text-base leading-relaxed md:text-lg md:leading-relaxed">
           We aim for a world where inclusion is intentional, and accessibility is standard where every human, regardless of ability, is considered by default in how we build our technologies and societies.
         </p> */}
-        <motion.button
-          style={{
-            border,
-            boxShadow,
-          }}
-          whileHover={{
-            scale: 1.015,
-          }}
-          whileTap={{
-            scale: 0.985,
-          }}
-          className="group relative flex w-fit items-center gap-1.5 rounded-full bg-gray-950/10 py-4 px-12 text-gray-50 transition-colors hover:bg-gray-950/50 cursor-pointer"
-          onClick={() => nav('/research')}>
-          Explore
-          <FiArrowRight className="transition-transform group-hover:-rotate-45 group-active:-rotate-12" />
-        </motion.button>
+        <div className="flex flex-col justify-center items-center gap-5">
+          <motion.button
+            style={{
+              border,
+              boxShadow,
+            }}
+            whileHover={{
+              scale: 1.015,
+            }}
+            whileTap={{
+              scale: 0.985,
+            }}
+            className="group relative flex w-fit items-center gap-1.5 rounded-full bg-gray-950/10 py-4 px-12 text-gray-50 transition-colors hover:bg-gray-950/50 cursor-pointer"
+            onClick={() => nav('/research')}>
+            Explore
+            <FiArrowRight className="transition-transform group-hover:-rotate-45 group-active:-rotate-12" />
+          </motion.button>
+
+          <motion.button
+            style={{
+              border,
+              boxShadow,
+            }}
+            whileHover={{
+              scale: 1.015,
+            }}
+            whileTap={{
+              scale: 0.985,
+            }}
+            className="group relative flex w-fit items-center gap-1.5 rounded-full bg-gray-950/10 py-4 px-12 text-gray-50 transition-colors hover:bg-gray-950/50 cursor-pointer"
+            onClick={() => nav('/signlanguage')}>
+            Try Our Sign Language Demo
+            <FiArrowRight className="transition-transform group-hover:-rotate-45 group-active:-rotate-12" />
+          </motion.button>
+        </div>
       </div>
 
       <div className="absolute inset-0 z-0">

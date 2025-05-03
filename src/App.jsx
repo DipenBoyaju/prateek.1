@@ -10,6 +10,7 @@ import Blog from "./pages/Blog/Blog"
 import Events from "./pages/Events/Events"
 import Newsletter from "./pages/NewsLetter/Newsletter"
 import News from "./pages/News/News"
+import SignLanguage from "./pages/SignLanguage/SignLanguage"
 
 const App = () => {
 
@@ -27,6 +28,7 @@ const App = () => {
         { path: '/events', element: <Events /> },
         { path: '/news', element: <News /> },
         { path: '/newsletter', element: <Newsletter /> },
+        { path: '/signLanguage', element: <SignLanguage /> },
       ]
     }
   ])
