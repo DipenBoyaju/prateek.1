@@ -31,7 +31,7 @@ const Header = () => {
           <Navbar isOpen={isOpen} scrolled={scrolled} onLinkClick={() => setIsOpen(false)} />
         </div>
         <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-gray-700 focus:outline-none">
+          <button onClick={toggleMenu} className={`focus:outline-none ${scrolled ? 'text-gray-700' : 'text-white'}`}>
             <AnimatePresence mode="wait">
               {isOpen ? (
                 <motion.div

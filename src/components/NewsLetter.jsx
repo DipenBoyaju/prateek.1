@@ -1,6 +1,6 @@
 const NewsLetter = () => {
   return (
-    <div className="pt-12 pb-20 px-4 md:px-0 bg-[#f9f7f6]">
+    <div className="pt-6 md:pt-12 pb-10 md:pb-20 px-4 md:px-0 bg-[#f9f7f6]">
       <div className="container mx-auto text-center">
         <div className="w-full md:w-fit mx-auto p-10 md:px-20">
           <p className="text-[12px] uppercase tracking-wider text-cyan-300">Stay Updated</p>

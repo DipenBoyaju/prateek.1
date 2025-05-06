@@ -33,12 +33,12 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="md:py-30 py-20 relative">
+    <div className="md:py-20 py-10 relative">
       <img src="/shape.png" alt="" className='absolute top-0 left-0 h-full ' />
       <div className="container mx-auto px-4 md:px-4 z-30 relative">
         <div className="grid md:grid-cols-9">
           <div className="col-span-4">
-            <h2 className='font-quicksand text-4xl md:text-6xl text-zinc-800 font-bold'>
+            <h2 className='font-quicksand text-3xl md:text-6xl text-zinc-800 font-bold'>
               Your questions, answered.
             </h2>
           </div>
@@ -53,12 +53,11 @@ const FAQSection = () => {
                 >
                   <button
                     onClick={() => toggleFAQ(index)}
-                    className="w-full text-left p-4 transition-all flex items-center justify-between cursor-pointer text-lg"
+                    className="w-full text-left p-4 transition-all flex items-start justify-between cursor-pointer md:text-lg"
                   >
-                    {faq.question}
+                    <span className="flex-1">{faq.question}</span>
                     <Plus
-                      className={`transition-transform duration-300 ${isOpen ? 'rotate-45' : ''
-                        }`}
+                      className={`transition-transform duration-300 size-6 mt-1 ${isOpen ? 'rotate-45' : ''}`}
                     />
                   </button>
 

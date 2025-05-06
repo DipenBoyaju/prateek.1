@@ -30,10 +30,10 @@ const Title = ({ tag, title }) => {
       style={{
         backgroundImage,
       }}
-      className="relative grid min-h-[30vh] overflow-hidden bg-gray-950 px-4 py-24 text-gray-200">
+      className="relative grid min-h-[20vh] md:min-h-[30vh] overflow-hidden bg-gray-950 px-4 py-14 md:py-24 text-gray-200">
       <div className="container mx-auto px-4 md:px-8 pt-10">
         <p className="uppercase text-sm text-cyan-300">{tag}</p>
-        <h2 className="text-5xl font-quicksand font-bold pt-5">{title}</h2>
+        <h2 className="text-4xl md:text-5xl font-quicksand font-bold pt-5">{title}</h2>
       </div>
       <div className="absolute inset-0 z-0">
         <Canvas>

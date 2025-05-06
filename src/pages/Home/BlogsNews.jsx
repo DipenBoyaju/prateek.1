@@ -4,14 +4,14 @@ const BlogsNews = () => {
   return (
     <section
       aria-labelledby="blogs-heading"
-      className="py-20 relative"
+      className="py-10 md:py-20 relative"
     >
       {/* Decorative image with aria-hidden since it’s visual only */}
       <img
         src="/shape2.png"
         alt=""
         aria-hidden="true"
-        className="absolute right-0 bottom-0 h-full"
+        className="absolute right-0 bottom-0 md:h-full"
       />
 
       <div className="container mx-auto px-4 md:px-8 relative z-20">
@@ -21,7 +21,7 @@ const BlogsNews = () => {
           </p>
           <h2
             id="blogs-heading"
-            className="font-quicksand font-bold tracking-wide uppercase text-4xl pt-7"
+            className="font-quicksand font-bold tracking-wide uppercase text-3xl md:text-4xl pt-3 md:pt-7"
           >
             Blogs & Updates
           </h2>
