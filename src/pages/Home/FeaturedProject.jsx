@@ -33,7 +33,7 @@ const FeaturedProject = () => {
               <p className="text-cyan-300 font-quicksand font-bold text-lg">What We Did</p>
               <h3 className="font-quicksand font-bold tracking-wide uppercase text-3xl  md:text-4xl pt-7">Featured Projects</h3>
               <p className="pt-3 text-zinc-700">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis, praesentium voluptatibus fugit, soluta nemo minima quod natus quo nostrum ullam impedit sunt vitae, repudiandae quibusdam.</p>
-              <button className="uppercase border-2 rounded-full py-5 px-10 cursor-pointer hover:shadow-2xl border-cyan-300 text-sm font-quicksand font-semibold text-zinc-700 hover:bg-cyan-300  transition-all duration-500 ease-in-out hover:text-primary hover:pb-4 hover:px-9 w-fit mt-auto" onClick={() => nav('/project')}>View Projects</button>
+              <button className="uppercase border-2 rounded-full py-3 md:py-5 px-6 md:px-10 cursor-pointer hover:shadow-2xl border-cyan-300 text-sm font-quicksand font-semibold text-zinc-700 hover:bg-cyan-300  transition-all duration-500 ease-in-out hover:text-primary hover:pb-4 hover:px-9 w-fit mt-5 md:mt-auto" onClick={() => nav('/project')}>View Projects</button>
             </div>
           </div>
           <div className="md:col-span-6 p-4 bg-secondary rounded-md">
