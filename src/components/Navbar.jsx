@@ -43,7 +43,7 @@ const Navbar = ({ isOpen, scrolled, onLinkClick }) => {
             <Link to="/project" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Project</Link>
             <Link to="/contact" className="text-gray-700 hover:text-cyan-300 transition" onClick={handleClick}>Contact</Link>
             <Link to="/blog" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Blogs</Link>
-            <Link to="/event" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Events</Link>
+            <Link to="/events" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Events</Link>
             <Link to="/news" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>
               News
             </Link>

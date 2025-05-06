@@ -8,7 +8,7 @@ const Contact = () => {
     <div>
       <Title title="We look forward to hearing from you." tag="Contact Us" />
       <div className="container mx-auto ">
-        <div className="grid md:grid-cols-2 gap-10 py-20 px-4 md:px-8">
+        <div className="grid md:grid-cols-2 gap-10 py-10 md:py-20 px-4 md:px-8">
           <div className="">
             <p className=" text-xl md:text-2xl font-light md:w-2/3">Please let us know if you have question, want to lave a comment, or would like further information about prateek.</p>
             <div className="mt-10 space-y-5">
