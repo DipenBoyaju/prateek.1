@@ -1,5 +1,7 @@
 import NewsLetter from "../../components/NewsLetter"
 import Title from "../../components/Title"
+import aboutList from "../../constants/aboutList"
+import AboutCard from "./AboutCard"
 
 const About = () => {
   return (
@@ -55,6 +57,17 @@ const About = () => {
           <div className="col-span-4">
             <h3 className="font-quicksand font-bold text-4xl text-zinc-800">Vision</h3>
             <p className="text-3xl font-semibold text-cyan-400 tracking-wide leading-10 pt-3 bg-zinc-900 border-cyan-600 border-4 rounded-md rounded-br-[120px] p-4 mt-4 shadow-2xl">To become a global AI R&D hub focused on empowering differently abled and underserved communities through deep research, thoughtful engineering, and real-world innovation.</p>
+          </div>
+        </div>
+      </div>
+      <div className="bg-[#f9f7f6]">
+        <div className="container mx-auto px-4 md:px-8 py-20">
+          <div className="grid grid-cols-3 gap-8">
+            {
+              aboutList.map((item) => (
+                <AboutCard item={item} key={item.id} />
+              ))
+            }
           </div>
         </div>
       </div>
