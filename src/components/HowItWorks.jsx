@@ -31,7 +31,7 @@ const HowItWorks = () => {
       }}
       className="relative grid min-h-[30vh] overflow-hidden bg-gray-950 px-4 py-16 text-gray-200">
       <div className="container mx-auto px-4 md:px-8 pt-10">
-        <h3 className="font-bold text-3xl">How it works</h3>
+        <h3 className="font-bold text-2xl md:text-3xl">How it works</h3>
         <div className="grid  md:grid-cols-3 pt-4 gap-4 md:gap-0">
           <div className="p-3 border border-zinc-200 rounded-md backdrop-blur-3xl">
             <h3 className="font-semibold text-white text-lg">Enable Camera</h3>
