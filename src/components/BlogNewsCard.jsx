@@ -10,7 +10,7 @@ const BlogNewsCard = () => {
       <div className="flex flex-col gap-4">
         <header className="flex justify-between items-center pt-4">
           <p className="font-quicksand font-semibold" aria-label="Author">
-            Author Name
+            John Doe
           </p>
           <time
             dateTime="2025-04-18"
@@ -23,11 +23,10 @@ const BlogNewsCard = () => {
 
         <div className="space-y-3">
           <h3 id="blog-title" className="text-xl font-semibold text-zinc-800">
-            Why Consistent Brand Identity is Key to Business Success
+            AI-Powered Innovation: The Future of Intelligent Solutions
           </h3>
           <p className="text-sm text-zinc-600">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-            libero sequi maiores voluptatum distinctio...
+            Explore how artificial intelligence is transforming industries, enhancing efficiency, and driving groundbreaking innovations...
           </p>
         </div>
 
