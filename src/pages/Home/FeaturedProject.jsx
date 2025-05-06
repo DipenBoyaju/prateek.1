@@ -45,8 +45,8 @@ const FeaturedProject = () => {
               <div className="w-full col-span-2 bg-zinc-50 h-full">
                 <video src="/videos/sign.mp4" autoPlay loop muted className="w-full h-full object-right object-cover" />
               </div>
-              <div className="col-span-1 bg-zinc-800 h-full p-4">
-                <span className="bg-white p-1 md:leading-8 text-xs md:text-base">{words.slice(0, visibleWords).join(" ")}</span>
+              <div className="col-span-1 bg-zinc-800 h-full p-1 md:p-4">
+                <span className="bg-white md:p-1 md:leading-8 text-xs md:text-base">{words.slice(0, visibleWords).join(" ")}</span>
               </div>
             </div>
           </div>
