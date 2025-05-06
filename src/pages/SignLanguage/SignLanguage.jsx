@@ -74,11 +74,11 @@ const SignLanguage = () => {
     <div>
       <HowItWorks />
       <div className="container mx-auto px-4 md:px-8 py-20">
-        <div className="grid grid-cols-6 h-[80vh]">
-          <div className="col-span-4 bg-zinc-800 p-2">
+        <div className="grid md:grid-cols-6 md:h-[80vh]">
+          <div className="md:col-span-4 bg-zinc-800 p-2 h-[50vh] md:h-[80vh]">
             {isCameraOn ? (
               <div className="relative">
-                <div className="h-[80vh] w-full">
+                <div className="h-[50vh] md:h-[80vh] w-full">
                   {/* Local webcam stream */}
                   <video
                     ref={localVideoRef}
@@ -96,7 +96,7 @@ const SignLanguage = () => {
                 </button>
               </div>
             ) : (
-              <div className="w-full h-full flex items-center justify-center">
+              <div className="h-[50vh] w-full h-full flex items-center justify-center">
                 <div className="flex justify-center flex-col items-center bg-zinc-100/10 md:p-10 p-4 rounded-xl gap-4">
                   <Camera size={52} className="text-purple-400 bg-amber p-3 rounded-full" />
                   <button
@@ -109,7 +109,7 @@ const SignLanguage = () => {
               </div>
             )}
           </div>
-          <div className="col-span-2 bg-zinc-700 p-5 relative" style={{ backgroundImage: `url('/textbg.webp')` }}>
+          <div className="md:col-span-2 h-[30vh] md:h-[80vh] bg-zinc-700 p-5 relative" style={{ backgroundImage: `url('/textbg.webp')` }}>
             <div className="absolute top-0 left-0 bg-zinc-600/10 h-full w-full">
             </div>
             <div className="z-20 relative">
