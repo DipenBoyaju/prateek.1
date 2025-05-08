@@ -55,7 +55,7 @@ const FAQSection = () => {
                     onClick={() => toggleFAQ(index)}
                     className="w-full text-left p-4 transition-all flex items-start justify-between cursor-pointer md:text-lg"
                   >
-                    <span className="flex-1">{faq.question}</span>
+                    <span className="flex-1 text-zinc-800">{faq.question}</span>
                     <Plus
                       className={`transition-transform duration-300 size-6 mt-1 ${isOpen ? 'rotate-45' : ''}`}
                     />
@@ -70,7 +70,7 @@ const FAQSection = () => {
                         : '0px',
                     }}
                   >
-                    <div className="p-4 text-zinc-600">{faq.answer}</div>
+                    <div className="p-4 text-zinc-600 font-light">{faq.answer}</div>
                   </div>
                 </div>
               );

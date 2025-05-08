@@ -1,5 +1,6 @@
+// SignLanguageImageMode.tsx
 import { useEffect, useRef, useState } from "react";
-import HowItWorks from "../../components/HowItWorks"
+import HowItWorks from "../../components/HowItWorks";
 import toast from "react-hot-toast";
 import { Camera, CameraOff } from "lucide-react";
 
@@ -9,65 +10,54 @@ const SignLanguage = () => {
   const [signText, setSignText] = useState(null);
 
   useEffect(() => {
-    let localVideo = localVideoRef.current;
+    let stream;
+    let interval;
+
     if (!isCameraOn) return;
 
-    navigator.mediaDevices
-      .getUserMedia({ video: true, audio: false })
-      .then((stream) => {
-        if (localVideo) {
-          localVideo.srcObject = stream;
+    const setupCamera = async () => {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        if (localVideoRef.current) {
+          localVideoRef.current.srcObject = stream;
         }
 
-        // Start sending frames to the backend for sign language detection
-        const interval = setInterval(() => {
-          captureFrameAndSend(stream); // Capture and send every few seconds
+        interval = setInterval(() => {
+          captureFrameAndSend();
         }, 2000);
-
-        return () => clearInterval(interval); // Clean up interval on unmount
-      })
-      .catch((error) => {
-        console.error("Error accessing media devices:", error)
-        toast.error('Unable to access the camera. Please check permissions.')
-
-      });
-
-    // Cleanup on unmount
-    return () => {
-      if (localVideo && localVideo.srcObject) {
-        const tracks = localVideo.srcObject.getTracks();
-        tracks.forEach((track) => track.stop());
+      } catch (error) {
+        console.error("Error accessing media devices:", error);
+        toast.error("Unable to access the camera.");
       }
+    };
+
+    setupCamera();
+
+    return () => {
+      stream?.getTracks().forEach((track) => track.stop());
+      clearInterval(interval);
     };
   }, [isCameraOn]);
 
   const captureFrameAndSend = () => {
-    const canvas = document.createElement('canvas');
+    const canvas = document.createElement("canvas");
     const video = localVideoRef.current;
+    if (!video) return;
+
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
-    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-    const imageData = canvas.toDataURL('image/jpeg'); // Convert the canvas image to base64
+    canvas.getContext("2d")?.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    // Send the frame to the backend API for sign language detection
-    fetch('http://localhost:8000/api/detect-sign-language', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+    const imageData = canvas.toDataURL("image/jpeg");
+
+    fetch("http://localhost:8000/api/detect-sign-language", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ image: imageData }),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.detectedSign) {
-          setSignText(data.detectedSign); // Update the detected sign text
-        }
-      })
-      .catch((error) => console.error('Error:', error));
-  };
-
-  const toggleCamera = () => {
-    setIsCameraOn((prev) => !prev);
+      .then((res) => res.json())
+      .then((data) => setSignText(data.detectedSign))
+      .catch((err) => console.error("Error:", err));
   };
 
   return (
@@ -77,31 +67,27 @@ const SignLanguage = () => {
         <div className="grid md:grid-cols-6 md:h-[80vh]">
           <div className="md:col-span-4 bg-zinc-800 p-2 h-[50vh] md:h-[80vh]">
             {isCameraOn ? (
-              <div className="relative">
-                <div className="h-[50vh] md:h-[80vh] w-full">
-                  {/* Local webcam stream */}
-                  <video
-                    ref={localVideoRef}
-                    autoPlay
-                    playsInline
-                    className="video-mirror rounded-lg w-full h-full object-cover"
-                  />
-                </div>
-
+              <div className="relative h-full">
+                <video
+                  ref={localVideoRef}
+                  autoPlay
+                  playsInline
+                  className="rounded-lg w-full h-full object-cover"
+                />
                 <button
-                  onClick={toggleCamera}
-                  className="absolute left-1 top-1/2 -translate-y-1/2 p-3 rounded-full text-white font-[500] transition bg-red-500 hover:bg-red-600 mt-2 cursor-pointer"
+                  onClick={() => setIsCameraOn(false)}
+                  className="absolute left-1 top-1/2 -translate-y-1/2 p-3 rounded-full text-white bg-red-500 hover:bg-red-600"
                 >
                   <CameraOff size={20} />
                 </button>
               </div>
             ) : (
-              <div className="h-[50vh] w-full h-full flex items-center justify-center">
-                <div className="flex justify-center flex-col items-center bg-zinc-100/10 md:p-10 p-4 rounded-xl gap-4">
+              <div className="h-full flex items-center justify-center">
+                <div className="flex flex-col items-center bg-zinc-100/10 p-6 md:p-10 rounded-xl gap-4">
                   <Camera size={52} className="text-purple-400 bg-amber p-3 rounded-full" />
                   <button
-                    onClick={toggleCamera}
-                    className="bg-cyan-500 hover:bg-cyan-600 cursor-pointer text-white py-2 px-4 rounded-lg font-[500] text-sm md:text-base"
+                    onClick={() => setIsCameraOn(true)}
+                    className="bg-cyan-500 hover:bg-cyan-600 text-white py-2 px-4 rounded-lg font-medium"
                   >
                     Enable Camera
                   </button>
@@ -110,15 +96,17 @@ const SignLanguage = () => {
             )}
           </div>
           <div className="md:col-span-2 h-[30vh] md:h-[80vh] bg-zinc-700 p-5 relative" style={{ backgroundImage: `url('/textbg.webp')` }}>
-            <div className="absolute top-0 left-0 bg-zinc-600/10 h-full w-full">
-            </div>
-            <div className="z-20 relative">
-              <span className="bg-zinc-50 p-2 rounded-sm">text diaplay</span>
+            <div className="absolute top-0 left-0 bg-zinc-600/10 h-full w-full" />
+            <div className="relative z-20">
+              <span className="bg-zinc-50 p-2 rounded-sm text-black text-lg">
+                {signText || "No sign detected yet..."}
+              </span>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
-}
-export default SignLanguage
+  );
+};
+
+export default SignLanguage;
