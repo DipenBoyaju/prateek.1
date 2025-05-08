@@ -25,18 +25,18 @@ const FeaturedProject = () => {
 
   return (
     <div className="py-10 md:py-20 relative overflow-hidden">
-      <img src="/bg.png" alt="" className="absolute left-0 top-0 opacity-25 h-full w-full object-cover" />
+      <img src="/bg.png" alt="" className="absolute left-0 top-0 opacity-20 h-full w-full object-cover" />
       <div className="container mx-auto px-4 md:px-8 relative ">
         <div className="grid md:grid-cols-10 gap-10">
           <div className="md:col-span-4">
             <div className="relative z-20 flex flex-col h-full">
               <p className="text-cyan-300 font-quicksand font-bold text-lg">What We Did</p>
               <h3 className="font-quicksand font-bold tracking-wide uppercase text-3xl  md:text-4xl pt-7">Featured Projects</h3>
-              <p className="pt-3 text-zinc-700">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis, praesentium voluptatibus fugit, soluta nemo minima quod natus quo nostrum ullam impedit sunt vitae, repudiandae quibusdam.</p>
+              <p className="pt-3 text-zinc-700 font-light">Our projects focus on building inclusive AI solutions that empower differently abled and underserved communities. From sign language translation to cognitive support, we combine innovation with empathy to create real-world impact.</p>
               <button className="uppercase border-2 rounded-full py-3 md:py-5 px-6 md:px-10 cursor-pointer hover:shadow-2xl border-cyan-300 text-sm font-quicksand font-semibold md:text-zinc-700 hover:bg-cyan-300  transition-all duration-500 ease-in-out hover:text-primary hover:pb-4 hover:px-9 w-fit mt-5 md:mt-auto bg-cyan-300 md:bg-transparent text-white" onClick={() => nav('/project')}>View Projects</button>
             </div>
           </div>
-          <div className="md:col-span-6 p-4 bg-secondary rounded-md">
+          <div className="md:col-span-6 p-4 bg-cyan-300 rounded-md">
             <div className="">
               <h4 className="font-semibold text-xl text-white">Sign Language Detection</h4>
               <p className="text-primary pt-2">AI-powered sign language detection to translate Nepali sign gestures in real-time.</p>
