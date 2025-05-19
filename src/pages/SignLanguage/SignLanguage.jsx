@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import HowItWorks from "../../components/HowItWorks";
 import toast from "react-hot-toast";
 import { Camera, CameraOff } from "lucide-react";
+import axios from "axios";
 
 const SignLanguage = () => {
   const localVideoRef = useRef(null);
@@ -24,7 +25,7 @@ const SignLanguage = () => {
 
         interval = setInterval(() => {
           captureFrameAndSend();
-        }, 1000);
+        }, 33);
       } catch (error) {
         console.error("Error accessing media devices:", error);
         toast.error("Unable to access the camera.");
@@ -50,14 +51,24 @@ const SignLanguage = () => {
 
     const imageData = canvas.toDataURL("image/jpeg");
 
-    fetch("http://localhost:8000/api/detect-sign-language", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ image: imageData }),
+    // fetch("http://localhost:8000/api/detect-sign-language", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ image: imageData }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => setSignText(data.detectedSign))
+    //   .catch((err) => console.error("Error:", err));
+
+    axios.post("http://localhost:8000/api/detect-sign-language", {
+      image: imageData,
     })
-      .then((res) => res.json())
-      .then((data) => setSignText(data.detectedSign))
-      .catch((err) => console.error("Error:", err));
+      .then((res) => {
+        setSignText(res.data.detectedSign);
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+      });
   };
 
   return (

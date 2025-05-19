@@ -24,6 +24,12 @@ const About = () => {
         </div>
       </div>
 
+      <div className="container mx-auto px-4 md:px-8 pb-10">
+
+        <h3 className="font-quicksand font-bold text-3xl md:text-4xl text-cyan-400">Vision</h3>
+        <p className="border p-8  rounded border-zinc-900/20 mt-5 uppercase text-2xl font-semibold tracking-wide text-zinc-800 rounded leading-9">To become a global AI R&D hub focused on empowering differently abled and underserved communities through deep research, thoughtful engineering, and real-world innovation.</p>
+      </div>
+
       <div className="bg-[#f9f7f6] py-10 md:py-20">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-5xl mx-auto w-full h-full flex justify-center items-center ">
@@ -39,32 +45,16 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="container mx-auto px-4 md:px-8">
 
-        <div className="grid md:grid-cols-9 py-10 md:py-20 gap-10">
-          <div className="col-span-4">
-            <h2 className="font-quicksand font-bold text-3xl md:text-4xl text-zinc-800">Mission</h2>
-            <p className="font-semibold text-2xl pt-2 text-cyan-400">To create a future where inclusion is designed, and accessibility is the norm not the exception.</p>
-            <p className="pt-3 font-semibold text-zinc-700">We aim for a world where inclusion is intentional, and accessibility is standard—where every human, regardless of ability, is considered by default in how we build our technologies and societies.</p>
-          </div>
-          <div className="md:col-span-1 md:block hidden">
-            <div className="border-8 bg-zinc-900 border-zinc-800 h-full w-full rounded-full relative">
-              <div className=" flex justify-center items-center h-full">
-                <img src="/images/prateek.png" className="w-20 h-20 object-cover rounded-full" alt="Prateek" />
-                {/* <h2 className="font-quicksand font-bold text-5xl text-[#1796AE]">Prateek</h2> */}
-              </div>
-            </div>
-
-
-          </div>
-          <div className="col-span-4">
-            <h3 className="font-quicksand font-bold text-3xl md:text-4xl text-zinc-800">Vision</h3>
-            <p className="text-2xl md:text-3xl font-semibold text-cyan-400 tracking-wide leading-10 pt-3 bg-zinc-900 border-cyan-600 border-4 rounded-md rounded-br-[120px] p-4 mt-4 shadow-2xl">To become a global AI R&D hub focused on empowering differently abled and underserved communities through deep research, thoughtful engineering, and real-world innovation.</p>
-          </div>
-        </div>
-      </div>
       <div className="bg-[#f9f7f6]">
         <div className="container mx-auto px-4 md:px-8 py-20">
+          <div className="">
+            <h2 className="font-quicksand font-bold text-3xl md:text-4xl text-cyan-400">Mission</h2>
+            <div className="flex flex-col md:flex-row gap-2 md:gap-10 py-5">
+              <p className="font-semibold text-2xl pt-2 text-zinc-800 font-poppins uppercase  md:w-5/5">To create a future where inclusion is designed, and accessibility is the norm not the exception.</p>
+              <p className="font-normal text-zinc-600 text-base">We aim for a world where inclusion is intentional, and accessibility is standard—where every human, regardless of ability, is considered by default in how we build our technologies and societies.</p>
+            </div>
+          </div>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
             {
               aboutList.map((item) => (

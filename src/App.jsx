@@ -11,6 +11,10 @@ import Events from "./pages/Events/Events"
 import Newsletter from "./pages/NewsLetter/Newsletter"
 import News from "./pages/News/News"
 import SignLanguage from "./pages/SignLanguage/SignLanguage"
+import DashboardLayout from "./dashboard/layout/DashboardLayout"
+import DashboardHome from "./dashboard/pages/dashboardHome/DashboardHome"
+import DashboardEvents from "./dashboard/pages/updates/Events"
+import DashboardNews from "./dashboard/pages/updates/News"
 
 const App = () => {
 
@@ -29,6 +33,15 @@ const App = () => {
         { path: '/news', element: <News /> },
         { path: '/newsletter', element: <Newsletter /> },
         { path: '/signLanguage', element: <SignLanguage /> },
+      ]
+    },
+    {
+      path: '/dashboard',
+      element: <DashboardLayout />,
+      children: [
+        { index: true, element: <DashboardHome /> },
+        { path: "events", element: <DashboardEvents /> },
+        { path: "news", element: <DashboardNews /> },
       ]
     }
   ])
