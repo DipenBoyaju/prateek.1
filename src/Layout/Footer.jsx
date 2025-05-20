@@ -19,8 +19,7 @@ const Footer = () => {
         <div className="md:grid md:grid-cols-12 border-b border-zinc-300 py-14 md:py-24">
           <div className="col-span-12 md:col-span-7">
             <div className="flex gap-1 py-1 items-center">
-              <img src="/images/prateek.png" className="size-8" alt="" />
-              <h2 className="font-quicksand font-bold text-[24px] text-[#1796AE]"> Prateek</h2>
+              <img src="/images/logo1.png" className="w-32" alt="" />
             </div>
             <p className="text-zinc-600 md:w-2/3 mt-8">Prateek AI is an AI R&D hub dedicated to empowering differently abled and underserved communities through inclusive, innovative and ethical AI solutions. </p>
           </div>

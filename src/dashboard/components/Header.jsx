@@ -5,7 +5,7 @@ const Header = ({ toggleSidebar }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <header className="flex items-center justify-between bg-white p-4 shadow">
+    <header className="flex items-center justify-between md:justify-end md bg-white p-4 shadow">
       <button className="md:hidden" onClick={toggleSidebar}>☰</button>
 
       <div className="flex items-center gap-4">

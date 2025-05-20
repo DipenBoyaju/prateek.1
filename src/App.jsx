@@ -15,6 +15,9 @@ import DashboardLayout from "./dashboard/layout/DashboardLayout"
 import DashboardHome from "./dashboard/pages/dashboardHome/DashboardHome"
 import DashboardEvents from "./dashboard/pages/updates/Events"
 import DashboardNews from "./dashboard/pages/updates/News"
+import CHMC from "./dashboard/pages/ResearchWings/CHMC"
+import CCCT from "./dashboard/pages/ResearchWings/CCCT"
+import CCEI from "./dashboard/pages/ResearchWings/CCEI"
 
 const App = () => {
 
@@ -40,6 +43,9 @@ const App = () => {
       element: <DashboardLayout />,
       children: [
         { index: true, element: <DashboardHome /> },
+        { path: "chmc", element: <CHMC /> },
+        { path: "ccct", element: <CCCT /> },
+        { path: "ccei", element: <CCEI /> },
         { path: "events", element: <DashboardEvents /> },
         { path: "news", element: <DashboardNews /> },
       ]
