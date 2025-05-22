@@ -86,15 +86,15 @@ const Sidebar = ({ isOpen }) => {
               <ul className="space-y-1 font-light">
                 <li className="">
                   <NavLink
-                    to="/dashboard/chmc"
+                    to="/dashboard/team/executive"
                     className={({ isActive }) =>
                       `${isActive ? activeClass : normalClass} block pl-6 py-1 w-full`}>
-                    CHMC
+                    Executive
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
-                    to="/dashboard/newsletter"
+                    to="/dashboard/team/research"
                     className={({ isActive }) =>
                       `${isActive ? activeClass : normalClass} block pl-6 py-1 w-full`}>
                     Research Team
@@ -102,7 +102,7 @@ const Sidebar = ({ isOpen }) => {
                 </li>
                 <li>
                   <NavLink
-                    to="/dashboard/news"
+                    to="/dashboard/team/development"
                     className={({ isActive }) =>
                       `${isActive ? activeClass : normalClass} block pl-6 py-1 w-full`}>
                     Development Team
@@ -153,7 +153,7 @@ const Sidebar = ({ isOpen }) => {
             )}
           </li>
 
-          <li>
+          {/* <li>
             <button
               onClick={() => toggleSubMenu("users")}
               className="w-full text-left font-medium"
@@ -184,7 +184,7 @@ const Sidebar = ({ isOpen }) => {
                 </li>
               </ul>
             )}
-          </li>
+          </li> */}
         </ul>
       </nav>
     </div>

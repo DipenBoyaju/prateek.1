@@ -18,6 +18,11 @@ import DashboardNews from "./dashboard/pages/updates/News"
 import CHMC from "./dashboard/pages/ResearchWings/CHMC"
 import CCCT from "./dashboard/pages/ResearchWings/CCCT"
 import CCEI from "./dashboard/pages/ResearchWings/CCEI"
+import AdminSignup from "./pages/AdminSignup/AdminSignup"
+import UserLogin from "./pages/UserLogin/UserLogin"
+import ExecutiveTeam from "./dashboard/pages/Teams/ExecutiveTeam"
+import ResearchTeam from "./dashboard/pages/Teams/ResearchTeam"
+import DevelopmentTeam from "./dashboard/pages/Teams/DevelopmentTeam"
 
 const App = () => {
 
@@ -36,6 +41,8 @@ const App = () => {
         { path: '/news', element: <News /> },
         { path: '/newsletter', element: <Newsletter /> },
         { path: '/signLanguage', element: <SignLanguage /> },
+        { path: '/admin-signup', element: <AdminSignup /> },
+        { path: '/login', element: <UserLogin /> },
       ]
     },
     {
@@ -46,6 +53,9 @@ const App = () => {
         { path: "chmc", element: <CHMC /> },
         { path: "ccct", element: <CCCT /> },
         { path: "ccei", element: <CCEI /> },
+        { path: "team/executive", element: <ExecutiveTeam /> },
+        { path: "team/research", element: <ResearchTeam /> },
+        { path: "team/development", element: <DevelopmentTeam /> },
         { path: "events", element: <DashboardEvents /> },
         { path: "news", element: <DashboardNews /> },
       ]

@@ -1,11 +1,31 @@
 import { useState } from "react";
 import { ChevronRight, Pencil, X } from "lucide-react";
+import { useQuery } from '@tanstack/react-query';
+import axios from "axios";
+
+const fetchResearchData = async () => {
+  const res = await axios('http://localhost:5000/api/allResearch');
+  return res.data
+}
 
 const CHMC = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [content, setContent] = useState(
     "Researches on innovating and pushing the boundaries of physical aids and systems like Sign Language Translation, Blind aids, advanced prosthetics among many."
   );
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['research'],
+    queryFn: fetchResearchData,
+  });
+
+  if (isLoading) {
+    return <p>Loading research info...</p>;
+  }
+
+  if (isError) {
+    return <p>Failed to load research info.</p>;
+  }
 
   return (
     <div>
@@ -22,10 +42,12 @@ const CHMC = () => {
         </button>
       </div>
 
-      <h1 className="text-2xl font-semibold">
-        Center for Human Mobility and Communication
-      </h1>
-      <p className="pt-3 font-poppins">{content}</p>
+      <div className="mt-5">
+        <h1 className="text-2xl font-semibold">
+          {data[0]?.title}
+        </h1>
+        <p className="pt-3 font-poppins">{data[0]?.description}</p>
+      </div>
 
       {/* Modal */}
       {isEditing && (
