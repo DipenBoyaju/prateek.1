@@ -3,9 +3,10 @@ import Title from "../../components/Title"
 import ResearchCard from "./ResearchCard"
 import axios from "axios"
 import { useQuery } from '@tanstack/react-query';
+import { baseUrl } from "../../utils/baseUrl";
 
 const fetchResearchData = async () => {
-  const res = await axios('http://localhost:5000/api/allResearch');
+  const res = await axios(`${baseUrl}/api/allResearch`);
   return res.data
 }
 

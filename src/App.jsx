@@ -23,6 +23,7 @@ import UserLogin from "./pages/UserLogin/UserLogin"
 import ExecutiveTeam from "./dashboard/pages/Teams/ExecutiveTeam"
 import ResearchTeam from "./dashboard/pages/Teams/ResearchTeam"
 import DevelopmentTeam from "./dashboard/pages/Teams/DevelopmentTeam"
+import ProtectedRoute from "./features/ProtectedRoute"
 
 const App = () => {
 
@@ -46,18 +47,23 @@ const App = () => {
       ]
     },
     {
-      path: '/dashboard',
-      element: <DashboardLayout />,
+      element: <ProtectedRoute />,
       children: [
-        { index: true, element: <DashboardHome /> },
-        { path: "chmc", element: <CHMC /> },
-        { path: "ccct", element: <CCCT /> },
-        { path: "ccei", element: <CCEI /> },
-        { path: "team/executive", element: <ExecutiveTeam /> },
-        { path: "team/research", element: <ResearchTeam /> },
-        { path: "team/development", element: <DevelopmentTeam /> },
-        { path: "events", element: <DashboardEvents /> },
-        { path: "news", element: <DashboardNews /> },
+        {
+          path: '/dashboard',
+          element: <DashboardLayout />,
+          children: [
+            { index: true, element: <DashboardHome /> },
+            { path: "chmc", element: <CHMC /> },
+            { path: "ccct", element: <CCCT /> },
+            { path: "ccei", element: <CCEI /> },
+            { path: "team/executive", element: <ExecutiveTeam /> },
+            { path: "team/research", element: <ResearchTeam /> },
+            { path: "team/development", element: <DevelopmentTeam /> },
+            { path: "events", element: <DashboardEvents /> },
+            { path: "news", element: <DashboardNews /> },
+          ]
+        }
       ]
     }
   ])

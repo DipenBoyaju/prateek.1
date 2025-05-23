@@ -2,9 +2,10 @@ import { useState } from "react";
 import { ChevronRight, Pencil, X } from "lucide-react";
 import { useQuery } from '@tanstack/react-query';
 import axios from "axios";
+import { baseUrl } from "../../../utils/baseUrl";
 
 const fetchResearchData = async () => {
-  const res = await axios('http://localhost:5000/api/allResearch');
+  const res = await axios(`${baseUrl}/api/allResearch`);
   return res.data
 }
 

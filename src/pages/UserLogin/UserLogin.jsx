@@ -5,6 +5,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { loginSchema } from '../../validators/auth';
 import { useAuthStore } from '../../store/authStore';
+import { baseUrl } from '../../utils/baseUrl';
+import toast from 'react-hot-toast';
 
 export default function UserLogin() {
   const navigate = useNavigate();
@@ -18,48 +20,56 @@ export default function UserLogin() {
     resolver: zodResolver(loginSchema),
   });
 
-  const { mutate, isLoading, error } = useMutation({
+  const { mutate, isLoading } = useMutation({
     mutationFn: async (data) => {
-      const res = await axios.post('http://localhost:8000/api/login', data, { withCredentials: true });
+      const res = await axios.post(`${baseUrl}/api/login`, data, { withCredentials: true });
       return res.data;
     },
     onSuccess: (data) => {
       setUser(data.user);
-      navigate('/dashboard'); // Or wherever admin goes after login
+      navigate('/dashboard');
+      toast.success("User Logged In")
     },
+    onError: (err) => {
+      console.error("Signup error:", err);
+      const message =
+        err?.response?.data?.message || 'Login failed';
+      toast.error(message);
+    }
   });
 
   const onSubmit = (data) => mutate(data);
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 border rounded shadow">
-      <h2 className="text-2xl font-bold mb-4">Admin Login</h2>
-      {error && <p className="text-red-600 mb-2">{error.response?.data?.message || 'Login failed'}</p>}
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-        <input
-          type="email"
-          placeholder="Email"
-          {...register('email')}
-          className="p-2 border rounded"
-        />
-        {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+    <div className="py-20 bg-zinc-300">
+      <div className="max-w-md mx-auto mt-10 p-6 rounded-lg shadow-lg bg-white">
+        <h2 className="text-2xl font-semibold text-zinc-800 mb-4">User Login</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+          <input
+            type="email"
+            placeholder="Email"
+            {...register('email')}
+            className="p-2 border border-zinc-800/30 focus:outline-none rounded h-[50px] text-zinc-700"
+          />
+          {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
 
-        <input
-          type="password"
-          placeholder="Password"
-          {...register('password')}
-          className="p-2 border rounded"
-        />
-        {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
+          <input
+            type="password"
+            placeholder="Password"
+            {...register('password')}
+            className="p-2 border border-zinc-800/30 focus:outline-none rounded h-[50px] text-zinc-700"
+          />
+          {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
 
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
-        >
-          {isLoading ? 'Logging in...' : 'Login'}
-        </button>
-      </form>
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700 cursor-pointer"
+          >
+            {isLoading ? 'Logging in...' : 'Login'}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
