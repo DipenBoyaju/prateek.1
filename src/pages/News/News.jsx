@@ -3,6 +3,7 @@ import NewsLetter from "../../components/NewsLetter"
 import Title from "../../components/Title"
 import NewsCard from "./NewsCard"
 import NewsModal from "./NewsModal"
+import NoContent from "../../components/NoContent"
 
 const newsList = [
   {
@@ -50,13 +51,14 @@ const News = () => {
     <div>
       <Title tag="News" title="News and Updates" />
       <div className="container mx-auto px-4 md:px-8 py-10 md:py-20">
-        <div className="flex flex-col gap-8">
+        <NoContent title="No News Available" sub="We’re gathering the latest updates. Check back soon for exciting announcements and stories." />
+        {/* <div className="flex flex-col gap-8">
           {newsList.map((item) => (
             <NewsCard key={item.id} news={item} onClick={() => handleCardClick(item)} />
           ))}
-        </div>
+        </div> */}
       </div>
-      {selectedNews && <NewsModal news={selectedNews} onClose={closeModal} />}
+      {/* {selectedNews && <NewsModal news={selectedNews} onClose={closeModal} />} */}
       <NewsLetter />
     </div>
   )
