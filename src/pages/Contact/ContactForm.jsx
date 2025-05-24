@@ -1,13 +1,30 @@
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import { baseUrl } from "../../utils/baseUrl";
+import { Loader } from 'lucide-react'
 
 const ContactForm = () => {
   const { register, reset, handleSubmit, formState: { errors } } = useForm()
 
+  const { mutate, isPending } = useMutation({
+    mutationFn: async (FormData) => {
+      const response = await axios.post(`${baseUrl}/api/send-query`, FormData)
+      return response.data;
+    },
+    onSuccess: (res) => {
+      toast.success(res.message);
+      reset()
+    },
+    onError: (err) => {
+      toast.error(err?.response?.data?.message)
+      console.log(err)
+    }
+  })
+
   const onSubmit = (data) => {
-    console.log("data", data)
-    toast.success('message sent')
-    reset()
+    mutate(data)
   }
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="shadow-2xl p-8 space-y-4  border border-zinc-200 rounded-lg w-full">
@@ -73,7 +90,9 @@ const ContactForm = () => {
       </div>
 
       <button type="submit" className="bg-blue w-full text-lg bg-cyan-300 rounded-full text-primary cursor-pointer py-3 focus:outline-none px-4">
-        Submit
+        {isPending ? <div className="flex justify-center">
+          <Loader className="text-zinc-800 animate-spin" strokeWidth={1.5} />
+        </div> : "Submit"}
       </button>
     </form>
   )
