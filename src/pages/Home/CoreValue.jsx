@@ -12,8 +12,8 @@ const CoreValues = () => {
   ];
 
   return (
-    <div className="py-20 relative bg-[#f9f7f6] md:-top-20">
-      <img src="/shape3.png" alt="" className="absolute top-0 md:top-0 left-1/2 -translate-x-1/2 h-full md:h-auto" />
+    <div className="py-20 relative bg-[#f9f7f6] md:-top-20 overflow-hidden">
+      <img src="/shape3.png" alt="" className="absolute top-0 md:top-0 left-1/2 -translate-x-1/2 h-full md:h-auto opacity-60" />
       {/* <div className="dotted-bg absolute inset-0 z-[-1]" /> */}
       {/* //small screen */}
       <div className="container mx-auto px-4 md:px-0 md:hidden relative">
@@ -78,8 +78,8 @@ const CoreValues = () => {
             >
               <div className="border border-white/20 p-3 rounded-2xl shadow-xl w-[24vw] text-center tracking-wider overflow-hidden">
 
-                <h4 className="font-bold mb-1 text-sm font-geist underline underline-offset-8">{item.title}</h4>
-                <p className="text-xs font-ubuntu pt-4 text-white">{item.description}</p>
+                <h4 className="font-bold mb-1 text-sm font-geist underline text-zinc-900 underline-offset-8">{item.title}</h4>
+                <p className="text-sm pt-4 text-white">{item.description}</p>
               </div>
             </div>
           ))}

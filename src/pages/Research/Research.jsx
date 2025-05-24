@@ -22,8 +22,8 @@ const Research = () => {
       <div className="container mx-auto px-4 md:px-8">
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10 py-20">
           {
-            data?.map((item) => (
-              <ResearchCard item={item} />
+            data?.map((item, index) => (
+              <ResearchCard item={item} index={index} />
             ))
           }
         </div>
