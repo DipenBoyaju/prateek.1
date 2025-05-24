@@ -1,6 +1,8 @@
+import { Facebook, Instagram, Linkedin } from "lucide-react";
 import HomeEventCard from "./HomeEventCard"
 
 const EventHome = () => {
+  const events = [];
   return (
     <div className="py-20 relative">
       <img src="/shape2.png" alt="" className="absolute right-0 bottom-0 md:h-full" />
@@ -10,10 +12,34 @@ const EventHome = () => {
           <h3 className="font-quicksand font-bold tracking-wide uppercase text-3xl md:text-4xl pt-3 md:pt-7">Upcoming Events</h3>
           <p className="text-zinc-800/50 md:pt-2 text-sm">Follow Us and know more about our events and news</p>
         </div>
-        <div className="grid md:grid-cols-2 pt-10 gap-5 md:gap-10">
-          <HomeEventCard />
-          <HomeEventCard />
-        </div>
+        {events.length === 0 ? (
+          <div className="pt-10 flex justify-center">
+            <div className="bg-white shadow-md border border-zinc-200 rounded-xl px-6 py-10 text-center text-zinc-500 max-w-xl w-full">
+              <div className="pt-10 text-center text-zinc-500 flex flex-col items-center gap-4">
+                <div className="text-6xl animate-bounce">📅</div>
+                <p className="text-xl md:text-2xl font-semibold text-zinc-700">
+                  No Upcoming Events
+                </p>
+                <p className="text-sm md:text-base text-zinc-500 max-w-md">
+                  We’re currently cooking up something amazing! Check back soon or follow us to stay in the loop.
+                </p>
+              </div>
+              <div className="flex items-center gap-4 mt-4 justify-center">
+                <p className="font-semibold text-cyan-400">Follow for Updates</p>
+                <div className="flex items-center gap-2 border-l pl-3">
+                  <a href=""><Facebook strokeWidth={1.5} size={20} /></a>
+                  <a href=""><Instagram strokeWidth={1.5} size={20} /></a>
+                  <a href=""><Linkedin strokeWidth={1.5} size={20} /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 pt-10 gap-5 md:gap-10">
+            <HomeEventCard />
+            <HomeEventCard />
+          </div>
+        )}
       </div>
     </div>
   )

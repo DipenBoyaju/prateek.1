@@ -40,7 +40,7 @@ const CoreValues = () => {
           {/* Big Circle */}
           <div className="relative bg-zin-950 w-[400px] h-[500px] border-4 border-zinc-500 rounded-full flex items-center justify-center">
 
-            <div className="relative bg-zinc-200  w-[300px] h-[400px] rounded-full flex items-center justify-center border-2 border-zinc-500/50">
+            <div className="relative bg-cyan-200  w-[300px] h-[400px] rounded-full flex items-center justify-center border-2 border-zinc-500/50">
 
               {/* Inner Core Values Circle */}
               <div className="w-42 h-42 bg-cyan-300 border-4 border-cyan-500 text-darkBlack rounded-full flex items-center justify-center text-center p-4 text-xl font-bold uppercase font-geist tracking-wider ">
@@ -53,7 +53,7 @@ const CoreValues = () => {
             {items.map((item) => (
               <div key={item.id}>
                 {/* Number Circles */}
-                <div className={`absolute ${item.circlePos} w-8 h-8 rounded-sm  bg-zinc-200 flex items-center justify-center text-lg font-geist  tracking-wider px-6 py-5 text-cyan-900`}>
+                <div className={`absolute ${item.circlePos} w-8 h-8 rounded-sm  bg-cyan-200 flex items-center justify-center text-lg font-geist  tracking-wider px-6 py-5 text-zinc-800 `}>
                   0{item.id}
                 </div>
 
