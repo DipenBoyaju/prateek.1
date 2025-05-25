@@ -8,7 +8,7 @@ const Blog = () => {
     <div>
       <Title tag="Blog" title="Latest Blogs" />
       <div className="container mx-auto px-4 md:px-8 py-10 md:py-20">
-        <NoContent title="No Blog Posts Yet" sub="Our blog is getting ready! Fresh articles and insights will be published soon." />
+        <NoContent title="Blog Posts Coming Soon" sub="Our blog is getting ready! Fresh articles and insights will be published soon." />
 
         {/* <div className="flex gap-1">
           <span className="bg-cyan-300 text-white border border-cyan-300 rounded-full text-sm p-1 px-3 font-semibold">All</span>

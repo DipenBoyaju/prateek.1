@@ -81,6 +81,22 @@ const ContactForm = () => {
       </div>
 
       <div className="">
+        <select
+          {...register("purpose", { required: "Please select the purpose of contact" })}
+          className="border border-zinc-400 p-3 pl-4 rounded-lg mt-1 w-full focus:border-zinc-500 focus:outline-none"
+          defaultValue=""
+        >
+          <option value="" disabled>Select purpose of contact</option>
+          <option value="Vacancy">Vacancy</option>
+          <option value="Query">Query</option>
+          <option value="Industrial Partnership">Industrial Partnership</option>
+          <option value="Project Discussion">Project Discussion</option>
+          <option value="Collaboration">Collaboration</option>
+        </select>
+        {errors.purpose && <p className='text-red-500 text-xs'>{errors.purpose.message}</p>}
+      </div>
+
+      <div className="">
         <textarea
           {...register('query', { required: "Query is required" })}
           className="border border-zinc-400 p-3 pl-4 rounded-lg w-full mt-1 resize-none focus:border-zinc-500 focus:outline-none" name='query'

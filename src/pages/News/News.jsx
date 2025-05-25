@@ -51,7 +51,7 @@ const News = () => {
     <div>
       <Title tag="News" title="News and Updates" />
       <div className="container mx-auto px-4 md:px-8 py-10 md:py-20">
-        <NoContent title="No News Available" sub="We’re gathering the latest updates. Check back soon for exciting announcements and stories." />
+        <NoContent title="Updates on the Way" sub="We’re gathering the latest updates. Check back soon for exciting announcements and stories." />
         {/* <div className="flex flex-col gap-8">
           {newsList.map((item) => (
             <NewsCard key={item.id} news={item} onClick={() => handleCardClick(item)} />

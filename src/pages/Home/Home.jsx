@@ -21,7 +21,6 @@ const Home = () => {
       <BlogsNews />
       <FAQSection />
       <EventHome />
-      <NewsLetter />
     </div>
   )
 }

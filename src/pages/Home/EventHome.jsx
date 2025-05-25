@@ -18,7 +18,7 @@ const EventHome = () => {
               <div className="pt-10 text-center text-zinc-500 flex flex-col items-center gap-4">
                 <div className="text-6xl animate-bounce">📅</div>
                 <p className="text-xl md:text-2xl font-semibold text-zinc-700">
-                  No Upcoming Events
+                  Events Coming Soon
                 </p>
                 <p className="text-sm md:text-base text-zinc-500 max-w-md">
                   We’re currently cooking up something amazing! Check back soon or follow us to stay in the loop.

@@ -31,7 +31,7 @@ const BlogsNews = () => {
         <div className="pt-16 flex flex-col items-center text-center text-zinc-500">
           <div className="text-6xl animate-pulse">✍️</div>
           <p className="text-xl md:text-2xl font-semibold text-zinc-700 mt-4">
-            No blog posts yet.
+            Blog Posts Coming Soon
           </p>
           <p className="text-sm md:text-base text-zinc-500 max-w-md mt-2">
             We're working on some insightful content for you. Stay tuned for updates, stories, and more!

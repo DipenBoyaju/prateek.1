@@ -25,7 +25,7 @@ const Footer = () => {
           </div>
           <div className="md:col-span-5 mt-8 md:mt-0">
             <div className="grid grid-cols-3">
-              <div className="">
+              <div className="col-span-1">
                 <h3 className=" text-zinc-800 font-quicksand tracking-wider text-sm uppercase font-bold">Projects</h3>
                 <ul className="mt-3 uppercase font-[400] text-zinc-700 text-sm space-y-3">
                   <li className="flex gap-1 items-center group">
@@ -34,9 +34,9 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
-              <div className="">
+              <div className="col-span-2">
                 <h3 className=" text-zinc-800 font-quicksand tracking-wider text-sm uppercase font-bold">Company</h3>
-                <ul className="mt-3 uppercase font-[400] font-ubuntu text-zinc-700 text-sm space-y-3">
+                <ul className="mt-3 uppercase font-[400] font-ubuntu text-zinc-700 text-sm space-y-3 grid grid-cols-3">
                   <li className="flex gap-1 items-center group">
                     <TiArrowRight className={`${arrowStyle}`} />
                     <Link to={'/about'} className={`${linkStyle}`}>About Us</Link>
@@ -61,9 +61,21 @@ const Footer = () => {
                     <TiArrowRight className={`${arrowStyle}`} />
                     <Link to={'/contact'} className={`${linkStyle}`}>Contact</Link>
                   </li>
+                  <li className="flex gap-1 items-center group">
+                    <TiArrowRight className={`${arrowStyle}`} />
+                    <Link to={'/events'} className={`${linkStyle}`}>Events</Link>
+                  </li>
+                  <li className="flex gap-1 items-center group">
+                    <TiArrowRight className={`${arrowStyle}`} />
+                    <Link to={'/news'} className={`${linkStyle}`}>News</Link>
+                  </li>
+                  <li className="flex gap-1 items-center group">
+                    <TiArrowRight className={`${arrowStyle}`} />
+                    <Link to={'/newsletter'} className={`${linkStyle}`}>NewsLetter</Link>
+                  </li>
                 </ul>
               </div>
-              <div className="">
+              {/* <div className="">
                 <h3 className=" text-zinc-800 font-quicksand tracking-wider text-sm uppercase font-bold">Legal</h3>
                 <ul className="mt-3 uppercase font-[400] font-ubuntu text-zinc-700 text-sm space-y-3">
                   <li className="flex gap-1 items-center group">
@@ -75,7 +87,7 @@ const Footer = () => {
                     <Link to={'/'} className={`${linkStyle}`}>Terms</Link>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

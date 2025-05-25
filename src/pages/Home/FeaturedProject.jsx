@@ -36,9 +36,9 @@ const FeaturedProject = () => {
               <button className="uppercase border-2 rounded-full py-3 md:py-5 px-6 md:px-10 cursor-pointer hover:shadow-2xl border-cyan-300 text-sm font-quicksand font-semibold md:text-zinc-700 hover:bg-cyan-300  transition-all duration-500 ease-in-out hover:text-primary hover:pb-4 hover:px-9 w-fit mt-5 md:mt-auto bg-cyan-300 md:bg-transparent text-white" onClick={() => nav('/project')}>View Projects</button>
             </div>
           </div>
-          <div className="md:col-span-6 p-4 bg-cyan-300 rounded-md">
+          <div className="md:col-span-6 p-4 bg-cyan-400 rounded-md">
             <div className="">
-              <h4 className="font-semibold text-xl text-white">Sign Language Detection</h4>
+              <h4 className="font-semibold text-xl text-white">Inclusive Real time  Sign Language Translation Platform</h4>
               <p className="text-primary pt-2">AI-powered sign language detection to translate Nepali sign gestures in real-time.</p>
             </div>
             <div className="grid grid-cols-3 pt-5">

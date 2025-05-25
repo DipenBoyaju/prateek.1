@@ -15,15 +15,19 @@ const Navbar = ({ isOpen, scrolled, onLinkClick }) => {
       <nav className={`hidden md:flex space-x-8 uppercase tracking-wider text-sm items-center ${scrolled ? 'text-gray-800' : 'text-primary'}`}>
         <Link to="/" className="hover:text-cyan-300 transition" >Home</Link>
         <Link to="/about" className=" hover:text-cyan-300 transition">About</Link>
-        <Link to="/research" className=" hover:text-cyan-300  transition">Research</Link>
+        {/* <Link to="/research" className=" hover:text-cyan-300  transition">Research</Link> */}
+        <FlyoutLink href="#" FlyoutContent={ResearchContent}>
+          Research
+        </FlyoutLink>
+        <Link to="/project" className="hover:text-cyan-300  transition">Projects</Link>
+        <Link to="/" className="hover:text-cyan-300  transition">Products</Link>
         <Link to="/team" className="hover:text-cyan-300  transition">Team</Link>
-        <Link to="/project" className="hover:text-cyan-300  transition">Project</Link>
-        <Link to="/contact" className="hover:text-cyan-300  transition">Contact</Link>
 
         {/* Dropdown */}
         <FlyoutLink href="#" FlyoutContent={UpdatesContent}>
           Updates
         </FlyoutLink>
+        <Link to="/contact" className="hover:text-cyan-300  transition">Contact</Link>
       </nav>
 
       {/* Mobile Navbar */}
@@ -40,7 +44,8 @@ const Navbar = ({ isOpen, scrolled, onLinkClick }) => {
             <Link to="/about" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>About</Link>
             <Link to="/research" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Research</Link>
             <Link to="/team" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Team</Link>
-            <Link to="/project" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Project</Link>
+            <Link to="/project" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Projects</Link>
+            <Link to="/" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Products</Link>
             <Link to="/contact" className="text-gray-700 hover:text-cyan-300 transition" onClick={handleClick}>Contact</Link>
             <Link to="/blog" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Blogs</Link>
             <Link to="/events" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Events</Link>
@@ -111,6 +116,21 @@ const UpdatesContent = () => {
         </Link>
         <Link to="/newsletter" className="block text-sm text-gray-700 hover:underline">
           NewsLetters
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+const ResearchContent = () => {
+  return (
+    <div className="w-64 bg-white p-6 shadow-xl rounded-md">
+      <div className="space-y-3">
+        <Link to="/" className="block text-sm text-gray-700 hover:underline">
+          Divisions
+        </Link>
+        <Link to="/" className="block text-sm text-gray-700 hover:underline">
+          Publications
         </Link>
       </div>
     </div>

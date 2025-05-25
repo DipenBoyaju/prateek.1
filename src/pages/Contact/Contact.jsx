@@ -2,6 +2,7 @@ import { MdAlternateEmail, MdSupportAgent } from "react-icons/md"
 import Title from "../../components/Title"
 import ContactForm from "./ContactForm"
 import NewsLetter from "../../components/NewsLetter"
+import { Facebook, Instagram, Linkedin, Mail, PhoneCall } from "lucide-react"
 
 const Contact = () => {
   return (
@@ -17,17 +18,24 @@ const Contact = () => {
                   <MdAlternateEmail className="size-10" />
                 </div>
                 <p className="text-lg font-quicksand font-bold text-zinc-800 mt-3">Help Support</p>
-                <p className="text-lightGray">Email: prateek@gmail.com</p>
-                <p className="text-lightGray pt-5">For help with service or refer to FAQs.</p>
+                <p className="text-cyan-400 flex items-center gap-2"><Mail strokeWidth={1.5} size={18} /> connect@prateekinnovations.com</p>
+                <p className="text-lightGray pt-2">For help with service or refer to FAQs.</p>
               </div>
               <div className="">
                 <div className="bg-cyan-300 p-2 w-fit rounded-lg text-primary">
                   <MdSupportAgent className="size-10" />
                 </div>
                 <p className="text-lg font-bold font-quicksand text-zinc-800 mt-3">Call Us</p>
-                <p className="text-lightGray">Phone: 01-664578</p>
-                <p className="text-lightGray">Phone: +977-9875647898</p>
-                <p className="text-lightGray">Call us to speak to a member of our team.</p>
+                <p className="text-cyan-400 flex items-center gap-2"><PhoneCall strokeWidth={1.5} size={18} /> +977-9875647898</p>
+                <p className="text-lightGray pt-2">Call us to speak to a member of our team.</p>
+              </div>
+              <div className="">
+                <p className="text-lg font-bold font-quicksand text-zinc-800 mt-3">Social Media</p>
+                <div className="flex items-center gap-3 mt-2">
+                  <a href="" className="bg-zinc-200 p-2 rounded-sm text-[#1877F2] hover:text-white hover:bg-[#1877F2] transition-colors ease-linear"><Facebook strokeWidth={1.5} size={18} /></a>
+                  <a href="" className="bg-zinc-200 p-2 rounded-sm text-[#FD1D1D] hover:text-white hover:bg-[#FD1D1D] transition-colors ease-linear"><Instagram strokeWidth={1.5} size={18} /></a>
+                  <a href="" className="bg-zinc-200 p-2 rounded-sm text-[#0077B5] hover:text-white hover:bg-[#0077B5] transition-colors ease-linear"><Linkedin strokeWidth={1.5} size={18} /></a>
+                </div>
               </div>
             </div>
           </div>
@@ -35,7 +43,6 @@ const Contact = () => {
             <ContactForm />
           </div>
         </div>
-        <NewsLetter />
       </div>
     </div>
   )
