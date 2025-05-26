@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 import { MoveUpRight } from 'lucide-react'
-import clsx from 'clsx';
+import { slugify } from '../../utils/slugify'
 
 const ResearchCard = ({ item, index }) => {
+  const slug = slugify(item.title)
   return (
-    <div className="shadow p-5 rounded-lg hover:shadow-lg transition-shadow duration-300 flex flex-col gap-3 border-b-8 border-2 border-purple-400">
+    <Link to={`/division/${slug}`} className="shadow p-5 rounded-lg hover:shadow-lg transition-shadow duration-300 flex flex-col gap-3 border-b-8 border-2 border-purple-400">
 
       <span className="border border-purple-500 rounded-full text-2xl px-5 py-1 text-white tracking-widest w-fit font-semibold bg-purple-400">
         0{index + 1}
@@ -17,9 +18,9 @@ const ResearchCard = ({ item, index }) => {
 
       <div className="flex items-center justify-between mt-auto border-t border-zinc-800/10 pt-4">
         <p className="font-geist font-semibold text-lg text-purple-500">Explore</p>
-        <Link className="bg-zinc-100 p-3 rounded-full duration-300 transition-all ease-linear hover:rotate-45 text-purple-400 hover:bg-purple-400 hover:text-white"><MoveUpRight /></Link>
+        <Link to={`/division/${slug}`} className="bg-zinc-100 p-3 rounded-full duration-300 transition-all ease-linear hover:rotate-45 text-purple-400 hover:bg-purple-400 hover:text-white"><MoveUpRight /></Link>
       </div>
-    </div>
+    </Link>
   )
 }
 

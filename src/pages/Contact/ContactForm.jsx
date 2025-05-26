@@ -83,7 +83,7 @@ const ContactForm = () => {
       <div className="">
         <select
           {...register("purpose", { required: "Please select the purpose of contact" })}
-          className="border border-zinc-400 p-3 pl-4 rounded-lg mt-1 w-full focus:border-zinc-500 focus:outline-none"
+          className="border border-zinc-400 p-3 pl-4 rounded-lg mt-1 w-full focus:border-zinc-500 focus:outline-none text-zinc-500"
           defaultValue=""
         >
           <option value="" disabled>Select purpose of contact</option>

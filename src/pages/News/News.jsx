@@ -59,7 +59,6 @@ const News = () => {
         </div> */}
       </div>
       {/* {selectedNews && <NewsModal news={selectedNews} onClose={closeModal} />} */}
-      <NewsLetter />
     </div>
   )
 }

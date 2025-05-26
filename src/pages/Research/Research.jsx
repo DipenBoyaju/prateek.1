@@ -1,4 +1,3 @@
-import NewsLetter from "../../components/NewsLetter"
 import Title from "../../components/Title"
 import ResearchCard from "./ResearchCard"
 import axios from "axios"
@@ -16,15 +15,6 @@ const Research = () => {
     queryFn: fetchResearchData,
   });
 
-  const colors = [
-    'purple-400',
-    'green-400',
-    'red-400',
-    'blue-400',
-    'yellow-400',
-    'pink-500',
-  ];
-
   return (
     <div>
       <Title tag="Research" title="Research Wing" />
@@ -32,12 +22,11 @@ const Research = () => {
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 py-20">
           {
             data?.map((item, index) => (
-              <ResearchCard item={item} index={index} color={colors[index]} />
+              <ResearchCard item={item} index={index} />
             ))
           }
         </div>
       </div>
-      <NewsLetter />
     </div>
   )
 }

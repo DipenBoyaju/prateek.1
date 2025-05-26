@@ -24,6 +24,9 @@ import ExecutiveTeam from "./dashboard/pages/Teams/ExecutiveTeam"
 import ResearchTeam from "./dashboard/pages/Teams/ResearchTeam"
 import DevelopmentTeam from "./dashboard/pages/Teams/DevelopmentTeam"
 import ProtectedRoute from "./features/ProtectedRoute"
+import ResearchDetails from "./pages/Research/ResearchDetails"
+import Product from "./pages/products/Product"
+import ProjectDetails from "./pages/Project/ProjectDetails"
 
 const App = () => {
 
@@ -33,15 +36,18 @@ const App = () => {
       children: [
         { index: true, element: <Home /> },
         { path: '/about', element: <About /> },
-        { path: '/research', element: <Research /> },
+        { path: '/division', element: <Research /> },
+        { path: '/division/:slug', element: <ResearchDetails /> },
         { path: '/team', element: <Team /> },
         { path: '/project', element: <Project /> },
+        { path: '/signlanguage', element: <ProjectDetails /> },
+        { path: '/product', element: <Product /> },
         { path: '/contact', element: <Contact /> },
         { path: '/blog', element: <Blog /> },
         { path: '/events', element: <Events /> },
         { path: '/news', element: <News /> },
         { path: '/newsletter', element: <Newsletter /> },
-        { path: '/signLanguage', element: <SignLanguage /> },
+        { path: '/signLanguageplatform', element: <SignLanguage /> },
         { path: '/admin-signup', element: <AdminSignup /> },
         { path: '/login', element: <UserLogin /> },
       ]

@@ -20,7 +20,7 @@ const Navbar = ({ isOpen, scrolled, onLinkClick }) => {
           Research
         </FlyoutLink>
         <Link to="/project" className="hover:text-cyan-300  transition">Projects</Link>
-        <Link to="/" className="hover:text-cyan-300  transition">Products</Link>
+        <Link to="/product" className="hover:text-cyan-300  transition">Products</Link>
         <Link to="/team" className="hover:text-cyan-300  transition">Team</Link>
 
         {/* Dropdown */}
@@ -42,10 +42,11 @@ const Navbar = ({ isOpen, scrolled, onLinkClick }) => {
           >
             <Link to="/" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Home</Link>
             <Link to="/about" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>About</Link>
-            <Link to="/research" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Research</Link>
+            <Link to="/division" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Division</Link>
+            <Link to="/publication" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Publication</Link>
             <Link to="/team" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Team</Link>
             <Link to="/project" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Projects</Link>
-            <Link to="/" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Products</Link>
+            <Link to="/product" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Products</Link>
             <Link to="/contact" className="text-gray-700 hover:text-cyan-300 transition" onClick={handleClick}>Contact</Link>
             <Link to="/blog" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Blogs</Link>
             <Link to="/events" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Events</Link>
@@ -126,10 +127,10 @@ const ResearchContent = () => {
   return (
     <div className="w-64 bg-white p-6 shadow-xl rounded-md">
       <div className="space-y-3">
-        <Link to="/" className="block text-sm text-gray-700 hover:underline">
+        <Link to="/division" className="block text-sm text-gray-700 hover:underline">
           Divisions
         </Link>
-        <Link to="/" className="block text-sm text-gray-700 hover:underline">
+        <Link to="/publication" className="block text-sm text-gray-700 hover:underline">
           Publications
         </Link>
       </div>

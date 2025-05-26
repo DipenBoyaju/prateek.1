@@ -16,7 +16,6 @@ const Events = () => {
           <EventCards />
         </div> */}
       </div>
-      <NewsLetter />
     </div>
   )
 }

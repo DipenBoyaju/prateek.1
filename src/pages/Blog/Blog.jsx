@@ -21,7 +21,6 @@ const Blog = () => {
           <BlogNewsCard />
         </div> */}
       </div>
-      <NewsLetter />
     </div>
   )
 }
