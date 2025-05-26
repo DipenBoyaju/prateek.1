@@ -16,7 +16,7 @@ const ProjectDetails = () => {
           <div className="col-span-4 ">
             <div className="">
               <div className="shadow rounded-xl overflow-hidden border border-zinc-800/20">
-                <img src="/images/signlanguage.png" alt="" />
+                <img src="/images/signlanguage.png" alt="" className="hover:scale-105 transition-all duration-300 ease-linear" />
               </div>
               <div className="flex gap-4 items-center mt-5">
                 <p className="text-xl font-semibold uppercase text-purple-400">Project Details</p>
