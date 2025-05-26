@@ -12,7 +12,7 @@ const ProjectDetails = () => {
           <Link to="/signlanguageplatform" className="bg-orange-500 p-5 px-18 rounded-full font-bold font-quicksand uppercase text-xl tracking-wider text-white shadow-lg flex items-center gap-6">Try Demo <CornerDownRight strokeWidth={2.5} /></Link>
         </div>
 
-        <div className="grid grid-cols-6 mt-10 gap-8">
+        <div className="grid grid-cols-6 gap-8">
           <div className="col-span-4 ">
             <div className="">
               <div className="shadow rounded-xl overflow-hidden border border-zinc-800/20">
