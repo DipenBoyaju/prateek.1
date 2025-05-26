@@ -44,7 +44,6 @@ const Team = () => {
           }
         </div>
       </div>
-      <NewsLetter />
     </div>
   )
 }
