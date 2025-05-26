@@ -46,16 +46,19 @@ const ProjectDetails = () => {
               </div>
             </div>
 
+            <div className=" mt-5 border-b border-zinc-800/20 pb-5">
+              <h3 className="text-xl font-semibold text-purple-500">Word Based Nepali Sign Language Dataset</h3>
+              <p className="font-light mt-3">We created a first word based Nepali Sign Language Dataset that consisted of 4 words: Namaste (Hello), Dhanyabaad (Thank you), Ghar (House) and Ma (me), each word consisting of 5000 unique signed images. </p>
+            </div>
+
             <div className="border-b pb-8 border-zinc-800/20 mt-5">
-              <h2 className="text-2xl font-bold font-quicksand uppercase">Objective</h2>
+              <h2 className="text-2xl font-bold font-quicksand uppercase text-purple-500">Objective</h2>
               <p className="font-poppins pt-5 text-zinc-800/90 text-lg font-light">Our Sign Language project bridges the communication gap between hearing and non-hearing communities through AI-powered real-time translation. We have started with Nepali Sign Language gradually aiming to connect with other versions. By converting Nepali Sign Language to speech and vice versa, the platform enables seamless interaction across web, mobile, and wearable devices like smart glasses. Designed in close collaboration with the Deaf community, it combines gesture recognition, speech processing, and emotion-aware avatars to ensure natural, accessible, and inclusive communication for all.
               </p>
             </div>
           </div>
           <div className="col-span-2">
-            <h3 className="text-xl font-semibold text-purple-500">Word Based Nepali Sign Language Dataset</h3>
-            <p className="font-light mt-3">We created a first word based Nepali Sign Language Dataset that consisted of 4 words: Namaste (Hello), Dhanyabaad (Thank you), Ghar (House) and Ma (me), each word consisting of 5000 unique signed images. </p>
-            <div className=" rounded-xl overflow-hidden mt-5">
+            <div className=" rounded-xl overflow-hidden">
               <h4 className="bg-purple-500 py-2 px-3 text-lg font-semibold text-white">Partner Organizations</h4>
               <div className="flex flex-col gap-3">
                 <PartnerOrganizationCard name="National Deaf federation of Nepal" address="Ranibari Marg, Kathmandu" image="/images/NDFN-Logo.png" />
