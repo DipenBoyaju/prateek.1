@@ -1,53 +1,6 @@
 import Title from "../../components/Title";
+import teamList from "../../utils/teamList";
 import TeamCards from "./TeamCards";
-
-const teamList = [
-  {
-    id: 1,
-    name: "Jatin Bhusal",
-    role: "Founder and CEO",
-    image: "/img2.png",
-    department: "Executive",
-    linkedin: "http",
-    twitter: "http"
-  },
-  {
-    id: 2,
-    name: "Salma Tamang",
-    role: "Research Assistant, AI",
-    image: "/img1.png",
-    department: "Research",
-    linkedin: "http",
-    twitter: "http"
-  },
-  {
-    id: 3,
-    name: "Dipen Boyaju",
-    role: "Full Stack Developer",
-    image: "/img3.png",
-    department: "Product Development",
-    linkedin: "http",
-    twitter: "http"
-  },
-  {
-    id: 4,
-    name: "Nisha Singh Thakuri",
-    role: "Management Intern",
-    image: "/img4.png",
-    department: "Management",
-    linkedin: "http",
-    twitter: "http"
-  },
-  {
-    id: 5,
-    name: "Dr. Manish Sakhakarmy, PhD",
-    role: "Research Consultant, Research Methodology",
-    image: "/img3.png",
-    department: "Consultants",
-    linkedin: "http",
-    twitter: "http"
-  },
-];
 
 
 const groupedTeams = teamList.reduce((acc, member) => {

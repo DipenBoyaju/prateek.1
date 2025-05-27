@@ -15,7 +15,7 @@ const TeamCards = ({ item }) => {
       </div>
 
       {/* Info Box */}
-      <div className="absolute bottom-0 left-0 w-full p-4 text-white z-30 backdrop-blur-md shadow-lg border-t border-white/20">
+      <div className="absolute bottom-0 left-0 w-full p-4 text-white z-30 backdrop-blur-lg shadow-lg border-t border-white/20">
         <h3 className=" text-white font-semibold">{item.name}</h3>
         <p className="text-sm opacity-90">{item.role}</p>
 
