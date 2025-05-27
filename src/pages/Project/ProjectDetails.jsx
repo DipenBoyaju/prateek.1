@@ -8,12 +8,12 @@ const ProjectDetails = () => {
     <div>
       <Title tag="Project" title="Inclusive Real time Sign Language Translation Platform" />
       <div className="container mx-auto px-4 md:px-8 py-10 md:py-20 relative">
-        <div className="absolute -top-5 right-10 animate-bounce">
-          <Link to="/signlanguageplatform" className="bg-orange-500 p-5 px-18 rounded-full font-bold font-quicksand uppercase text-xl tracking-wider text-white shadow-lg flex items-center gap-6">Try Demo <CornerDownRight strokeWidth={2.5} /></Link>
+        <div className="absolute -top-5 md:right-10 animate-bounce">
+          <Link to="/signlanguageplatform" className="bg-orange-500 p-4 md:p-5 px-10 md:px-18 rounded-full font-bold font-quicksand uppercase text-base md:text-xl tracking-wider text-white shadow-lg flex items-center gap-6">Try Demo <CornerDownRight strokeWidth={2.5} /></Link>
         </div>
 
-        <div className="grid grid-cols-6 gap-8">
-          <div className="col-span-4 ">
+        <div className="grid md:grid-cols-6 gap-8">
+          <div className="md:col-span-4 ">
             <div className="">
               <div className="shadow rounded-xl overflow-hidden border border-zinc-800/20">
                 <img src="/images/signlanguage.png" alt="" className="hover:scale-105 transition-all duration-300 ease-linear" />
@@ -57,7 +57,7 @@ const ProjectDetails = () => {
               </p>
             </div>
           </div>
-          <div className="col-span-2">
+          <div className="md:col-span-2">
             <div className=" rounded-xl overflow-hidden">
               <h4 className="bg-purple-500 py-2 px-3 text-lg font-semibold text-white">Partner Organizations</h4>
               <div className="flex flex-col gap-3">
