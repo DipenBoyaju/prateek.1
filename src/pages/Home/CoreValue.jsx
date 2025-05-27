@@ -1,7 +1,7 @@
 import { Flame } from "lucide-react";
 import React from "react";
 
-const CoreValues = () => {
+const CoreValue = () => {
   const items = [
     { id: 1, title: "Impact Over Hype", description: "We build AI to solve real problems, not chase trends.", circlePos: "top-6 left-1/2 -translate-x-1/2", linePos: "top-0 left-1/2 ", boxPos: "top-[-60px] left-1/2 -translate-x-1/2 bg-indigo-300 rounded-2xl" },
     { id: 2, title: "Built With, Not For", description: "We co-create with the disabled and elderly communities. Their voices guide our design.", circlePos: "top-1/4 left-10 -translate-y-1/2", linePos: "top-1/4 left-[-60px]", boxPos: "top-1/4 left-[100px] bg-blue-300 rounded-2xl" },
@@ -103,4 +103,4 @@ const CoreValues = () => {
   );
 };
 
-export default CoreValues;
+export default CoreValue;
