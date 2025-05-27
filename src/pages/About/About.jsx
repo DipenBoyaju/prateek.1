@@ -3,6 +3,7 @@ import NewsLetter from "../../components/NewsLetter"
 import Title from "../../components/Title"
 import aboutList from "../../constants/aboutList"
 import AboutCard from "./AboutCard"
+import CoreValues from "../Home/CoreValues"
 
 const About = () => {
   const nav = useNavigate()
@@ -29,6 +30,8 @@ const About = () => {
         <h3 className="font-quicksand font-bold text-3xl md:text-4xl text-cyan-400">Vision</h3>
         <p className="border p-8  rounded border-zinc-900/20 mt-5 uppercase text-2xl font-semibold tracking-wide text-zinc-800 rounded leading-9">To become a global AI R&D hub focused on empowering differently abled and underserved communities through deep research, thoughtful engineering, and real-world innovation.</p>
       </div>
+
+      <CoreValues />
 
       <div className="bg-[#f9f7f6] py-10 md:py-20">
         <div className="container mx-auto px-4 md:px-8">
