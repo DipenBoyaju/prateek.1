@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { baseUrl } from "../../utils/baseUrl.js";
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query';
@@ -23,7 +23,34 @@ const ResearchDetails = () => {
     <div>
       <Title tag="Research Wing" title={data?.title} />
       <div className="container mx-auto px-4 md:px-8 py-20">
-        <p className="text-lg">{data?.description}</p>
+        <div className="">
+          <p className="text-lg font-light">{data?.description}</p>
+        </div>
+        <div className="mt-10 grid md:grid-cols-3 gap-10">
+          <div className="col-span-2">
+            <div className="relative border-b border-gray-300 mb-4">
+              <h4 className="inline-block text-white text-xl font-semibold font-geist tracking-wide px-6 pr-15 py-3 bg-cyan-500 shadow-md clip-right-slant uppercase rounded-l-lg">
+                Projects
+              </h4>
+            </div>
+            <div className="">
+              <Link to="/projects/signlanguage" className="block border-l-4 border-l-emerald-400 rounded shadow p-3 bg-emerald-500/10 border border-emerald-500/30 hover:scale-101 transition-all duration-300 ease-in-out">
+                <p className="tracking-wider text-lg ">Inclusive Real time Sign Language Translation Platform</p>
+                <p className="text-sm font-light text-zinc-800/80"><span className="uppercase font-medium">Year</span> - 2022</p>
+              </Link>
+            </div>
+          </div>
+          <div className="">
+            <div className="relative border-b border-gray-300 mb-4">
+              <h4 className="inline-block text-white text-xl font-semibold font-geist tracking-wide px-6 pr-15 py-3 bg-cyan-500 shadow-md clip-right-slant uppercase rounded-l-lg">
+                Publications
+              </h4>
+            </div>
+            <div className="">
+              <p className="font-light">No Publications</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -26,7 +26,7 @@ const Contact = () => {
                   <MdSupportAgent className="size-10" />
                 </div>
                 <p className="text-lg font-bold font-quicksand text-zinc-800 mt-3">Call Us</p>
-                <p className="text-cyan-400 flex items-center gap-2"><PhoneCall strokeWidth={1.5} size={18} /> +977-9875647898</p>
+                <p className="text-cyan-400 flex items-center gap-2"><PhoneCall strokeWidth={1.5} size={18} /> +977 9813376093</p>
                 <p className="text-lightGray pt-2">Call us to speak to a member of our team.</p>
               </div>
               <div className="">

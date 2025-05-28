@@ -27,6 +27,7 @@ import ProtectedRoute from "./features/ProtectedRoute"
 import ResearchDetails from "./pages/Research/ResearchDetails"
 import Product from "./pages/products/Product"
 import ProjectDetails from "./pages/Project/ProjectDetails"
+import Publication from "./pages/Publication/Publication"
 
 const App = () => {
 
@@ -38,9 +39,10 @@ const App = () => {
         { path: '/about', element: <About /> },
         { path: '/division', element: <Research /> },
         { path: '/division/:slug', element: <ResearchDetails /> },
+        { path: '/publication', element: <Publication /> },
         { path: '/team', element: <Team /> },
         { path: '/project', element: <Project /> },
-        { path: '/signlanguage', element: <ProjectDetails /> },
+        { path: '/projects/signlanguage', element: <ProjectDetails /> },
         { path: '/product', element: <Product /> },
         { path: '/contact', element: <Contact /> },
         { path: '/blog', element: <Blog /> },

@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom"
-import NewsLetter from "../../components/NewsLetter"
 import Title from "../../components/Title"
 import aboutList from "../../constants/aboutList"
 import AboutCard from "./AboutCard"
@@ -13,40 +12,19 @@ const About = () => {
       <div className="relative py-10 md:py-20 overflow-hidden">
         <img src="/shape.png" alt="" className="absolute bottom-0 left-0 opacity-50" />
         <div className="container mx-auto px-4 md:px-8">
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="">
             <div className="relative">
-              <p className="text-lg text-justify tracking-wide"><span className="font-bold text-base md:text-xl text-cyan-400 ">Prateek AI</span> is an AI R&D hub dedicated to empowering differently abled and underserved communities through inclusive, innovative and ethical AI solutions. With a focus on accessibility, inclusion, and real-world impact, we conduct deep interdisciplinary research and engineering in areas like sign language translation, cognitive support, and AI companionship, among many. Rooted in Nepal, we aim to create technologies that are accessible, affordable, and built with empathy, ensuring that every person, regardless of ability, has the tools to live with dignity and independence.</p>
-              <button className="uppercase border-2 rounded-full py-3 md:py-5 px-6 md:px-10 cursor-pointer hover:shadow-2xl border-cyan-300 text-sm font-quicksand font-semibold md:text-zinc-700 hover:bg-cyan-300  transition-all duration-500 ease-in-out hover:text-primary hover:pb-4 hover:px-9 mt-5 md:mt-10 bg-cyan-300 md:bg-transparent text-white" onClick={() => nav('/project')}>Our Projects</button>
-            </div>
-            <div className="w-full h-[60vh] overflow-hidden bg-cyan-500 rounded-md">
-              <img src="/flow-bg.webp" alt="" className="w-full h-full" />
+              <p className="text-lg text-justify tracking-wide font-light"><span className="font-bold text-base md:text-2xl text-cyan-400">Prateek AI</span> is an AI R&D hub dedicated to empowering differently abled and underserved communities through inclusive, innovative and ethical AI solutions. With a focus on accessibility, inclusion, and real-world impact, we conduct deep interdisciplinary research and engineering in areas like sign language translation, cognitive support, and AI companionship, among many. Rooted in Nepal, we aim to create technologies that are accessible, affordable, and built with empathy, ensuring that every person, regardless of ability, has the tools to live with dignity and independence.</p>
+              <button className="uppercase rounded-full py-3 md:py-5 px-6 md:px-10 cursor-pointer hover:shadow-xl text-white font-quicksand font-semibold md:text-white hover:bg-cyan-300  transition-all duration-500 ease-in-out hover:text-primary hover:px-9 mt-5 md:mt-10 bg-cyan-300" onClick={() => nav('/project')}>Our Projects</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-8 pb-10">
+      <div className="container mx-auto px-4 md:px-8 pt-10 pb-20">
 
         <h3 className="font-quicksand font-bold text-3xl md:text-4xl text-cyan-400">Vision</h3>
-        <p className="border p-8  rounded border-zinc-900/20 mt-5 uppercase text-2xl font-semibold tracking-wide text-zinc-800 rounded leading-9">To become a global AI R&D hub focused on empowering differently abled and underserved communities through deep research, thoughtful engineering, and real-world innovation.</p>
-      </div>
-
-      <CoreValues />
-
-      <div className="bg-[#f9f7f6] py-10 md:py-20">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="max-w-5xl mx-auto w-full h-full flex justify-center items-center ">
-            <div className="w-full aspect-video rounded-3xl overflow-hidden shadow-xl">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/Fzxre3r_-ys"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </div>
-        </div>
+        <p className="p-8 rounded mt-5 uppercase text-2xl font-semibold tracking-wide rounded leading-9 bg-gradient-to-t from-[#37ecba] to-[#72afd3] text-white">To become a global AI R&D hub focused on empowering differently abled and underserved communities through deep research, thoughtful engineering, and real-world innovation.</p>
       </div>
 
       <div className="bg-[#f9f7f6]">
@@ -67,6 +45,25 @@ const About = () => {
           </div>
         </div>
       </div>
+
+      <div className="bg-[#f9f7f6] py-10 md:py-20">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="max-w-5xl mx-auto w-full h-full flex justify-center items-center ">
+            <div className="w-full aspect-video rounded-3xl overflow-hidden shadow-xl">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/Fzxre3r_-ys"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <CoreValues />
     </div>
   )
 }

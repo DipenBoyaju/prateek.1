@@ -14,7 +14,7 @@ const AboutUs = () => {
           <div className="md:col-span-7">
             <span className="font-semibold text-[#515266] text-lg">Prateek AI is an AI R&D hub dedicated to empowering differently abled and underserved communities through inclusive, innovative and ethical AI solutions.</span>
             <p className="text-zinc-500 pt-4 leading-8 font-light"> With a focus on accessibility, inclusion, and real-world impact, we conduct deep interdisciplinary research and engineering in areas like sign language translation, cognitive support, and AI companionship, among many. Rooted in Nepal, we aim to create technologies that are accessible, affordable, and built with empathy, ensuring that every person, regardless of ability, has the tools to live with dignity and independence.</p>
-            <button className="uppercase border-2 rounded-full py-3 md:py-5 md:px-10 px-6 cursor-pointer hover:shadow-2xl border-cyan-300 text-sm font-quicksand font-semibold md:text-zinc-700 hover:bg-cyan-300  transition-all duration-500 ease-in-out hover:text-primary hover:pb-4 hover:px-9 mt-5 md:mt-10 bg-cyan-300 md:bg-transparent text-white" onClick={() => nav('/about')}>More About</button>
+            <button className="uppercase rounded-full py-3 md:py-5 px-6 md:px-10 cursor-pointer hover:shadow-xl text-white font-quicksand font-semibold md:text-white hover:bg-cyan-300  transition-all duration-500 ease-in-out hover:text-primary hover:px-9 mt-5 md:mt-10 bg-cyan-300" onClick={() => nav('/about')}>More About</button>
           </div>
         </div>
       </div>

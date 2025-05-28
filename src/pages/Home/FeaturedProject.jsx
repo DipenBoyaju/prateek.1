@@ -26,30 +26,31 @@ const FeaturedProject = () => {
   return (
     <div className="py-10 md:py-20 relative overflow-hidden">
       <img src="/bg.png" alt="" className="absolute left-0 top-0 opacity-20 h-full w-full object-cover" />
-      <div className="container mx-auto px-4 md:px-8 relative ">
-        <div className="grid md:grid-cols-10 gap-10">
-          <div className="md:col-span-4">
-            <div className="relative z-20 flex flex-col h-full">
-              <p className="text-cyan-300 font-quicksand font-bold text-lg">What We Did</p>
-              <h3 className="font-quicksand font-bold tracking-wide uppercase text-3xl  md:text-4xl pt-7">Featured Projects</h3>
-              <p className="pt-3 text-zinc-700 font-light">Our projects focus on building inclusive AI solutions that empower differently abled and underserved communities. From sign language translation to cognitive support, we combine innovation with empathy to create real-world impact.</p>
-              <button className="uppercase border-2 rounded-full py-3 md:py-5 px-6 md:px-10 cursor-pointer hover:shadow-2xl border-cyan-300 text-sm font-quicksand font-semibold md:text-zinc-700 hover:bg-cyan-300  transition-all duration-500 ease-in-out hover:text-primary hover:pb-4 hover:px-9 w-fit mt-5 md:mt-auto bg-cyan-300 md:bg-transparent text-white" onClick={() => nav('/project')}>View Projects</button>
-            </div>
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
+        {/* Header */}
+        <div className="mb-10 text-center">
+          <h3 className="font-quicksand font-bold tracking-wide uppercase text-3xl md:text-4xl text-cyan-400">
+            Featured Projects
+          </h3>
+          <p className="text-zinc-600 mt-2 text-base md:text-lg">
+            Explore our ongoing research and innovative solutions.
+          </p>
+        </div>
+
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Example Project Card */}
+          <div className="bg-white shadow-lg border border-zinc-200 rounded-xl p-6 hover:shadow-xl transition-shadow duration-300">
+            <h4 className="text-xl font-semibold text-cyan-500 mb-2">Inclusive Real time Sign Language Translation Platform</h4>
+            <p className="text-zinc-700 text-sm">
+              Use AI-powered sign language detection to translate Nepali sign gestures in real-time.
+            </p>
+            <a href="/projects/signlanguage" className="inline-block mt-4 text-cyan-500 font-medium hover:underline">
+              Learn More →
+            </a>
           </div>
-          <div className="md:col-span-6 p-4 bg-cyan-400 rounded-md">
-            <div className="">
-              <h4 className="font-semibold text-xl text-white">Inclusive Real time  Sign Language Translation Platform</h4>
-              <p className="text-primary pt-2">AI-powered sign language detection to translate Nepali sign gestures in real-time.</p>
-            </div>
-            <div className="grid grid-cols-3 pt-5">
-              <div className="w-full col-span-2 bg-zinc-50 h-full">
-                <video src="/videos/sign.mp4" autoPlay loop muted className="w-full h-full object-right object-cover" />
-              </div>
-              <div className="col-span-1 bg-zinc-800 h-full p-1 md:p-4">
-                <span className="bg-white md:p-1 md:leading-8 text-xs md:text-base">{words.slice(0, visibleWords).join(" ")}</span>
-              </div>
-            </div>
-          </div>
+
+          {/* Repeat Project Cards as needed */}
         </div>
       </div>
     </div>

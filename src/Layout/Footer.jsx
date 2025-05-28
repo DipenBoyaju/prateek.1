@@ -75,24 +75,11 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
-              {/* <div className="">
-                <h3 className=" text-zinc-800 font-quicksand tracking-wider text-sm uppercase font-bold">Legal</h3>
-                <ul className="mt-3 uppercase font-[400] font-ubuntu text-zinc-700 text-sm space-y-3">
-                  <li className="flex gap-1 items-center group">
-                    <TiArrowRight className={`${arrowStyle}`} />
-                    <Link to={'/'} className={`${linkStyle}`}>Privacy Policy</Link>
-                  </li>
-                  <li className="flex gap-1 items-center group">
-                    <TiArrowRight className={`${arrowStyle}`} />
-                    <Link to={'/'} className={`${linkStyle}`}>Terms</Link>
-                  </li>
-                </ul>
-              </div> */}
             </div>
           </div>
         </div>
         <div className="py-4 md:py-8 flex flex-col md:flex md:flex-row justify-between items-center">
-          <p className="uppercase text-[12px] text-zinc-700 font-ubuntu tracking-wider">© 2025 <span className="text-cyan-300">Prateek</span>. All rights reserved.</p>
+          <p className="uppercase text-[12px] text-zinc-700 font-ubuntu tracking-wider">© 2025 <span className="text-cyan-300">Prateek Innovations</span>. All rights reserved.</p>
           <p className="text-zinc-700 font-quicksand font-bold text-sm cursor-pointer hover:text-cyan-300 transition-colors ease-in-out duration-300" onClick={scrollTop}>Back to Top</p>
         </div>
       </div>
