@@ -28,6 +28,7 @@ import ResearchDetails from "./pages/Research/ResearchDetails"
 import Product from "./pages/products/Product"
 import ProjectDetails from "./pages/Project/ProjectDetails"
 import Publication from "./pages/Publication/Publication"
+import SingleProject from "./pages/Project/SingleProject"
 
 const App = () => {
 
@@ -43,6 +44,7 @@ const App = () => {
         { path: '/team', element: <Team /> },
         { path: '/project', element: <Project /> },
         { path: '/projects/signlanguage', element: <ProjectDetails /> },
+        { path: '/projects/signlanguage/wordbase', element: <SingleProject /> },
         { path: '/product', element: <Product /> },
         { path: '/contact', element: <Contact /> },
         { path: '/blog', element: <Blog /> },
