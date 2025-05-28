@@ -13,6 +13,7 @@ const Research = () => {
   const { data } = useQuery({
     queryKey: ['research'],
     queryFn: fetchResearchData,
+    staleTime: 5 * 60 * 1000,
   });
 
   return (
