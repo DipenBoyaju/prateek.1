@@ -3,7 +3,7 @@ const teamList = [
     id: 1,
     name: "Jatin Bhusal",
     role: "Founder and CEO",
-    image: "/team/salma_tamang.jpg",
+    image: "/team/jatin_bhusal.jpg",
     department: "Executive",
     linkedin: " https://www.linkedin.com/in/jatin-bhusal-1012691b4/",
     googleScholar: "https://scholar.google.com/citations?user=lfW70EcAAAAJ&hl=en,%20Website:",
