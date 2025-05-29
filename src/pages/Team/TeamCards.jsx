@@ -2,12 +2,13 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 const TeamCards = ({ item }) => {
+  const img = '/team/dimg.avif'
   return (
     <div className="relative rounded-xl overflow-hidden shadow-lg group w-72">
       <div
         className="h-82 bg-cover bg-center relative"
         style={{
-          backgroundImage: `url(${item.image})`,
+          backgroundImage: `url(${item.image ? item.image : img})`,
           filter: "grayscale(10%) brightness(90%)", backgroundPosition: "center center"
         }}
       >

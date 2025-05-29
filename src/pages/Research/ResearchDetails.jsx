@@ -13,7 +13,7 @@ const fetchResearchDetailBySlug = async (slug) => {
 const ResearchDetails = () => {
   const { slug } = useParams()
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['researchDetail', slug],
     queryFn: () => fetchResearchDetailBySlug(slug),
     enabled: !!slug,
@@ -24,7 +24,19 @@ const ResearchDetails = () => {
       <Title tag="Research Wing" title={data?.title} />
       <div className="container mx-auto px-4 md:px-8 py-20">
         <div className="">
-          <p className="text-lg font-light">{data?.description}</p>
+          <p className="text-lg font-light">
+            {
+              isLoading ? (
+                <div className="space-y-2 animate-pulse">
+                  <div className="w-full h-3 bg-zinc-300 rounded-full"></div>
+                  <div className="w-full h-3 bg-zinc-300 rounded-full"></div>
+                  <div className="w-1/2 h-3 bg-zinc-300 rounded-full"></div>
+                </div>
+              ) : (
+                data?.description
+              )
+            }
+          </p>
         </div>
         <div className="mt-10 grid md:grid-cols-3 gap-10">
           <div className="col-span-2">

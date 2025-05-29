@@ -22,7 +22,7 @@ const teamList = [
     id: 3,
     name: "Dipen Boyaju",
     role: "Full Stack Developer",
-    image: "/images/prateek.png",
+    image: "",
     department: "Product Development",
     linkedin: "http",
     twitter: "http"
@@ -31,7 +31,7 @@ const teamList = [
     id: 4,
     name: "Nisha Singh Thakuri",
     role: "Management Intern",
-    image: "/img4.png",
+    image: "",
     department: "Management",
     linkedin: "http",
     twitter: "http"
@@ -47,7 +47,7 @@ const teamList = [
   },
   {
     id: 6,
-    name: "Shreema Chudal",
+    name: "Shrima Chudal",
     role: "Research Assistant, Mental Health",
     image: "/team/shrima_chudal.jpg",
     department: "Research",
@@ -59,7 +59,7 @@ const teamList = [
     id: 7,
     name: "Ashish Panday",
     role: "Research Intern, AI and Engineering",
-    image: "/img3.png",
+    image: "",
     department: "Research",
     division: "Center for Human Mobility and Communications",
     linkedin: "http",
@@ -69,7 +69,7 @@ const teamList = [
     id: 8,
     name: "Riya Acharya",
     role: "Research Consultant, AI",
-    image: "/img1.png",
+    image: "",
     department: "Consultants",
     linkedin: "http",
     twitter: "http"
@@ -78,7 +78,7 @@ const teamList = [
     id: 9,
     name: "Prason Shakya",
     role: "DevOps",
-    image: "/img2.png",
+    image: "",
     department: "Consultants",
     linkedin: "http",
     twitter: "http"

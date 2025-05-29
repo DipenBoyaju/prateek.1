@@ -39,9 +39,9 @@ const BlogsNews = () => {
           <div className="flex items-center gap-4 mt-4">
             <p className="font-semibold text-cyan-400">Follow for Updates</p>
             <div className="flex items-center gap-2 border-l pl-3">
-              <a href=""><Facebook strokeWidth={1.5} size={20} /></a>
-              <a href=""><Instagram strokeWidth={1.5} size={20} /></a>
-              <a href=""><Linkedin strokeWidth={1.5} size={20} /></a>
+              <a href="https://www.facebook.com/profile.php?id=100091857246327&_rdr" target="_blank"><Facebook strokeWidth={1.5} size={20} /></a>
+              {/* <a href=""><Instagram strokeWidth={1.5} size={20} /></a>
+              <a href=""><Linkedin strokeWidth={1.5} size={20} /></a> */}
             </div>
           </div>
         </div>

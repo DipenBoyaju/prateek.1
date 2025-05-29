@@ -25,7 +25,7 @@ const Team = () => {
       <Title tag="Team" title="Meet Our Team" />
       <div className="container mx-auto px-4 md:px-8 py-20">
         <h2 className="text-center font-quicksand font-semibold text-2xl md:text-3xl md:w-2/3 mx-auto">
-          Meet the talented and passionate team members who drive our company forward every day.
+          Meet the talented and passionate team members who drive our mission forward every day.
         </h2>
 
         {departmentOrder.map((dept) =>

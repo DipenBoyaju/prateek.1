@@ -27,7 +27,7 @@ const Research = () => {
               <ResearchCardSkeleton key={i} />
             ))
             : data?.map((item, index) => (
-              <ResearchCard item={item} index={index} key={item._id || index} />
+              <ResearchCard item={item} index={index} key={item._id || index} isLoading={isLoading} />
             ))
           }
         </div>

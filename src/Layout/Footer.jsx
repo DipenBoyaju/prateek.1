@@ -30,7 +30,7 @@ const Footer = () => {
                 <ul className="mt-3 uppercase font-[400] text-zinc-700 text-sm space-y-3">
                   <li className="flex gap-1 items-center group">
                     <TiArrowRight className={`${arrowStyle}`} />
-                    <Link to={'/signlanguage'} className={`${linkStyle}`}>Sign Language</Link>
+                    <Link to={'/projects/signlanguage'} className={`${linkStyle}`}>Sign Language</Link>
                   </li>
                 </ul>
               </div>
@@ -43,7 +43,7 @@ const Footer = () => {
                   </li>
                   <li className="flex gap-1 items-center group">
                     <TiArrowRight className={`${arrowStyle}`} />
-                    <Link to={'/research'} className={`${linkStyle}`}>Research</Link>
+                    <Link to={'/division'} className={`${linkStyle}`}>Division</Link>
                   </li>
                   <li className="flex gap-1 items-center group">
                     <TiArrowRight className={`${arrowStyle}`} />
