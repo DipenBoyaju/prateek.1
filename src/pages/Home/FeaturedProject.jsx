@@ -45,7 +45,7 @@ const FeaturedProject = () => {
             <p className="text-zinc-700 text-sm">
               Use AI-powered sign language detection to translate Nepali sign gestures in real-time.
             </p>
-            <a href="/projects/signlanguage" className="inline-block mt-4 text-cyan-500 font-medium hover:underline">
+            <a href="/projects/signlanguage" className="inline-block mt-4 text-cyan-500 hover:underline bg-zinc-800 text-white text-sm py-2 px-4 rounded-md">
               Learn More →
             </a>
           </div>
