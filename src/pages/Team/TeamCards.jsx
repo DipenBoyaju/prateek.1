@@ -1,5 +1,7 @@
 import { FaLinkedin } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaGoogleScholar } from "react-icons/fa6";
+import { SiResearchgate } from "react-icons/si";
+import { FaGithub } from "react-icons/fa";
 
 const TeamCards = ({ item }) => {
   const img = '/team/dimg.avif'
@@ -20,15 +22,25 @@ const TeamCards = ({ item }) => {
         <h3 className=" text-white font-semibold">{item.name}</h3>
         <p className="text-sm opacity-90">{item.role}</p>
 
-        <div className="mt-2 flex gap-3 text-sm">
+        <div className="mt-2 flex items-center gap-3 text-sm">
           {item?.linkedin && (
             <a href={item.linkedin} className="text-white" target="_blank" rel="noreferrer">
               <FaLinkedin className="size-4 hover:text-zinc-200" />
             </a>
           )}
-          {item.twitter && (
-            <a href={item.twitter} target="_blank" rel="noreferrer">
-              <FaXTwitter className="size-4 hover:text-zinc-200" />
+          {item.googleScholar && (
+            <a href={item.googleScholar} target="_blank" rel="noreferrer">
+              <FaGoogleScholar className="size-4 hover:text-zinc-200" />
+            </a>
+          )}
+          {item.researchGate && (
+            <a href={item.researchGate} target="_blank" rel="noreferrer">
+              <SiResearchgate className="size-4 hover:text-zinc-200" />
+            </a>
+          )}
+          {item.github && (
+            <a href={item.github} target="_blank" rel="noreferrer">
+              <FaGithub className="size-4 hover:text-zinc-200" />
             </a>
           )}
         </div>

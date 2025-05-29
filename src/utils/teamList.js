@@ -5,8 +5,10 @@ const teamList = [
     role: "Founder and CEO",
     image: "/team/jatin_bhusal.jpg",
     department: "Executive",
-    linkedin: "http",
-    twitter: "http"
+    linkedin: " https://www.linkedin.com/in/jatin-bhusal-1012691b4/",
+    googleScholar: "https://scholar.google.com/citations?user=lfW70EcAAAAJ&hl=en,%20Website:",
+    researchGate: "",
+    github: "",
   },
   {
     id: 2,
@@ -15,8 +17,10 @@ const teamList = [
     image: "/team/salma_tamang.jpg",
     department: "Research",
     division: "Center for Human Mobility and Communications",
-    linkedin: "http",
-    twitter: "http"
+    linkedin: "https://linkedin.com/in/salma-tamang-175490269",
+    googleScholar: "",
+    researchGate: "https://www.researchgate.net/profile/Salma-Tamang",
+    github: "",
   },
   {
     id: 3,
@@ -24,8 +28,10 @@ const teamList = [
     role: "Full Stack Developer",
     image: "",
     department: "Product Development",
-    linkedin: "http",
-    twitter: "http"
+    linkedin: "https://www.linkedin.com/in/dipen-boyaju-aa877124b/",
+    googleScholar: "",
+    researchGate: "",
+    github: "https://github.com/DipenBoyaju",
   },
   {
     id: 4,
@@ -33,8 +39,10 @@ const teamList = [
     role: "Management Intern",
     image: "",
     department: "Management",
-    linkedin: "http",
-    twitter: "http"
+    linkedin: "https://linkedin.com/in/nisha-singh-thakuri-334332311/",
+    googleScholar: "",
+    researchGate: "",
+    github: "",
   },
   {
     id: 5,
@@ -42,8 +50,10 @@ const teamList = [
     role: "Research Consultant, Research Methodology",
     image: "/team/manish_sakhakarmy.jpg",
     department: "Consultants",
-    linkedin: "http",
-    twitter: "http"
+    linkedin: "https://linkedin.com/in/manish-sakhakarmy",
+    googleScholar: "https://scholar.google.com/citations?hl=en&user=wd5q0rMAAAAJ",
+    researchGate: "",
+    github: "",
   },
   {
     id: 6,
@@ -52,8 +62,10 @@ const teamList = [
     image: "/team/shrima_chudal.jpg",
     department: "Research",
     division: "Center for Cognitive and Emotional Intelligence",
-    linkedin: "http",
-    twitter: "http"
+    linkedin: "https://linkedin.com/in/shrimachudal",
+    googleScholar: "",
+    researchGate: "",
+    github: "",
   },
   {
     id: 7,
@@ -62,8 +74,10 @@ const teamList = [
     image: "",
     department: "Research",
     division: "Center for Human Mobility and Communications",
-    linkedin: "http",
-    twitter: "http"
+    linkedin: "",
+    googleScholar: "",
+    researchGate: "",
+    github: "",
   },
   {
     id: 8,
@@ -71,8 +85,10 @@ const teamList = [
     role: "Research Consultant, AI",
     image: "",
     department: "Consultants",
-    linkedin: "http",
-    twitter: "http"
+    linkedin: "",
+    googleScholar: "",
+    researchGate: "",
+    github: "",
   },
   {
     id: 9,
@@ -80,8 +96,10 @@ const teamList = [
     role: "DevOps",
     image: "",
     department: "Consultants",
-    linkedin: "http",
-    twitter: "http"
+    linkedin: "",
+    googleScholar: "",
+    researchGate: "",
+    github: "",
   },
 
 ];
