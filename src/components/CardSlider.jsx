@@ -47,8 +47,6 @@ const CardSlider = () => {
         </div>
       </div>
 
-      {/* Name below image */}
-
 
       {/* Controls */}
       <div className="absolute bottom-[-4rem] left-1/2 -translate-x-1/2 flex gap-4">
