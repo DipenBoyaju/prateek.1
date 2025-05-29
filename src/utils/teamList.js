@@ -3,7 +3,7 @@ const teamList = [
     id: 1,
     name: "Jatin Bhusal",
     role: "Founder and CEO",
-    image: "/team/jatin_bhusal.JPG",
+    image: "/team/jatin_bhusal.jpg",
     department: "Executive",
     linkedin: "http",
     twitter: "http"
