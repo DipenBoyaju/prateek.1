@@ -2,17 +2,22 @@ import { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import HowItWorks from "../../components/HowItWorks";
 import { Camera, CameraOff } from "lucide-react";
+import CardSlider from "../../components/CardSlider";
 
-const SignDLanguage = () => {
+const nepaliTranslations = {
+  namaskaar: "नमस्कार",
+  ma: "म",
+  dhanyabaad: "धन्यवाद",
+  ghar: "घर",
+};
+
+const SignLanguage = () => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [isCameraOn, setIsCameraOn] = useState(false);
   const [prediction, setPrediction] = useState("");
   const [message, setMessage] = useState("");
   const [intervalId, setIntervalId] = useState(null);
-  const [currentSentence, setCurrentSentence] = useState("");
-  const [finalizedSentences, setFinalizedSentences] = useState([]);
-  const [lastPredictionTime, setLastPredictionTime] = useState(Date.now());
 
 
 
@@ -57,23 +62,11 @@ const SignDLanguage = () => {
 
       const predictionResult = res.data.sign || "";
 
-      // setPrediction(res.data.sign || "Sign not recognized");
-      // setMessage(res.data.message || "");
 
-      // if (res.data.audio) {
-      //   // const audio = new Audio(res.data.audio);
-      //   const audio = new Audio(`http://localhost:5173${res.data.audio}`);
-      //   audio.play();
-      // }
 
-      if (predictionResult && !currentSentence.endsWith(predictionResult)) {
-        setCurrentSentence(prev => (prev + " " + predictionResult).trim());
-        setLastPredictionTime(Date.now());
-
-        if (res.data.audio) {
-          const audio = new Audio(`${window.location.origin}${res.data.audio}`);
-          audio.play();
-        }
+      if (res.data.audio) {
+        const audio = new Audio(`${window.location.origin}${res.data.audio}`);
+        audio.play();
       }
 
       setPrediction(predictionResult);
@@ -83,19 +76,6 @@ const SignDLanguage = () => {
       setMessage("Error making prediction.");
     }
   };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const now = Date.now();
-      if (currentSentence && now - lastPredictionTime > 4000) {
-        setFinalizedSentences(prev => [...prev, currentSentence]);
-        setCurrentSentence("");
-      }
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [currentSentence, lastPredictionTime]);
-
 
   useEffect(() => {
     if (isCameraOn && !intervalId) {
@@ -112,8 +92,13 @@ const SignDLanguage = () => {
     <div>
       <HowItWorks />
       <div className="container mx-auto px-4 md:px-8 py-20">
-        <div className="grid md:grid-cols-6 md:h-[80vh]">
-          <div className="md:col-span-4 p-2 h-[50vh] md:h-[80vh]">
+        <div className="grid md:grid-cols-12 md:h-[80vh]">
+          <div className="col-span-3">
+            <div className="">
+              <CardSlider />
+            </div>
+          </div>
+          <div className="md:col-span-6 p-2 h-[50vh] md:h-[80vh]">
             <div className="relative h-full">
               <video
                 ref={videoRef}
@@ -131,7 +116,6 @@ const SignDLanguage = () => {
                   >
                     <CameraOff size={20} />
                   </button>
-                  {/* <div className="py-1 px-2 text-gray-200 absolute bottom-0  text-sm bg-zinc-700/50">{message}</div> */}
                 </>
               ) : (
                 <div className="flex items-center flex-col justify-center absolute inset-0">
@@ -146,19 +130,13 @@ const SignDLanguage = () => {
               )}
             </div>
           </div>
-          <div className="md:col-span-2 h-[30vh] md:h-[80vh] bg-zinc-700 relative overflow-y-scroll" style={{ backgroundImage: `url('/textbg.webp')` }}>
+          <div className="md:col-span-3 h-[30vh] md:h-[80vh] bg-zinc-700 relative overflow-y-scroll" style={{ backgroundImage: `url('/textbg.webp')` }}>
 
             <div className="relative z-20 p-5">
-              {/* <div className="absolute inset-0 bg-zinc-600/10 h-full w-full z-20" /> */}
-              <div className="bg-white p-2 rounded-sm text-black text-sm w-fit z-30 relative">{currentSentence}</div>
-              {[...finalizedSentences].reverse().map((sentence, idx) => (
-                <div key={idx} className="bg-white p-2 rounded-sm text-black text-sm mt-1 w-fit z-30 relative">
-                  {sentence}
-                </div>
-              ))}
-              {/* <span className="bg-zinc-50 p-2 rounded-sm text-black text-lg">
-                {prediction && `${prediction}`}
-              </span> */}
+              <span className="bg-zinc-50 p-2 rounded-sm text-black text-lg">
+                {/* {prediction && `${prediction}`} */}
+                {prediction && nepaliTranslations[prediction.toLowerCase()] || ""}
+              </span>
             </div>
           </div>
         </div>
@@ -167,4 +145,4 @@ const SignDLanguage = () => {
   );
 };
 
-export default SignDLanguage;
+export default SignLanguage;
