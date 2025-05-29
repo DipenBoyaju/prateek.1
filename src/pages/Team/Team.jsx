@@ -3,21 +3,21 @@ import teamList from "../../utils/teamList";
 import TeamCards from "./TeamCards";
 
 
-const groupedTeams = teamList.reduce((acc, member) => {
-  if (!acc[member.department]) {
-    acc[member.department] = [];
-  }
-  acc[member.department].push(member);
-  return acc;
-}, {});
+// const groupedTeams = teamList.reduce((acc, member) => {
+//   if (!acc[member.department]) {
+//     acc[member.department] = [];
+//   }
+//   acc[member.department].push(member);
+//   return acc;
+// }, {});
 
-const departmentOrder = [
-  "Executive",
-  "Research",
-  "Product Development",
-  "Management",
-  "Consultants",
-];
+// const departmentOrder = [
+//   "Executive",
+//   "Research",
+//   "Product Development",
+//   "Management",
+//   "Consultants",
+// ];
 
 const Team = () => {
   return (
@@ -28,7 +28,15 @@ const Team = () => {
           Meet the talented and passionate team members who drive our company forward every day.
         </h2>
 
-        {/* Render team members by department */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5 mt-10">
+          {
+            teamList?.map((member) => (
+              <TeamCards key={member.id} item={member} />
+            ))
+          }
+        </div>
+
+        {/* Render team members by department
         {departmentOrder.map((dept) =>
           groupedTeams[dept] ? (
             <div key={dept} className="mt-14">
@@ -42,7 +50,7 @@ const Team = () => {
               </div>
             </div>
           ) : null
-        )}
+        )} */}
       </div>
     </div>
   );

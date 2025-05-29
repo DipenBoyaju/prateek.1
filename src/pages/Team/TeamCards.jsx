@@ -8,7 +8,7 @@ const TeamCards = ({ item }) => {
         className="h-82 bg-cover bg-center relative"
         style={{
           backgroundImage: `url(${item.image})`,
-          filter: "grayscale(10%) brightness(90%)",
+          filter: "grayscale(10%) brightness(90%)", backgroundPosition: "center center"
         }}
       >
         <div className="absolute inset-0 bg-[rgba(255,114,114,0.25)] mix-blend-multiply z-10"></div>
