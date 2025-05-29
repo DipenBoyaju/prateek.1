@@ -42,7 +42,7 @@ const Hero = () => {
           AI-Powered
         </span>
         <h1 className="max-w-4xl font-quicksand bg-gradient-to-br from-white to-gray-400 bg-clip-text text-center text-3xl font-semibold leading-tight text-transparent sm:text-5xl sm:leading-tight md:text-7xl md:leading-tight pb-19 pt-6">
-          Inclusive by Design, Accessibility by Research
+          Inclusive by Design, Accessible by Research
         </h1>
         {/* <p className="my-6 max-w-3xl text-center text-base leading-relaxed md:text-lg md:leading-relaxed">
           We aim for a world where inclusion is intentional, and accessibility is standard where every human, regardless of ability, is considered by default in how we build our technologies and societies.
