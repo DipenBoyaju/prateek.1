@@ -21,7 +21,7 @@ const Footer = () => {
             <div className="flex gap-1 py-1 items-center">
               <img src="/images/logo1.png" className="w-32" alt="" />
             </div>
-            <p className="text-zinc-600 md:w-2/3 mt-8">Prateek AI is an AI R&D hub dedicated to empowering differently abled and underserved communities through inclusive, innovative and ethical AI solutions. </p>
+            <p className="text-zinc-600 md:w-2/3 mt-8">Prateek is an AI R&D hub dedicated to empowering differently abled and underserved communities through inclusive, innovative and ethical AI solutions. </p>
           </div>
           <div className="md:col-span-5 mt-8 md:mt-0">
             <div className="grid grid-cols-3">

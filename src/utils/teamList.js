@@ -37,7 +37,7 @@ const teamList = [
     id: 4,
     name: "Nisha Singh Thakuri",
     role: "Management Intern",
-    image: "",
+    image: "/team/nisha_singh_thakuri.jpg",
     department: "Management",
     linkedin: "https://linkedin.com/in/nisha-singh-thakuri-334332311/",
     googleScholar: "",
