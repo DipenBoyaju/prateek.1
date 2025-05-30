@@ -44,7 +44,7 @@ const TeamCards = ({ item }) => {
               <FaGithub className="size-4 hover:text-zinc-200" />
             </a>
           )}
-          {item.github && (
+          {item.website && (
             <a href={item.github} target="_blank" rel="noreferrer">
               <RiGlobalFill className="size-4 hover:text-zinc-200" />
             </a>
