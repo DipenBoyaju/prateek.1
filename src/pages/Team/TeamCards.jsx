@@ -2,6 +2,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaGoogleScholar } from "react-icons/fa6";
 import { SiResearchgate } from "react-icons/si";
 import { FaGithub } from "react-icons/fa";
+import { RiGlobalFill } from "react-icons/ri";
 
 const TeamCards = ({ item }) => {
   const img = '/team/dimg.avif'
@@ -41,6 +42,11 @@ const TeamCards = ({ item }) => {
           {item.github && (
             <a href={item.github} target="_blank" rel="noreferrer">
               <FaGithub className="size-4 hover:text-zinc-200" />
+            </a>
+          )}
+          {item.github && (
+            <a href={item.github} target="_blank" rel="noreferrer">
+              <RiGlobalFill className="size-4 hover:text-zinc-200" />
             </a>
           )}
         </div>

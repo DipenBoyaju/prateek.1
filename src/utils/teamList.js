@@ -9,6 +9,7 @@ const teamList = [
     googleScholar: "https://scholar.google.com/citations?user=lfW70EcAAAAJ&hl=en,%20Website:",
     researchGate: "",
     github: "",
+    website: "https://sites.google.com/view/jatinbhusal",
   },
   {
     id: 2,
@@ -32,6 +33,7 @@ const teamList = [
     googleScholar: "",
     researchGate: "",
     github: "https://github.com/DipenBoyaju",
+    website: "https://dipenboyaju.vercel.app/",
   },
   {
     id: 4,
