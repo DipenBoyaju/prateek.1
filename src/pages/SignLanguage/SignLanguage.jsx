@@ -91,9 +91,9 @@ const SignLanguage = () => {
   return (
     <div>
       <HowItWorks />
-      <div className="container mx-auto px-4 md:px-8 py-20">
-        <div className="grid md:grid-cols-12 md:h-[80vh]">
-          <div className="col-span-3">
+      <div className="container mx-auto px-4 md:px-8 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 md:h-[80vh]">
+          <div className="md:col-span-3">
             <div className="">
               <CardSlider />
             </div>
@@ -130,7 +130,7 @@ const SignLanguage = () => {
               )}
             </div>
           </div>
-          <div className="md:col-span-3 h-[30vh] md:h-[80vh] bg-zinc-700 relative overflow-y-scroll" style={{ backgroundImage: `url('/textbg.webp')` }}>
+          <div className="md:col-span-3 h-[30vh] md:h-[80vh] bg-zinc-700 relative overflow-y-scroll mt-5 md: mt-0" style={{ backgroundImage: `url('/textbg.webp')` }}>
 
             <div className="relative z-20 p-5">
               <span className="bg-zinc-50 p-2 rounded-sm text-black text-lg">

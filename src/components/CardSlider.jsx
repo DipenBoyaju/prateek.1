@@ -34,7 +34,7 @@ const CardSlider = () => {
   const { src, name } = slides[currentIndex];
 
   return (
-    <div className="relative w-80 mx-auto mt-10 md:pr-10">
+    <div className="relative w-1/2 md:w-80 mx-auto mt-10 md:pr-10">
       {/* Image */}
       <div className="w-full rounded-xl overflow-hidden shadow-xl">
         <img
@@ -49,7 +49,7 @@ const CardSlider = () => {
 
 
       {/* Controls */}
-      <div className="absolute bottom-[-4rem] left-1/2 -translate-x-1/2 flex gap-4">
+      <div className="absolute md:bottom-[-4rem] md:left-1/2 md:-translate-x-1/2 flex gap-4">
         <button
           onClick={prevSlide}
           className="px-4 py-2 bg-cyan-500 text-white rounded-full hover:bg-gray-700 transition"
