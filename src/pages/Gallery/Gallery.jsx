@@ -35,7 +35,7 @@ const Gallery = () => {
 
       {/* Image Grid */}
       <div className="container mx-auto px-4 py-10">
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+        <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
           {images.map((src, index) => (
             <div
               key={index}

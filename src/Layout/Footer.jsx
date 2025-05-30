@@ -73,6 +73,10 @@ const Footer = () => {
                     <TiArrowRight className={`${arrowStyle}`} />
                     <Link to={'/newsletter'} className={`${linkStyle}`}>NewsLetter</Link>
                   </li>
+                  <li className="flex gap-1 items-center group">
+                    <TiArrowRight className={`${arrowStyle}`} />
+                    <Link to={'/gallery'} className={`${linkStyle}`}>Gallery</Link>
+                  </li>
                 </ul>
               </div>
             </div>
