@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { MoveUpRight } from 'lucide-react'
 import { slugify } from '../../utils/slugify'
 
 const ResearchCard = ({ item, index }) => {
   const slug = slugify(item.title)
+  const nav = useNavigate();
   return (
     <Link to={`/division/${slug}`} className="shadow p-5 rounded-lg hover:shadow-lg transition-shadow duration-300 flex flex-col gap-3 border-b-8 border-2 border-cyan-400">
 
@@ -16,7 +17,7 @@ const ResearchCard = ({ item, index }) => {
       </div>
 
       <div className="flex items-center justify-between mt-auto border-t border-zinc-800/10 pt-4">
-        <Link to={`/division/${slug}`} className="bg-zinc-100 p-3 rounded-full duration-300 transition-all ease-linear hover:rotate-45 text-cyan-400 hover:bg-cyan-400 hover:text-white ml-auto"><MoveUpRight /></Link>
+        <button onClick={() => nav(`/division/${slug}`)} className="bg-zinc-100 p-3 rounded-full duration-300 transition-all ease-linear hover:rotate-45 text-cyan-400 hover:bg-cyan-400 hover:text-white ml-auto cursor-pointer"><MoveUpRight /></button>
       </div>
     </Link>
   )

@@ -1,12 +1,12 @@
 import { Grab, Hand, MoveUpRight } from "lucide-react";
 import { useEffect, useState } from "react";
-import { TbArrowRightDashed } from "react-icons/tb"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ProductCard = () => {
   const sentence = "Text of the Detected Sign language is shown here";
   const words = sentence.split(" ");
   const [visibleWords, setVisibleWords] = useState(0);
+  const nav = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -49,7 +49,7 @@ const ProductCard = () => {
         </div>
         <div className="flex items-center justify-between mt-auto border-t border-zinc-800/10 pt-4">
           <p className="font-geist font-semibold text-lg text-cyan-400">Try Our Demo</p>
-          <Link to={"/signlanguageplatform"} className="bg-zinc-100 p-3 rounded-full duration-300 transition-all ease-linear hover:rotate-45 text-cyan-400 hover:bg-cyan-400 hover:text-white"><MoveUpRight /></Link>
+          <button onClick={() => nav(`/signlanguageplatform`)} className="bg-zinc-100 p-3 rounded-full duration-300 transition-all ease-linear hover:rotate-45 text-cyan-400 hover:bg-cyan-400 hover:text-white"><MoveUpRight /></button>
         </div>
       </div>
     </Link>

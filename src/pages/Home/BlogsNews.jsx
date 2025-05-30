@@ -12,7 +12,7 @@ const BlogsNews = () => {
         src="/shape2.png"
         alt=""
         aria-hidden="true"
-        className="absolute right-0 bottom-0 md:h-full"
+        className="hidden md:block md:absolute right-0 bottom-0 md:h-full"
       />
 
       <div className="container mx-auto px-4 md:px-8 relative z-20">

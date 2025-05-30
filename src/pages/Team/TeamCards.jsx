@@ -6,7 +6,7 @@ import { FaGithub } from "react-icons/fa";
 const TeamCards = ({ item }) => {
   const img = '/team/dimg.avif'
   return (
-    <div className="relative rounded-xl overflow-hidden shadow-lg group w-72">
+    <div className="relative rounded-xl overflow-hidden shadow-lg group">
       <div
         className="h-82 bg-cover bg-center relative"
         style={{
