@@ -49,19 +49,21 @@ const CardSlider = () => {
 
 
       {/* Controls */}
-      <div className="absolute md:bottom-[-4rem] md:left-1/2 md:-translate-x-1/2 flex gap-4">
-        <button
-          onClick={prevSlide}
-          className="px-4 py-2 bg-cyan-500 text-white rounded-full hover:bg-gray-700 transition"
-        >
-          <ArrowLeft />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="px-4 py-2 bg-cyan-500 text-white rounded-full hover:bg-gray-700 transition"
-        >
-          <ArrowRight />
-        </button>
+      <div className="top-1/3 absolute md:relative">
+        <div className="absolute md:bottom-[-4rem] md:left-1/2 md:-translate-x-1/2 flex gap-4 ">
+          <button
+            onClick={prevSlide}
+            className="px-4 py-2 bg-cyan-500 text-white rounded-full hover:bg-gray-700 transition absolute md:relative -left-15 md:left-auto"
+          >
+            <ArrowLeft />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="px-4 py-2 bg-cyan-500 text-white rounded-full hover:bg-gray-700 transition absolute md:relative -right-60 md:right-auto"
+          >
+            <ArrowRight />
+          </button>
+        </div>
       </div>
     </div>
   );
