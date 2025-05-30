@@ -45,7 +45,7 @@ const TeamCards = ({ item }) => {
             </a>
           )}
           {item.website && (
-            <a href={item.github} target="_blank" rel="noreferrer">
+            <a href={item.website} target="_blank" rel="noreferrer">
               <RiGlobalFill className="size-4 hover:text-zinc-200" />
             </a>
           )}
