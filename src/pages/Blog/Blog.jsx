@@ -1,5 +1,4 @@
 import BlogNewsCard from "../../components/BlogNewsCard"
-import NewsLetter from "../../components/NewsLetter"
 import NoContent from "../../components/NoContent"
 import Title from "../../components/Title"
 

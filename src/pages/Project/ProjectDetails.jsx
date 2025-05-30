@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigation } from "react-router-dom"
 import Title from "../../components/Title"
 
 const ProjectDetails = () => {
+  const nav = useNavigation()
   return (
     <div>
       <Title tag="Project" title="Inclusive Real time Sign Language Translation Platform" />
@@ -14,7 +15,7 @@ const ProjectDetails = () => {
         </div>
 
         <div className="border-t border-b py-3 border-zinc-800/20">
-          <p className="flex items-center gap-5 text-zinc-800/80"><span className="uppercase text-cyan-400">Division</span> Center for Human Mobility and Communications</p>
+          <p className="flex items-center gap-5 text-zinc-800/80"><span className="uppercase text-cyan-400">Division</span> <a href="/division/center-for-human-mobility-and-communications" className="cursor-pointer hover:underline hover:text-cyan-700" >Center for Human Mobility and Communications</a></p>
         </div>
 
         <div className="pt-10 grid sm:grid-cols-2 gap-5">

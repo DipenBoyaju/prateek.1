@@ -48,6 +48,7 @@ const Navbar = ({ isOpen, scrolled, onLinkClick }) => {
             <Link to="/project" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Projects</Link>
             <Link to="/product" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Products</Link>
             <Link to="/contact" className="text-gray-700 hover:text-cyan-300 transition" onClick={handleClick}>Contact</Link>
+            <Link to="/gallery" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Gallery</Link>
             <Link to="/blog" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Blogs</Link>
             <Link to="/events" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Events</Link>
             <Link to="/news" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>
@@ -106,6 +107,9 @@ const UpdatesContent = () => {
   return (
     <div className="w-64 bg-white p-6 shadow-xl rounded-md">
       <div className="space-y-3">
+        <Link to="/gallery" className="block text-sm text-gray-700 hover:underline">
+          Gallery
+        </Link>
         <Link to="/blog" className="block text-sm text-gray-700 hover:underline">
           Blogs
         </Link>

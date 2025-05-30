@@ -29,6 +29,7 @@ import Product from "./pages/products/Product"
 import ProjectDetails from "./pages/Project/ProjectDetails"
 import Publication from "./pages/Publication/Publication"
 import SingleProject from "./pages/Project/SingleProject"
+import Gallery from "./pages/Gallery/Gallery"
 
 const App = () => {
 
@@ -51,6 +52,7 @@ const App = () => {
         { path: '/events', element: <Events /> },
         { path: '/news', element: <News /> },
         { path: '/newsletter', element: <Newsletter /> },
+        { path: '/gallery', element: <Gallery /> },
         { path: '/signLanguageplatform', element: <SignLanguage /> },
         { path: '/admin-signup', element: <AdminSignup /> },
         { path: '/login', element: <UserLogin /> },
