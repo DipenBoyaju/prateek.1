@@ -56,13 +56,13 @@ const SignLanguage = () => {
     const base64Image = canvas.toDataURL("image/jpeg");
 
     try {
-      // const res = await axios.post("https://signlanguage-api.onrender.com/predict", {
-      //   image: base64Image,
-      // });
-
-      const res = await axios.post("http://127.0.0.1:8000/predict", {
+      const res = await axios.post("https://signlanguage-api.onrender.com/predict", {
         image: base64Image,
       });
+
+      // const res = await axios.post("http://127.0.0.1:8000/predict", {
+      //   image: base64Image,
+      // });
 
       const predictionResult = res.data.sign || "";
 
