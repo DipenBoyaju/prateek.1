@@ -44,15 +44,58 @@ const SignLanguage = () => {
     setIntervalId(null);
   };
 
+  //image with full canvas of screen
+  // const captureFrameAndDetect = async () => {
+  //   const video = videoRef.current;
+  //   const canvas = canvasRef.current;
+  //   const ctx = canvas.getContext("2d");
+
+  //   canvas.width = video.videoWidth;
+  //   canvas.height = video.videoHeight;
+  //   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+  //   const base64Image = canvas.toDataURL("image/jpeg");
+
+  //   try {
+  //     const res = await axios.post("https://signlanguage-api.onrender.com/predict", {
+  //       image: base64Image,
+  //     });
+
+  //     // const res = await axios.post("http://127.0.0.1:8000/predict", {
+  //     //   image: base64Image,
+  //     // });
+
+  //     const predictionResult = res.data.sign || "";
+
+
+
+  //     if (res.data.audio) {
+  //       const audio = new Audio(`${window.location.origin}${res.data.audio}`);
+  //       audio.play();
+  //     }
+
+  //     setPrediction(predictionResult);
+  //     setMessage(res.data.message || "");
+  //   } catch (err) {
+  //     console.error("Prediction error:", err);
+  //     setMessage("Error making prediction.");
+  //   }
+  // };
+
+  //rezized canvas
   const captureFrameAndDetect = async () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    // Resize canvas to 224x224 (model input size)
+    canvas.width = 224;
+    canvas.height = 224;
 
+    // Draw the current video frame scaled to 224x224
+    ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, 224, 224);
+
+    // Get the base64 JPEG from the canvas
     const base64Image = canvas.toDataURL("image/jpeg");
 
     try {
@@ -60,13 +103,7 @@ const SignLanguage = () => {
         image: base64Image,
       });
 
-      // const res = await axios.post("http://127.0.0.1:8000/predict", {
-      //   image: base64Image,
-      // });
-
       const predictionResult = res.data.sign || "";
-
-
 
       if (res.data.audio) {
         const audio = new Audio(`${window.location.origin}${res.data.audio}`);
