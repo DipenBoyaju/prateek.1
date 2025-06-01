@@ -82,14 +82,13 @@ const SignLanguage = () => {
   };
 
   useEffect(() => {
-    if (isCameraOn && !intervalId) {
-      const id = setInterval(() => {
-        captureFrameAndDetect();
-      }, 2000); // every 2 seconds
-      setIntervalId(id);
-    }
+    if (!isCameraOn) return;
 
-    return () => clearInterval(intervalId);
+    const id = setInterval(() => {
+      captureFrameAndDetect();
+    }, 2000);
+
+    return () => clearInterval(id);
   }, [isCameraOn]);
 
   return (
