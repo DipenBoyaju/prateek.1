@@ -134,7 +134,7 @@ const SignLanguage = () => {
               )}
             </div>
           </div>
-          <div className="md:col-span-3 h-[30vh] md:h-[80vh] bg-zinc-700 relative overflow-y-scroll mt-5 md: mt-0" style={{ backgroundImage: `url('/textbg.jpeg')` }}>
+          <div className="md:col-span-3 h-[30vh] md:h-[80vh] bg-zinc-700 relative overflow-hidden mt-5 md: mt-0" style={{ backgroundImage: `url('/textbg.jpeg')` }}>
 
             <div className="relative z-20 p-5">
               <span className="bg-zinc-50 p-2 rounded-sm text-black text-lg">
