@@ -56,7 +56,7 @@ const SignLanguage = () => {
     const base64Image = canvas.toDataURL("image/jpeg");
 
     try {
-      const res = await axios.post("https://signlanguage-api.vercel.app/predict", {
+      const res = await axios.post("https://signlanguage-api.onrender.com/predict", {
         image: base64Image,
       });
 
