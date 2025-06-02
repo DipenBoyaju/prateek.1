@@ -50,11 +50,8 @@ const SignLanguage = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    // canvas.width = video.videoWidth;
-    // canvas.height = video.videoHeight;
-
-    canvas.width = 224;
-    canvas.height = 224;
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     const base64Image = canvas.toDataURL("image/jpeg");
