@@ -54,7 +54,7 @@ const SignLanguage = () => {
     canvas.height = video.videoHeight;
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    const base64Image = canvas.toDataURL("image/jpeg");
+    const base64Image = canvas.toDataURL("image/jpeg", 0.7);
 
     try {
       const res = await axios.post("https://signlanguage-api.onrender.com/predict", {
