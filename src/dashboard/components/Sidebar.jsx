@@ -9,8 +9,8 @@ const Sidebar = ({ isOpen }) => {
     setOpenMenu(openMenu === menu ? "" : menu);
   };
 
-  const activeClass = "font-normal bg-blue-300 text-white";
-  const normalClass = "font-light text-gray-700";
+  const activeClass = "font-semibold bg-blue-300 text-white";
+  const normalClass = "font-semibold text-zinc-600 text-sm";
 
   return (
     <div
@@ -25,21 +25,21 @@ const Sidebar = ({ isOpen }) => {
               to="/dashboard" end
               className={({ isActive }) => `${isActive ? activeClass : normalClass} flex items-center gap-2 px-4 py-3`}
             >
-              <LayoutDashboard strokeWidth={1.5} size={20} className="" />
+              <LayoutDashboard strokeWidth={2.5} size={18} className="" />
               Dashboard
             </NavLink>
           </li>
 
           <li className="cursor-pointer">
             <div className="flex items-center gap-2 px-4 py-3 cursor-pointer">
-              <FlaskConical strokeWidth={1.5} size={20} className="text-zinc-700" />
+              <FlaskConical strokeWidth={2.5} size={20} className="text-zinc-700" />
               <button
                 onClick={() => toggleSubMenu("research")}
-                className="w-full text-left font-light cursor-pointer"
+                className="w-full text-left font-semibold text-gray-600 text-sm cursor-pointer"
               >
                 Research Wing
               </button>
-              <ChevronDown strokeWidth={1.5} size={24} className="text-zinc-700" />
+              <ChevronDown strokeWidth={2.5} size={24} className="text-zinc-700" />
             </div>
             {openMenu === "research" && (
               <ul className="space-y-1 font-light">
@@ -73,14 +73,14 @@ const Sidebar = ({ isOpen }) => {
 
           <li className="cursor-pointer">
             <div className="flex items-center gap-2 px-4 py-3 cursor-pointer">
-              <Users strokeWidth={1.5} size={20} className="text-zinc-700" />
+              <Users strokeWidth={2.5} size={20} className="text-zinc-700" />
               <button
                 onClick={() => toggleSubMenu("team")}
-                className="w-full text-left font-light cursor-pointer"
+                className="w-full text-left font-semibold text-gray-600 text-sm cursor-pointer"
               >
                 Team
               </button>
-              <ChevronDown strokeWidth={1.5} size={24} className="text-zinc-700" />
+              <ChevronDown strokeWidth={2.5} size={24} className="text-zinc-700" />
             </div>
             {openMenu === "team" && (
               <ul className="space-y-1 font-light">
@@ -114,14 +114,14 @@ const Sidebar = ({ isOpen }) => {
 
           <li className="cursor-pointer">
             <div className="flex items-center gap-2 px-4 py-3 cursor-pointer w-full">
-              <Newspaper strokeWidth={1.5} size={20} className="text-zinc-700" />
+              <Newspaper strokeWidth={2.5} size={20} className="text-zinc-700" />
               <button
                 onClick={() => toggleSubMenu("updates")}
-                className="w-full text-left font-light cursor-pointer"
+                className="w-full text-left font-semibold text-gray-600 text-sm cursor-pointer"
               >
                 Updates
               </button>
-              <ChevronDown strokeWidth={1.5} size={24} className="text-zinc-700" />
+              <ChevronDown strokeWidth={2.5} size={24} className="text-zinc-600" />
             </div>
             {openMenu === "updates" && (
               <ul className="space-y-1 font-light">

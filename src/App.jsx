@@ -46,7 +46,7 @@ const App = () => {
         { path: '/project', element: <Project /> },
         { path: '/projects/signlanguage', element: <ProjectDetails /> },
         { path: '/projects/signlanguage/wordbase', element: <SingleProject /> },
-        { path: '/product', element: <Product /> },
+        { path: '/demos', element: <Product /> },
         { path: '/contact', element: <Contact /> },
         { path: '/blog', element: <Blog /> },
         { path: '/events', element: <Events /> },

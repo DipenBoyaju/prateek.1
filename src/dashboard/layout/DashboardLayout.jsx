@@ -7,11 +7,11 @@ const DashboardLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-[#f5f6f7]">
       <Sidebar isOpen={isSidebarOpen} />
       <div className="flex flex-col flex-1">
         <Header toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
-        <main className="p-4">
+        <main className="">
           <Outlet />
         </main>
       </div>

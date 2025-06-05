@@ -27,7 +27,7 @@ const Header = ({ toggleSidebar }) => {
   };
 
   return (
-    <header className="flex items-center justify-between md:justify-end md bg-white p-4 shadow">
+    <header className="flex items-center justify-between md:justify-end md bg-white p-4 shadow-lg relative z-20 ">
       <button className="md:hidden" onClick={toggleSidebar}>☰</button>
 
       <div className="flex items-center gap-4">

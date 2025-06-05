@@ -20,7 +20,7 @@ const Navbar = ({ isOpen, scrolled, onLinkClick }) => {
           Research
         </FlyoutLink>
         <Link to="/project" className="hover:text-cyan-300  transition">Projects</Link>
-        <Link to="/product" className="hover:text-cyan-300  transition">Products</Link>
+        <Link to="/demos" className="hover:text-cyan-300  transition">Demos</Link>
         <Link to="/team" className="hover:text-cyan-300  transition">Team</Link>
 
         {/* Dropdown */}
@@ -46,7 +46,7 @@ const Navbar = ({ isOpen, scrolled, onLinkClick }) => {
             <Link to="/publication" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Publication</Link>
             <Link to="/team" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Team</Link>
             <Link to="/project" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Projects</Link>
-            <Link to="/product" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Products</Link>
+            <Link to="/demos" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Demos</Link>
             <Link to="/contact" className="text-gray-700 hover:text-cyan-300 transition" onClick={handleClick}>Contact</Link>
             <Link to="/gallery" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Gallery</Link>
             <Link to="/blog" className="text-gray-700 hover:text-cyan-300  transition" onClick={handleClick}>Blogs</Link>
