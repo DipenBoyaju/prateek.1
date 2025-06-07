@@ -127,9 +127,13 @@ const SignLanguage = () => {
       const base64Image = canvas.toDataURL("image/jpeg", 0.7);
 
       try {
-        const res = await axios.post("https://signlanguage-api.onrender.com/predict", {
+        const res = await axios.post("https://e2fc0427.sitepreview.org/api/predict", {
           image: base64Image,
         });
+
+        // const res = await axios.post("http://localhost:8000/predict", {
+        //   image: base64Image,
+        // });
 
         // Get confidence score from response
         const confidenceScore = res.data.confidence || 0;
@@ -219,7 +223,7 @@ const SignLanguage = () => {
                   </div>
 
                   {/* Confidence score indicator */}
-                  {/* {isHandDetected && confidence > 0 && (
+                  {isHandDetected && confidence > 0 && (
                     <div className="absolute left-2 top-2 bg-black bg-opacity-50 px-2 py-1 rounded">
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
                         <div
@@ -232,7 +236,7 @@ const SignLanguage = () => {
                         Accuracy: {confidence.toFixed(1)}%
                       </span>
                     </div>
-                  )} */}
+                  )}
                 </>
               ) : (
                 <div className="flex items-center flex-col justify-center absolute inset-0">
