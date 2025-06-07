@@ -50,9 +50,7 @@ const SignLanguage = () => {
   const [confidence, setConfidence] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
-  // const API_URL = "https://e2fc0427.sitepreview.org/api";
-
-  const API_URL = "https://signlanguage-api.onrender.com"
+  const API_URL = "https://prateekinnovations.com/api"
 
   const startCamera = async () => {
     try {
