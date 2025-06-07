@@ -13,33 +13,30 @@ const nepaliTranslations = {
 
 // Simple pixel-based hand detection function
 const detectHand = (imageData, width, height) => {
-  // Get the pixel data
   const data = imageData.data;
-
-  // Count skin-colored pixels
   let skinPixelCount = 0;
   const totalPixels = width * height;
 
-  // Sample every 4th pixel for performance
   for (let i = 0; i < data.length; i += 16) {
     const r = data[i];
     const g = data[i + 1];
     const b = data[i + 2];
 
-    // Simple skin color detection
-    if (r > 60 && g > 40 && b > 20 &&
-      r > g && r > b &&
+    if (
+      r > 60 &&
+      g > 40 &&
+      b > 20 &&
+      r > g &&
+      r > b &&
       r - g > 15 &&
-      r - b > 15) {
+      r - b > 15
+    ) {
       skinPixelCount++;
     }
   }
 
-  // Calculate percentage of skin-colored pixels
   const skinPercentage = (skinPixelCount / (totalPixels / 4)) * 100;
-
-  // Return true if enough skin-colored pixels are detected
-  return skinPercentage > 5; // Threshold percentage
+  return skinPercentage > 5;
 };
 
 const SignLanguage = () => {
@@ -53,29 +50,27 @@ const SignLanguage = () => {
   const [confidence, setConfidence] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
+  // const API_URL = "https://e2fc0427.sitepreview.org/api";
+
+  const API_URL = "https://signlanguage-api.onrender.com"
+
   const startCamera = async () => {
     try {
-      console.log("Starting camera...");
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
       videoRef.current.srcObject = stream;
       videoRef.current.onloadedmetadata = () => {
         videoRef.current.play().then(() => {
-          console.log("Camera started successfully");
           setIsCameraOn(true);
           setMessage("Camera enabled. Show your hand to the camera.");
-        }).catch(err => {
-          console.error("Error playing video:", err);
-          setMessage("Error starting video playback. Please try again.");
         });
       };
     } catch (err) {
-      console.error("Error accessing camera:", err);
-      setMessage("Error accessing camera. Please check permissions and try again.");
+      console.error("Camera error:", err);
+      setMessage("Camera access failed. Check permissions.");
     }
   };
 
   const stopCamera = () => {
-    console.log("Stopping camera...");
     const stream = videoRef.current?.srcObject;
     if (stream) {
       stream.getTracks().forEach((track) => track.stop());
@@ -88,7 +83,6 @@ const SignLanguage = () => {
     setConfidence(0);
     clearInterval(intervalId);
     setIntervalId(null);
-    console.log("Camera stopped");
   };
 
   const captureFrameAndDetect = async () => {
@@ -98,92 +92,93 @@ const SignLanguage = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    // Ensure video is ready
-    if (video.readyState !== video.HAVE_ENOUGH_DATA) {
-      console.log("Video not ready yet");
-      return;
-    }
+    if (video.readyState !== video.HAVE_ENOUGH_DATA) return;
 
-    // Set canvas dimensions
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
-
-    // Draw video frame to canvas
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    // Get image data for hand detection
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-    // Detect if hand is present
     const handDetected = detectHand(imageData, canvas.width, canvas.height);
     setIsHandDetected(handDetected);
 
-    // Only send API request if hand is detected
     if (handDetected) {
-      console.log("Hand detected, sending API request");
       setIsLoading(true);
-
-      // Convert canvas to base64 image
       const base64Image = canvas.toDataURL("image/jpeg", 0.7);
 
       try {
-        const res = await axios.post("https://e2fc0427.sitepreview.org/api/predict", {
-          image: base64Image,
-        });
+        const res = await axios.post(
+          `${API_URL}/predict`,
+          { image: base64Image },
+          {
+            headers: { "Content-Type": "application/json" },
+            timeout: 10000,
+          }
+        );
 
-        // const res = await axios.post("http://localhost:8000/predict", {
-        //   image: base64Image,
-        // });
-
-        // Get confidence score from response
         const confidenceScore = res.data.confidence || 0;
         setConfidence(confidenceScore);
 
-        // Only show prediction if confidence is above 70%
-        if (confidenceScore >= 70) {
-          const predictionResult = res.data.sign || "";
+        if (res.data.success && res.data.sign) {
+          setPrediction(res.data.sign);
+          setMessage(res.data.message || "Prediction successful!");
 
           if (res.data.audio) {
-            const audio = new Audio(`${window.location.origin}${res.data.audio}`);
-            audio.play();
+            try {
+              const audio = new Audio(`${API_URL}${res.data.audio}`);
+              await audio.play();
+            } catch (audioError) {
+              console.error("Audio error:", audioError);
+            }
           }
-
-          setPrediction(predictionResult);
-          setMessage(res.data.message || "");
         } else {
           setPrediction("");
-          setMessage("Please try again. Accuracy is below 70%.");
+          setMessage("Please try again. Sign not recognized clearly.");
         }
       } catch (err) {
-        console.error("Prediction error:", err);
-        setMessage("Error making prediction.");
+        if (err.code === "ECONNABORTED") {
+          setMessage("Request timeout. Check your internet connection.");
+        } else if (err.response) {
+          setMessage(`Server error: ${err.response.status}`);
+        } else if (err.request) {
+          setMessage("Cannot connect to server.");
+        } else {
+          setMessage("Prediction failed.");
+        }
+
         setConfidence(0);
+        setPrediction("");
       } finally {
         setIsLoading(false);
       }
     } else {
-      console.log("No hand detected");
       setPrediction("");
-      setMessage("No hand detected. Please show your hand to the camera.");
+      setMessage("No hand detected.");
       setConfidence(0);
     }
   };
 
   useEffect(() => {
     if (!isCameraOn) return;
-
-    console.log("Setting up detection interval");
     const id = setInterval(() => {
       captureFrameAndDetect();
-    }, 1000); // Check every second
-
+    }, 1500);
     setIntervalId(id);
 
-    return () => {
-      console.log("Clearing detection interval");
-      clearInterval(id);
-    };
+    return () => clearInterval(id);
   }, [isCameraOn]);
+
+  useEffect(() => {
+    const testConnection = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/health`);
+        console.log("Backend health:", response.data);
+      } catch (error) {
+        console.error("Backend health check failed:", error);
+      }
+    };
+    testConnection();
+  }, []);
 
   return (
     <div>
@@ -191,10 +186,9 @@ const SignLanguage = () => {
       <div className="container mx-auto px-4 md:px-8 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 md:h-[80vh]">
           <div className="md:col-span-3">
-            <div className="">
-              <CardSlider />
-            </div>
+            <CardSlider />
           </div>
+
           <div className="md:col-span-6 p-2 h-[50vh] md:h-[80vh]">
             <div className="relative h-full">
               <video
@@ -214,20 +208,25 @@ const SignLanguage = () => {
                     <CameraOff size={20} />
                   </button>
 
-                  {/* Hand detection status indicator */}
                   <div className="absolute right-2 top-2 flex items-center">
-                    <div className={`w-3 h-3 rounded-full mr-2 ${isHandDetected ? 'bg-green-500' : 'bg-red-500'}`}></div>
+                    <div
+                      className={`w-3 h-3 rounded-full mr-2 ${isHandDetected ? "bg-green-500" : "bg-red-500"
+                        }`}
+                    ></div>
                     <span className="text-white text-xs bg-black bg-opacity-50 px-2 py-1 rounded">
-                      {isLoading ? 'Processing...' : isHandDetected ? 'Hand Detected' : 'No Hand Detected'}
+                      {isLoading
+                        ? "Processing..."
+                        : isHandDetected
+                          ? "Hand Detected"
+                          : "No Hand Detected"}
                     </span>
                   </div>
 
-                  {/* Confidence score indicator */}
                   {isHandDetected && confidence > 0 && (
                     <div className="absolute left-2 top-2 bg-black bg-opacity-50 px-2 py-1 rounded">
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
                         <div
-                          className={`h-2.5 rounded-full ${confidence >= 70 ? 'bg-green-500' : 'bg-red-500'
+                          className={`h-2.5 rounded-full ${confidence >= 70 ? "bg-green-500" : "bg-red-500"
                             }`}
                           style={{ width: `${confidence}%` }}
                         ></div>
@@ -240,10 +239,10 @@ const SignLanguage = () => {
                 </>
               ) : (
                 <div className="flex items-center flex-col justify-center absolute inset-0">
-                  <Camera size={52} className="text-purple-400 bg-amber p-3 rounded-full" />
+                  <Camera size={52} className="text-purple-400 p-3 bg-amber-300 rounded-full" />
                   <button
                     onClick={startCamera}
-                    className="bg-cyan-500 hover:bg-cyan-600 text-white py-2 px-4 rounded-lg font-medium"
+                    className="bg-cyan-500 hover:bg-cyan-600 text-white py-2 px-4 rounded-lg font-medium mt-4"
                   >
                     Enable Camera
                   </button>
@@ -251,21 +250,23 @@ const SignLanguage = () => {
               )}
             </div>
           </div>
-          <div className="md:col-span-3 h-[30vh] md:h-[80vh] bg-zinc-700 relative overflow-hidden mt-5 md: mt-0" style={{ backgroundImage: `url('/textbg.jpeg')` }}>
+
+          <div
+            className="md:col-span-3 h-[30vh] md:h-[80vh] bg-zinc-700 relative overflow-hidden mt-5 md:mt-0"
+            style={{ backgroundImage: "url('/textbg.jpeg')" }}
+          >
             <div className="relative z-20 p-5">
               {prediction ? (
-                <span className="bg-zinc-50 p-2 rounded-sm text-black text-lg">
-                  {nepaliTranslations[prediction.toLowerCase()] || ""}
-                </span>
-              ) : (
-                <span className="bg-zinc-50 p-2 rounded-sm text-black text-lg opacity-50">
-                  {message === "Please try again. Accuracy is below 70%." ? "Please try again" : "Waiting..."}
-                </span>
-              )}
-              {message && (
-                <div className="mt-4 bg-white bg-opacity-80 p-2 rounded text-black">
-                  {message}
+                <div>
+                  <span className="bg-zinc-50 p-2 rounded-sm text-black text-lg block mb-2">
+                    {prediction}
+                  </span>
+                  <span className="bg-blue-100 p-2 rounded-sm text-black text-sm block">
+                    {nepaliTranslations[prediction.toLowerCase()] || ""}
+                  </span>
                 </div>
+              ) : (
+                <p className="text-white">{message}</p>
               )}
             </div>
           </div>
@@ -276,4 +277,3 @@ const SignLanguage = () => {
 };
 
 export default SignLanguage;
-

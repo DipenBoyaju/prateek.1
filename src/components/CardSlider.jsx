@@ -40,7 +40,7 @@ const CardSlider = () => {
         <img
           src={src}
           alt={name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover" loading="lazy"
         />
         <div className="text-center py-3 text-white bg-emerald-400">
           {name}
