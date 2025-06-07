@@ -109,7 +109,10 @@ const SignLanguage = () => {
           `${API_URL}/predict`,
           { image: base64Image },
           {
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+            },
             timeout: 10000,
           }
         );
