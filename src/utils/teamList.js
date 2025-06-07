@@ -2,7 +2,7 @@ const teamList = [
   {
     id: 1,
     name: "Jatin Bhusal",
-    role: "Founder and CEO",
+    role: "Founder and CEO, Research Lead",
     image: "/team/jatin_bhusal.webp",
     department: "Executive",
     linkedin: " https://www.linkedin.com/in/jatin-bhusal-1012691b4/",
