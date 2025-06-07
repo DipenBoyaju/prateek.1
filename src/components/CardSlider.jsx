@@ -3,19 +3,19 @@ import { useState } from "react";
 
 const slides = [
   {
-    src: "/sign/ghar-happy.jpeg",
+    src: "/sign/ghar-happy.webp",
     name: "Ghar (घर)",
   },
   {
-    src: "/sign/thanks-happy.png",
+    src: "/sign/thanks-happy.webp",
     name: "Thanks (धन्यवाद)",
   },
   {
-    src: "/sign/namaste-happy.jpeg",
+    src: "/sign/namaste-happy.webp",
     name: "Namaste (नमस्कार)",
   },
   {
-    src: "/sign/me-happy.jpeg",
+    src: "/sign/me-happy.webp",
     name: "Me (म)",
   },
 ];
