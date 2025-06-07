@@ -59,6 +59,8 @@ const SignLanguage = () => {
     try {
       const res = await axios.post("https://signlanguage-api.onrender.com/predict", {
         image: base64Image,
+      }, {
+        withCredentials: true
       });
 
       // const res = await axios.post("http://127.0.0.1:8000/predict", {

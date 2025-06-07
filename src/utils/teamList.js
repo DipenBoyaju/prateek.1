@@ -10,6 +10,7 @@ const teamList = [
     researchGate: "",
     github: "",
     website: "https://sites.google.com/view/jatinbhusal",
+    "bio": "",
   },
   {
     id: 2,
