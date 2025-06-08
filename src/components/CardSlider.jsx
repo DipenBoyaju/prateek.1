@@ -37,7 +37,7 @@ const CardSlider = () => {
     <div className="relative w-1/2 md:w-80 mx-auto mt-10 md:pr-10">
       {/* Image */}
       <div className="w-full rounded-xl overflow-hidden shadow-xl">
-        <img
+        <img rel="preload"
           src={src}
           alt={name}
           className="w-full h-full object-cover" loading="lazy"

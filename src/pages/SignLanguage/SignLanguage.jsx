@@ -49,8 +49,9 @@ const SignLanguage = () => {
   const [isHandDetected, setIsHandDetected] = useState(false);
   const [confidence, setConfidence] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [lastPrediction, setLastPrediction] = useState(null); // Only update on new sign
 
-  const API_URL = "https://prateekinnovations.com/api"
+  const API_URL = "http://localhost:8000";
 
   const startCamera = async () => {
     try {
@@ -109,10 +110,7 @@ const SignLanguage = () => {
           `${API_URL}/predict`,
           { image: base64Image },
           {
-            headers: {
-              "Content-Type": "application/json",
-              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
-            },
+            headers: { "Content-Type": "application/json" },
             timeout: 10000,
           }
         );
@@ -120,16 +118,29 @@ const SignLanguage = () => {
         const confidenceScore = res.data.confidence || 0;
         setConfidence(confidenceScore);
 
-        if (res.data.success && res.data.sign) {
-          setPrediction(res.data.sign);
-          setMessage(res.data.message || "Prediction successful!");
+        if (res.data.success && res.data.sign && confidenceScore > 85) {
+          const currentSign = res.data.sign;
 
-          if (res.data.audio) {
-            try {
-              const audio = new Audio(`${API_URL}${res.data.audio}`);
-              await audio.play();
-            } catch (audioError) {
-              console.error("Audio error:", audioError);
+          // Only update UI/audio if sign changed (case-insensitive)
+          if (currentSign.toLowerCase() !== lastPrediction?.toLowerCase()) {
+            console.log("New sign detected:", currentSign);
+
+            setLastPrediction(currentSign);
+            setPrediction(currentSign);
+            setMessage(res.data.message || "Prediction successful!");
+
+            if (res.data.audio) {
+              const audioUrl = `/audios/${res.data.audio}`;
+              const audio = new Audio(audioUrl);
+
+              setTimeout(async () => {
+                try {
+                  await audio.play();
+                } catch (err) {
+                  console.warn("Audio playback blocked:", err.message);
+                  setMessage("Audio playback blocked by browser.");
+                }
+              }, 100);
             }
           }
         } else {
@@ -137,18 +148,8 @@ const SignLanguage = () => {
           setMessage("Please try again. Sign not recognized clearly.");
         }
       } catch (err) {
-        if (err.code === "ECONNABORTED") {
-          setMessage("Request timeout. Check your internet connection.");
-        } else if (err.response) {
-          setMessage(`Server error: ${err.response.status}`);
-        } else if (err.request) {
-          setMessage("Cannot connect to server.");
-        } else {
-          setMessage("Prediction failed.");
-        }
-
-        setConfidence(0);
-        setPrediction("");
+        console.error("Prediction error:", err);
+        setMessage("Prediction failed. Please check the server.");
       } finally {
         setIsLoading(false);
       }
@@ -163,23 +164,11 @@ const SignLanguage = () => {
     if (!isCameraOn) return;
     const id = setInterval(() => {
       captureFrameAndDetect();
-    }, 1500);
+    }, 2000);
     setIntervalId(id);
 
     return () => clearInterval(id);
   }, [isCameraOn]);
-
-  useEffect(() => {
-    const testConnection = async () => {
-      try {
-        const response = await axios.get(`${API_URL}/health`);
-        console.log("Backend health:", response.data);
-      } catch (error) {
-        console.error("Backend health check failed:", error);
-      }
-    };
-    testConnection();
-  }, []);
 
   return (
     <div>
@@ -211,8 +200,7 @@ const SignLanguage = () => {
 
                   <div className="absolute right-2 top-2 flex items-center">
                     <div
-                      className={`w-3 h-3 rounded-full mr-2 ${isHandDetected ? "bg-green-500" : "bg-red-500"
-                        }`}
+                      className={`w-3 h-3 rounded-full mr-2 ${isHandDetected ? "bg-green-500" : "bg-red-500"}`}
                     ></div>
                     <span className="text-white text-xs bg-black bg-opacity-50 px-2 py-1 rounded">
                       {isLoading
@@ -227,9 +215,8 @@ const SignLanguage = () => {
                     <div className="absolute left-2 top-2 bg-black bg-opacity-50 px-2 py-1 rounded">
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
                         <div
-                          className={`h-2.5 rounded-full ${confidence >= 70 ? "bg-green-500" : "bg-red-500"
-                            }`}
-                          style={{ width: `${confidence}%` }}
+                          className={`h-2.5 rounded-full ${confidence >= 70 ? "bg-green-500" : "bg-red-500"}`}
+                          style={{ width: `${confidence.toFixed(1)}%` }}
                         ></div>
                       </div>
                       <span className="text-white text-xs mt-1 block">
