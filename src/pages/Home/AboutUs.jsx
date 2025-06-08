@@ -4,7 +4,7 @@ const AboutUs = () => {
   const nav = useNavigate()
   return (
     <div className="bg-[#f9f7f6] py-10 md:py-20 relative overflow-hidden">
-      <img src="/shape.png" alt="" className="absolute bottom-30 right-0 rotate-180" />
+      <img src="/images/shapes/shape.png" alt="" className="absolute bottom-30 right-0 rotate-180" />
       <div className="container mx-auto px-4 md:px-8 relative z-20">
         <div className="grid md:grid-cols-11 gap-10">
           <div className="md:col-span-4">

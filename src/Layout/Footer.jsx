@@ -14,7 +14,7 @@ const Footer = () => {
     });
   };
   return (
-    <div className="bg-[#f9f7f6]" style={{ backgroundImage: 'url("./line-bg.png")', backgroundRepeat: 'no-repeat', backgroundPosition: 'top center', }}>
+    <div className="bg-[#f9f7f6]" style={{ backgroundImage: 'url("./images/shapes/line-bg.png")', backgroundRepeat: 'no-repeat', backgroundPosition: 'top center', }}>
       <div className="container mx-auto px-4 md:px-8">
         <div className="md:grid md:grid-cols-12 border-b border-zinc-300 py-14 md:py-24">
           <div className="col-span-12 md:col-span-7">

@@ -23,7 +23,7 @@ const FeaturedProject = () => {
 
   return (
     <div className="py-10 md:py-20 relative overflow-hidden">
-      <img src="/bg.png" alt="" className="absolute left-0 top-0 opacity-20 h-full w-full object-cover" />
+      <img src="/images/shapes/bg.png" alt="" className="absolute left-0 top-0 opacity-20 h-full w-full object-cover" />
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         {/* Header */}
         <div className="mb-10 text-center">
@@ -43,7 +43,7 @@ const FeaturedProject = () => {
             <p className="text-zinc-700 text-sm">
               Use AI-powered sign language detection to translate Nepali sign gestures in real-time.
             </p>
-            <a href="/projects/signlanguage" className="inline-block mt-4 text-cyan-500 hover:underline bg-zinc-800 text-white text-sm py-2 px-4 rounded-md mt-10">
+            <a href="/projects/signlanguage" className="inline-block hover:underline bg-zinc-800 text-white text-sm py-2 px-4 rounded-md mt-10">
               Learn More →
             </a>
           </div>

@@ -5,7 +5,7 @@ const EventHome = () => {
   const events = [];
   return (
     <div className="py-20 relative">
-      <img src="/shape2.png" alt="" className="hidden md:block md:absolute right-0 bottom-0 md:h-full" />
+      <img src="/images/shapes/shape2.png" alt="" className="hidden md:block md:absolute right-0 bottom-0 md:h-full" />
       <div className="container mx-auto px-4 md:px-8 relative z-20">
         <div className="text-center">
           <p className="text-cyan-300 font-quicksand font-bold text-lg">Events</p>

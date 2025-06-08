@@ -10,7 +10,7 @@ const About = () => {
     <div className="">
       <Title tag="About" title="About Us" />
       <div className="relative py-10 md:py-20 overflow-hidden">
-        <img src="/shape.png" alt="" className="absolute bottom-0 left-0 opacity-50" />
+        <img src="/images/shapes/shape.png" alt="" className="absolute bottom-0 left-0 opacity-50" />
         <div className="container mx-auto px-4 md:px-8">
           <div className="">
             <div className="relative">

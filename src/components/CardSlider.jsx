@@ -3,19 +3,19 @@ import { useState } from "react";
 
 const slides = [
   {
-    src: "/sign/ghar-happy.webp",
+    src: "/images/signs/ghar-happy.webp",
     name: "Ghar (घर)",
   },
   {
-    src: "/sign/thanks-happy.webp",
+    src: "/images/signs/thanks-happy.webp",
     name: "Thanks (धन्यवाद)",
   },
   {
-    src: "/sign/namaste-happy.webp",
+    src: "/images/signs/namaste-happy.webp",
     name: "Namaste (नमस्कार)",
   },
   {
-    src: "/sign/me-happy.webp",
+    src: "/images/signs/me-happy.webp",
     name: "Me (म)",
   },
 ];
@@ -37,11 +37,13 @@ const CardSlider = () => {
     <div className="relative w-1/2 md:w-80 mx-auto mt-10 md:pr-10">
       {/* Image */}
       <div className="w-full rounded-xl overflow-hidden shadow-xl">
-        <img rel="preload"
-          src={src}
-          alt={name}
-          className="w-full h-full object-cover" loading="lazy"
-        />
+        <div className="h-[50vh]">
+          <img rel="preload"
+            src={src}
+            alt={name}
+            className="w-full h-full object-cover" loading="lazy"
+          />
+        </div>
         <div className="text-center py-3 text-white bg-emerald-400">
           {name}
         </div>

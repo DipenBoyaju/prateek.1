@@ -3,13 +3,13 @@ import Title from "../../components/Title"
 import { X, ArrowLeft, ArrowRight } from 'lucide-react';
 
 const images = [
-  '/gallery/Product.jpeg',
-  '/gallery/prateek4.jpg',
-  '/gallery/prateek5.jpg',
-  '/gallery/prateek1.jpg',
-  '/gallery/prateek2.jpg',
-  '/gallery/prateek3.jpg',
-  '/gallery/prateek6.jpg',
+  '/images/galleries/Product.jpeg',
+  '/images/galleries/prateek4.jpg',
+  '/images/galleries/prateek5.jpg',
+  '/images/galleries/prateek1.jpg',
+  '/images/galleries/prateek2.jpg',
+  '/images/galleries/prateek3.jpg',
+  '/images/galleries/prateek6.jpg',
 ];
 
 const Gallery = () => {

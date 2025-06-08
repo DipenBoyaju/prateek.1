@@ -9,7 +9,7 @@ const BlogsNews = () => {
     >
       {/* Decorative image with aria-hidden since it’s visual only */}
       <img
-        src="/shape2.png"
+        src="/images/shapes/shape2.png"
         alt=""
         aria-hidden="true"
         className="hidden md:block md:absolute right-0 bottom-0 md:h-full"

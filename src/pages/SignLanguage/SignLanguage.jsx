@@ -51,7 +51,7 @@ const SignLanguage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [lastPrediction, setLastPrediction] = useState(null); // Only update on new sign
 
-  const API_URL = "http://localhost:8000";
+  const API_URL = "https://prateekinnovations.com/apiii";
 
   const startCamera = async () => {
     try {
@@ -241,7 +241,7 @@ const SignLanguage = () => {
 
           <div
             className="md:col-span-3 h-[30vh] md:h-[80vh] bg-zinc-700 relative overflow-hidden mt-5 md:mt-0"
-            style={{ backgroundImage: "url('/textbg.jpeg')" }}
+            style={{ backgroundImage: "url('/images/shapes/textbg.jpeg')" }}
           >
             <div className="relative z-20 p-5">
               {prediction ? (
