@@ -51,7 +51,8 @@ const SignLanguage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [lastPrediction, setLastPrediction] = useState(null); // Only update on new sign
 
-  const API_URL = "https://prateekinnovations.com/apiii";
+  // const API_URL = "https://prateekinnovations.com/apiii";
+  const API_URL = "https://signlanguage-api.onrender.com";
 
   const startCamera = async () => {
     try {
@@ -110,7 +111,10 @@ const SignLanguage = () => {
           `${API_URL}/predict`,
           { image: base64Image },
           {
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
             timeout: 10000,
           }
         );
