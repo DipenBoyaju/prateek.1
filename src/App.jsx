@@ -1,0 +1,108 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import RootLayout from "./Layout/RootLayout"
+import Home from "./pages/Home/Home"
+import About from "./pages/About/About"
+import Research from "./pages/Research/Research"
+import Team from "./pages/Team/Team"
+import Project from "./pages/Project/Project"
+import Contact from "./pages/Contact/Contact"
+import Blog from "./pages/Blog/Blog"
+import Events from "./pages/Events/Events"
+import Newsletter from "./pages/NewsLetter/Newsletter"
+import News from "./pages/News/News"
+import SignLanguage from "./pages/SignLanguage/SignLanguage"
+import DashboardLayout from "./dashboard/layout/DashboardLayout"
+import DashboardHome from "./dashboard/pages/dashboardHome/DashboardHome"
+import CHMC from "./dashboard/pages/ResearchWings/CHMC"
+import CCCT from "./dashboard/pages/ResearchWings/CCCT"
+import CCEI from "./dashboard/pages/ResearchWings/CCEI"
+import AdminSignup from "./pages/AdminSignup/AdminSignup"
+import UserLogin from "./pages/UserLogin/UserLogin"
+import ExecutiveTeam from "./dashboard/pages/Teams/ExecutiveTeam"
+import ResearchTeam from "./dashboard/pages/Teams/ResearchTeam"
+import DevelopmentTeam from "./dashboard/pages/Teams/DevelopmentTeam"
+import ProtectedRoute from "./features/ProtectedRoute"
+import ResearchDetails from "./pages/Research/ResearchDetails"
+import Product from "./pages/products/Product"
+import ProjectDetails from "./pages/Project/ProjectDetails"
+import Publication from "./pages/Publication/Publication"
+import SingleProject from "./pages/Project/SingleProject"
+import Gallery from "./pages/Gallery/Gallery"
+import MemberDetail from "./pages/Team/MemberDetail"
+import AddTeamMember from "./dashboard/pages/Teams/AddTeamMember"
+import DasMemberDetails from "./dashboard/pages/Teams/DasMemberDetails"
+import ManagementTeam from "./dashboard/pages/Teams/ManagementTeam"
+import ConsultantsTeam from "./dashboard/pages/Teams/ConsultantsTeam"
+import EditTeamMember from "./dashboard/pages/Teams/EditTeamMember"
+import CIIATC from "./dashboard/pages/ResearchWings/CIIATC"
+import DasProjects from "./dashboard/pages/Projects/DasProjects"
+import DasEvent from "./dashboard/pages/Events/DasEvent"
+import AddEvent from "./dashboard/pages/Events/AddEvent"
+
+const App = () => {
+
+  const router = createBrowserRouter([
+    {
+      path: '/', element: <RootLayout />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: '/about', element: <About /> },
+        { path: '/division', element: <Research /> },
+        { path: '/division/:slug', element: <ResearchDetails /> },
+        { path: '/publication', element: <Publication /> },
+        { path: '/team', element: <Team /> },
+        { path: '/team/:id', element: <MemberDetail /> },
+        { path: '/project', element: <Project /> },
+        { path: '/projects/signlanguage', element: <ProjectDetails /> },
+        { path: '/projects/signlanguage/wordbase', element: <SingleProject /> },
+        { path: '/demos', element: <Product /> },
+        { path: '/contact', element: <Contact /> },
+        { path: '/blog', element: <Blog /> },
+        { path: '/events', element: <Events /> },
+        { path: '/news', element: <News /> },
+        { path: '/newsletter', element: <Newsletter /> },
+        { path: '/gallery', element: <Gallery /> },
+        { path: '/signLanguageplatform', element: <SignLanguage /> },
+        { path: '/admin-signup', element: <AdminSignup /> },
+        { path: '/login', element: <UserLogin /> },
+      ]
+    },
+    {
+      element: <ProtectedRoute />,
+      children: [
+        {
+          path: '/dashboard',
+          element: <DashboardLayout />,
+          children: [
+            { index: true, element: <DashboardHome /> },
+
+            { path: "chmc", element: <CHMC /> },
+            { path: "ccct", element: <CCCT /> },
+            { path: "ccei", element: <CCEI /> },
+            { path: "ciiatc", element: <CIIATC /> },
+
+            { path: "team/executive", element: <ExecutiveTeam /> },
+            { path: "team/research", element: <ResearchTeam /> },
+            { path: "team/development", element: <DevelopmentTeam /> },
+            { path: "team/management", element: <ManagementTeam /> },
+            { path: "team/consultants", element: <ConsultantsTeam /> },
+            { path: "team/:department/:slug", element: <DasMemberDetails /> },
+            { path: "team/addmember", element: <AddTeamMember /> },
+            { path: "team/editMember/:slug", element: <EditTeamMember /> },
+
+            { path: "projects", element: <DasProjects /> },
+
+            { path: "events", element: <DasEvent /> },
+            { path: "events/addevent", element: <AddEvent /> },
+            // { path: "news", element: <DashboardNews /> },
+          ]
+        }
+      ]
+    }
+  ])
+  return <RouterProvider router={router} future={{
+    v7_startTransition: true,
+    v7_relativeSplatPath: true
+  }} />
+}
+export default App
