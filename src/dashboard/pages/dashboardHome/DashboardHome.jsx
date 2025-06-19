@@ -3,6 +3,7 @@ import QuickStatCard from "../../components/QuickStatCard";
 import { FaUsers } from "react-icons/fa";
 import { RiBloggerFill } from "react-icons/ri";
 import { useAuthStore } from "../../../store/authStore";
+import NewsEventsPanel from "./NewsEventPanel";
 
 const DashboardHome = () => {
   const user = useAuthStore((state) => state.user);
@@ -32,7 +33,7 @@ const DashboardHome = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-5 mt-5">
+          <div className="grid md:grid-cols-2 gap-5 mt-5">
             <QuickStatCard Icon={FaProjectDiagram} title="Projects" count={1} color="blue" />
             <QuickStatCard Icon={FaUsers} title="Team Members" count={9} color="yellow" />
             <QuickStatCard Icon={RiBloggerFill} title="Published Blogs" count={0} color="emerald" />
@@ -103,44 +104,7 @@ const DashboardHome = () => {
           </ul>
         </div>
 
-
-        <div className="col-span-3 lg:col-span-1 bg-white shadow-md p-6 rounded-2xl">
-          <h3 className="text-xl font-semibold text-blue-600 mb-5">News & Events</h3>
-          <ul className="space-y-4 text-sm text-gray-800">
-            {[
-              {
-                title: "📢 AI Research Summit 2025 Announced",
-                date: "June 12, 2025",
-                type: "Event",
-              },
-              {
-                title: "📰 New Research Paper on Assistive Tech Published",
-                date: "June 08, 2025",
-                type: "News",
-              },
-              {
-                title: "🤖 Workshop on Sign Language AI Tools",
-                date: "May 30, 2025",
-                type: "Event",
-              },
-            ].map((item, i) => (
-              <li key={i} className="border border-gray-200 rounded-xl p-4 bg-gray-50 hover:shadow transition">
-                <p className="font-medium leading-snug">{item.title}</p>
-                <div className="flex justify-between items-center mt-2 text-xs text-gray-500">
-                  <span>{item.date}</span>
-                  <span
-                    className={`px-2 py-0.5 rounded-full font-semibold ${item.type === "Event"
-                      ? "bg-blue-100 text-blue-700"
-                      : "bg-green-100 text-green-700"
-                      }`}
-                  >
-                    {item.type}
-                  </span>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <NewsEventsPanel />
 
       </div>
     </div>

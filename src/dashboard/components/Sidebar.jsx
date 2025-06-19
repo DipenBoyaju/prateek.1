@@ -182,14 +182,6 @@ const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
                   </li>
                   <li>
                     <NavLink
-                      to="/dashboard/newsletter"
-                      className={({ isActive }) =>
-                        `${isActive ? activeClass : normalClass} block pl-6 py-1 w-full`}>
-                      NewsLetter
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
                       to="/dashboard/news"
                       className={({ isActive }) =>
                         `${isActive ? activeClass : normalClass} block pl-6 py-1 w-full`}>

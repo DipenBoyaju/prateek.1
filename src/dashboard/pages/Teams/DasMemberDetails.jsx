@@ -44,7 +44,7 @@ const DasMemberDetails = () => {
       {
         showConfirmPopup && <DeleteConfirmPopUp id={member?._id} setShowConfirmPopup={setShowConfirmPopup} />
       }
-      <div className="px-4 py-6">
+      <div className="px-4 py-6 bg-white my-6 mx-4 rounded-lg">
         <div className="grid md: grid-cols-3 gap-8">
           <div className="md:col-span-1 rounded-lg overflow-hidden h-[50vh]">
             <div className="relative">

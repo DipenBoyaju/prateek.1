@@ -38,6 +38,12 @@ import CIIATC from "./dashboard/pages/ResearchWings/CIIATC"
 import DasProjects from "./dashboard/pages/Projects/DasProjects"
 import DasEvent from "./dashboard/pages/Events/DasEvent"
 import AddEvent from "./dashboard/pages/Events/AddEvent"
+import DasNews from "./dashboard/pages/News/DasNews"
+import AddNews from "./dashboard/pages/News/AddNews"
+import EditNews from "./dashboard/pages/News/EditNews"
+import DasNewsDetail from "./dashboard/pages/News/DasNewsDetail"
+import DasEventDetail from "./dashboard/pages/Events/DasEventDetail"
+import Profile from "./dashboard/pages/Profile/Profile"
 
 const App = () => {
 
@@ -76,11 +82,15 @@ const App = () => {
           children: [
             { index: true, element: <DashboardHome /> },
 
+            { path: 'profile', element: <Profile /> },
+
+            //research-wings
             { path: "chmc", element: <CHMC /> },
             { path: "ccct", element: <CCCT /> },
             { path: "ccei", element: <CCEI /> },
             { path: "ciiatc", element: <CIIATC /> },
 
+            //team
             { path: "team/executive", element: <ExecutiveTeam /> },
             { path: "team/research", element: <ResearchTeam /> },
             { path: "team/development", element: <DevelopmentTeam /> },
@@ -90,11 +100,19 @@ const App = () => {
             { path: "team/addmember", element: <AddTeamMember /> },
             { path: "team/editMember/:slug", element: <EditTeamMember /> },
 
+            //project
             { path: "projects", element: <DasProjects /> },
 
+            //events
             { path: "events", element: <DasEvent /> },
             { path: "events/addevent", element: <AddEvent /> },
-            // { path: "news", element: <DashboardNews /> },
+            { path: "events/:slug", element: <DasEventDetail /> },
+
+            //news
+            { path: "news", element: <DasNews /> },
+            { path: "news/addnews", element: <AddNews /> },
+            { path: "news/editnews/:slug", element: <EditNews /> },
+            { path: "news/:slug", element: <DasNewsDetail /> },
           ]
         }
       ]

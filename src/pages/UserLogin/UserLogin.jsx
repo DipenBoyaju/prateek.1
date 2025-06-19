@@ -28,7 +28,7 @@ export default function UserLogin() {
     onSuccess: (data) => {
       setUser(data.user);
       navigate('/dashboard');
-      toast.success("User Logged In")
+      toast.success(data?.message)
     },
     onError: (err) => {
       console.error("Signup error:", err);
