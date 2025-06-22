@@ -4,7 +4,7 @@ import axios from "axios";
 import { baseUrl } from "../../../utils/baseUrl";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom"; // added navigation for redirect after submit
+import { useNavigate } from "react-router-dom";
 
 const addEvent = async (data) => {
   const res = await axios.post(`${baseUrl}/api/events/addEvent`, data);
@@ -17,7 +17,7 @@ const AddEvent = () => {
     mutationFn: addEvent,
     onSuccess: () => {
       toast.success('News added successfully!');
-      queryClient.invalidateQueries(['news']);
+      queryClient.invalidateQueries(['events']);
       nav(-1);
     },
     onError: () => {
@@ -25,9 +25,9 @@ const AddEvent = () => {
     },
   })
 
-  const handleCreate = (data) => {
-    mutation.mutate(data)
-    nav(-1)
+  const handleCreate = async (data) => {
+    await mutation.mutateAsync(data)
+    nav('/dashboard/events')
   }
 
   return (

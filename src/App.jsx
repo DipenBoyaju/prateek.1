@@ -44,6 +44,7 @@ import EditNews from "./dashboard/pages/News/EditNews"
 import DasNewsDetail from "./dashboard/pages/News/DasNewsDetail"
 import DasEventDetail from "./dashboard/pages/Events/DasEventDetail"
 import Profile from "./dashboard/pages/Profile/Profile"
+import EditEvent from "./dashboard/pages/Events/EditEvent"
 
 const App = () => {
 
@@ -106,6 +107,7 @@ const App = () => {
             //events
             { path: "events", element: <DasEvent /> },
             { path: "events/addevent", element: <AddEvent /> },
+            { path: "events/updateEvent/:slug", element: <EditEvent /> },
             { path: "events/:slug", element: <DasEventDetail /> },
 
             //news

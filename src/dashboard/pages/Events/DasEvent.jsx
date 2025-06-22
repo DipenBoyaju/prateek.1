@@ -14,7 +14,7 @@ const DasEvent = () => {
   const nav = useNavigate()
   const { data: event, isPending } = useQuery({
     queryFn: getAllEvents,
-    queryKey: ['event'],
+    queryKey: ['events'],
   })
 
   return (

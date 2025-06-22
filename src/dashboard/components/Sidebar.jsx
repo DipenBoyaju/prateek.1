@@ -1,17 +1,37 @@
 import { ChevronDown, FlaskConical, LayoutDashboard, Newspaper, Users } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { LiaProjectDiagramSolid } from "react-icons/lia";
 
 const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
   const [openMenu, setOpenMenu] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Dynamically check if the viewport is mobile
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    setIsMobile(mediaQuery.matches);
+
+    const handleResize = () => {
+      setIsMobile(mediaQuery.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleResize);
+    return () => mediaQuery.removeEventListener('change', handleResize);
+  }, []);
 
   const toggleSubMenu = (menu) => {
-    setOpenMenu(openMenu === menu ? "" : menu);
+    setOpenMenu(openMenu === menu ? '' : menu);
+    // No setIsSidebarOpen(false) here to keep sidebar open
   };
 
+  const handleNavLinkClick = () => {
+    if (isMobile && isOpen) {
+      setIsSidebarOpen(false);
+    }
+  };
   const activeClass = "font-semibold bg-blue-100 text-blue-600";
-  const normalClass = "font-semibold text-zinc-600 text-sm";
+  const normalClass = "font-semibold text-zinc-600 text-sm hover:bg-blue-100";
 
   return (
     <>
@@ -36,8 +56,7 @@ const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
             <li className="">
               <NavLink
                 to="/dashboard" end
-                className={({ isActive }) => `${isActive ? activeClass : normalClass} flex items-center gap-2 px-4 py-3`}
-              >
+                className={({ isActive }) => `${isActive ? activeClass : normalClass} flex items-center gap-2 px-4 py-3`} onClick={handleNavLinkClick}>
                 <LayoutDashboard strokeWidth={2.5} size={18} className="" />
                 Dashboard
               </NavLink>
@@ -48,19 +67,20 @@ const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
                 <FlaskConical strokeWidth={2.5} size={20} className="text-zinc-700" />
                 <button
                   onClick={() => toggleSubMenu("research")}
-                  className="w-full text-left font-semibold text-gray-600 text-sm cursor-pointer"
+                  className="w-full text-left font-semibold text-gray-600 text-sm cursor-pointer" aria-expanded={openMenu === 'research'}
+                  aria-controls="research-submenu"
                 >
                   Research Wing
                 </button>
-                <ChevronDown strokeWidth={2.5} size={24} className="text-zinc-700" />
+                <ChevronDown strokeWidth={2.5} size={24} className={`${openMenu === 'research' && openMenu ? 'rotate-0' : '-rotate-90'} text-zinc-700 transition-all ease-in-out duration-300`} />
               </div>
               {openMenu === "research" && (
-                <ul className="space-y-1 font-light text-sm">
+                <ul className="font-light text-sm bg-blue-50">
                   <li className="">
                     <NavLink
                       to="/dashboard/chmc"
                       className={({ isActive }) =>
-                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`}>
+                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`} onClick={handleNavLinkClick}>
                       CHMC
                     </NavLink>
                   </li>
@@ -68,7 +88,7 @@ const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
                     <NavLink
                       to="/dashboard/ccei"
                       className={({ isActive }) =>
-                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`}>
+                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`} onClick={handleNavLinkClick}>
                       CCEI
                     </NavLink>
                   </li>
@@ -76,7 +96,7 @@ const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
                     <NavLink
                       to="/dashboard/ccct"
                       className={({ isActive }) =>
-                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`}>
+                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`} onClick={handleNavLinkClick}>
                       CCCT
                     </NavLink>
                   </li>
@@ -84,7 +104,7 @@ const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
                     <NavLink
                       to="/dashboard/ciiatc"
                       className={({ isActive }) =>
-                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`}>
+                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`} onClick={handleNavLinkClick}>
                       CIIATC
                     </NavLink>
                   </li>
@@ -97,19 +117,20 @@ const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
                 <Users strokeWidth={2.5} size={20} className="text-zinc-700" />
                 <button
                   onClick={() => toggleSubMenu("team")}
-                  className="w-full text-left font-semibold text-gray-600 text-sm cursor-pointer"
+                  className="w-full text-left font-semibold text-gray-600 text-sm cursor-pointer" aria-expanded={openMenu === 'team'}
+                  aria-controls="team-submenu"
                 >
                   Team
                 </button>
-                <ChevronDown strokeWidth={2.5} size={24} className="text-zinc-700" />
+                <ChevronDown strokeWidth={2.5} size={24} className={`${openMenu === 'team' && openMenu ? 'rotate-0' : '-rotate-90'} text-zinc-700 transition-all ease-in-out duration-300`} />
               </div>
               {openMenu === "team" && (
-                <ul className="space-y-1 font-light text-sm">
+                <ul className=" font-light text-sm bg-blue-50">
                   <li className="">
                     <NavLink
                       to="/dashboard/team/executive"
                       className={({ isActive }) =>
-                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`}>
+                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`} onClick={handleNavLinkClick}>
                       Executive
                     </NavLink>
                   </li>
@@ -117,7 +138,7 @@ const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
                     <NavLink
                       to="/dashboard/team/research"
                       className={({ isActive }) =>
-                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`}>
+                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`} onClick={handleNavLinkClick}>
                       Research
                     </NavLink>
                   </li>
@@ -125,7 +146,7 @@ const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
                     <NavLink
                       to="/dashboard/team/development"
                       className={({ isActive }) =>
-                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`}>
+                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`} onClick={handleNavLinkClick}>
                       Development
                     </NavLink>
                   </li>
@@ -133,7 +154,7 @@ const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
                     <NavLink
                       to="/dashboard/team/management"
                       className={({ isActive }) =>
-                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`}>
+                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`} onClick={handleNavLinkClick}>
                       Management
                     </NavLink>
                   </li>
@@ -141,7 +162,7 @@ const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
                     <NavLink
                       to="/dashboard/team/consultants"
                       className={({ isActive }) =>
-                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`}>
+                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`} onClick={handleNavLinkClick}>
                       Consultants
                     </NavLink>
                   </li>
@@ -152,8 +173,7 @@ const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
             <li className="">
               <NavLink
                 to="/dashboard/projects" end
-                className={({ isActive }) => `${isActive ? activeClass : normalClass} flex items-center gap-2 px-4 py-3`}
-              >
+                className={({ isActive }) => `${isActive ? activeClass : normalClass} flex items-center gap-2 px-4 py-3`} onClick={handleNavLinkClick}>
                 <LiaProjectDiagramSolid className="size-5" />
                 Projects
               </NavLink>
@@ -164,19 +184,20 @@ const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
                 <Newspaper strokeWidth={2.5} size={20} className="text-zinc-700" />
                 <button
                   onClick={() => toggleSubMenu("updates")}
-                  className="w-full text-left font-semibold text-gray-600 text-sm cursor-pointer"
+                  className="w-full text-left font-semibold text-gray-600 text-sm cursor-pointer" aria-expanded={openMenu === 'updates'}
+                  aria-controls="updates-submenu"
                 >
                   Updates
                 </button>
-                <ChevronDown strokeWidth={2.5} size={24} className="text-zinc-600" />
+                <ChevronDown strokeWidth={2.5} size={24} className={`${openMenu === 'updates' && openMenu ? 'rotate-0' : '-rotate-90'} text-zinc-700 transition-all ease-in-out duration-300`} />
               </div>
               {openMenu === "updates" && (
-                <ul className="space-y-1 font-light">
+                <ul className="font-light bg-blue-50">
                   <li className="">
                     <NavLink
                       to="/dashboard/events"
                       className={({ isActive }) =>
-                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`}>
+                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`} onClick={handleNavLinkClick}>
                       Events
                     </NavLink>
                   </li>
@@ -184,7 +205,7 @@ const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
                     <NavLink
                       to="/dashboard/news"
                       className={({ isActive }) =>
-                        `${isActive ? activeClass : normalClass} block pl-6 py-1 w-full`}>
+                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`} onClick={handleNavLinkClick}>
                       News
                     </NavLink>
                   </li>

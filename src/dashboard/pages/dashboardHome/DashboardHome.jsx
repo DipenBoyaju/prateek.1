@@ -4,9 +4,23 @@ import { FaUsers } from "react-icons/fa";
 import { RiBloggerFill } from "react-icons/ri";
 import { useAuthStore } from "../../../store/authStore";
 import NewsEventsPanel from "./NewsEventPanel";
+import axios from "axios";
+import { baseUrl } from "../../../utils/baseUrl";
+import { useQuery } from "@tanstack/react-query";
+
+
+const getAllTeam = async () => {
+  const res = await axios.get(`${baseUrl}/api/team/members`);
+  return res.data.count;
+};
 
 const DashboardHome = () => {
   const user = useAuthStore((state) => state.user);
+  const { data: teamCount } = useQuery({
+    queryKey: ['team-count'],
+    queryFn: getAllTeam
+  });
+
   return (
     <div className="space-y-5 ">
       {/* Greeting Section */}
@@ -35,7 +49,7 @@ const DashboardHome = () => {
 
           <div className="grid md:grid-cols-2 gap-5 mt-5">
             <QuickStatCard Icon={FaProjectDiagram} title="Projects" count={1} color="blue" />
-            <QuickStatCard Icon={FaUsers} title="Team Members" count={9} color="yellow" />
+            <QuickStatCard Icon={FaUsers} title="Team Members" count={teamCount} color="yellow" />
             <QuickStatCard Icon={RiBloggerFill} title="Published Blogs" count={0} color="emerald" />
           </div>
         </div>

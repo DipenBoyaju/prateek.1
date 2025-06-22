@@ -77,9 +77,20 @@ const CCEI = () => {
         </button>
       </div>
 
-      <div className="mt-5">
-        <h1 className="text-2xl text-blue-600 font-semibold">{data[1]?.title}</h1>
-        <p className="pt-3 font-poppins font-light">{data[1]?.description}</p>
+      <div className="my-5 bg-white p-4 rounded-md ">
+        <div className="">
+          <h1 className="text-2xl text-blue-600 font-semibold">{data[1]?.title}</h1>
+          <p className="pt-3 font-poppins font-light">{data[1]?.description}</p>
+        </div>
+
+        <div className="pt-10">
+          <h3 className="text-lg font-semibold uppercase text-zinc-800">Projects</h3>
+          <div className="pt-2">
+            <div className="shadow p-3 bg-blue-200 rounded-sm">
+              <p className="text-white">Inclusive Real time Sign Language Translation Platform</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Modal */}

@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { Editor } from '@tinymce/tinymce-react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { UploadCloud } from 'lucide-react';
 
 const cloudName = "dyrzsqvx2";
@@ -35,14 +35,19 @@ const EventForm = ({ onSubmit, defaultValues = {}, isEditMode = false, loading }
   } = useForm({
     resolver: zodResolver(eventSchema),
     defaultValues: {
-      title: '',
-      startDate: '',
-      endDate: '',
-      time: '',
-      location: '',
-      image: '',
-      description: '',
-      ...defaultValues,
+      title: defaultValues.title || '',
+      startDate: defaultValues.startDate
+        ? new Date(defaultValues.startDate).toISOString().split('T')[0]
+        : '',
+      endDate: defaultValues.endDate
+        ? new Date(defaultValues.endDate).toISOString().split('T')[0]
+        : '',
+      time: defaultValues.time
+        ? defaultValues.time.slice(0, 5) // Ensure HH:mm format (e.g., "14:30")
+        : '',
+      location: defaultValues.location || '',
+      image: defaultValues.image || '',
+      description: defaultValues.description || '',
     },
   });
   console.log(errors)
@@ -75,14 +80,47 @@ const EventForm = ({ onSubmit, defaultValues = {}, isEditMode = false, loading }
     }
   };
 
+  useEffect(() => {
+    if (defaultValues && Object.keys(defaultValues).length > 0) {
+      const formatDate = (value) => {
+        if (!value) return '';
+        try {
+          const date = new Date(value);
+          if (isNaN(date.getTime())) return ''; // Handle invalid dates
+          return date.toISOString().split('T')[0]; // "YYYY-MM-DD"
+        } catch {
+          return '';
+        }
+      };
+
+      const formatTime = (value) => {
+        if (!value) return '';
+        // Assume time is in "HH:mm:ss" or "HH:mm" format
+        return value.slice(0, 5); // Convert to "HH:mm"
+      };
+
+      const formattedValues = {
+        title: defaultValues.title || '',
+        startDate: formatDate(defaultValues.startDate),
+        endDate: formatDate(defaultValues.endDate),
+        time: formatTime(defaultValues.time),
+        location: defaultValues.location || '',
+        image: defaultValues.image || '',
+        description: defaultValues.description || '',
+      };
+      reset(formattedValues);
+      setImageUrl(defaultValues.image || '');
+    }
+  }, [defaultValues, reset]);
+
   const internalSubmit = async (data) => {
     if (!imageUrl) {
       toast.error("Please upload an image.");
       return false;
     }
     const submissionData = { ...data, image: imageUrl };
-    console.log('Submission Data:', submissionData);
     const result = await onSubmit(submissionData);
+    navigate(-1)
 
     if (result !== false) {
       reset();

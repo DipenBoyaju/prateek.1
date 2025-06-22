@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom"
 import NewsList from "./NewsList"
 import axios from 'axios'
 import { baseUrl } from "../../../utils/baseUrl"
-import { useQuery } from "@tanstack/react-query"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { useState } from "react"
+import toast from 'react-hot-toast'
 
 const fetchNews = async () => {
   const res = await axios.get(`${baseUrl}/api/news/getAllNews`);
@@ -16,6 +18,31 @@ const DasNews = () => {
     queryKey: ['news'],
     queryFn: fetchNews
   })
+
+  const [showPopup, setShowPopup] = useState(false);
+  const [deletingId, setDeletingId] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const queryClient = useQueryClient();
+
+  const handleConfirmDelete = (id) => {
+    setDeletingId(id);
+    setShowPopup(true);
+  };
+
+  const handleDelete = async () => {
+    setIsDeleting(true);
+    try {
+      await axios.delete(`${baseUrl}/api/news/deleteNews/${deletingId}`);
+      toast.success("News deleted successfully!");
+      queryClient.invalidateQueries(["news"]);
+    } catch (err) {
+      toast.error("Failed to delete news");
+      console.error(err);
+    } finally {
+      setIsDeleting(false);
+      setShowPopup(false);
+    }
+  };
 
   return (
     <div>
@@ -41,7 +68,7 @@ const DasNews = () => {
               {
                 news?.length ?
                   news.map((newsItem) => (
-                    <NewsList news={newsItem} key={newsItem._id} />
+                    <NewsList news={newsItem} key={newsItem._id} onDeleteClick={handleConfirmDelete} />
                   ))
                   : (
                     <tr><td className="px-6 py-4" colSpan={4}>{
@@ -53,6 +80,38 @@ const DasNews = () => {
           </table>
         </div>
       </div>
+
+      {/* Delete Confirmation Modal */}
+      {showPopup && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-md shadow-md w-full max-w-sm text-center">
+            <h2 className="text-xl font-semibold text-zinc-800 mb-3">
+              Confirm Deletion
+            </h2>
+            <p className="text-zinc-600 mb-5">
+              Are you sure you want to delete this news?
+            </p>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={() => setShowPopup(false)}
+                className="bg-zinc-300 text-zinc-800 px-4 py-2 rounded-sm hover:bg-zinc-400 transition"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDelete}
+                disabled={isDeleting}
+                className={`px-4 py-2 text-white rounded-sm transition ${isDeleting
+                  ? "bg-red-300 cursor-not-allowed"
+                  : "bg-red-500 hover:bg-red-600"
+                  }`}
+              >
+                {isDeleting ? "Deleting..." : "Delete"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
