@@ -45,6 +45,15 @@ import DasNewsDetail from "./dashboard/pages/News/DasNewsDetail"
 import DasEventDetail from "./dashboard/pages/Events/DasEventDetail"
 import Profile from "./dashboard/pages/Profile/Profile"
 import EditEvent from "./dashboard/pages/Events/EditEvent"
+import DasGallery from "./dashboard/pages/gallery/DasGallery"
+import DasNewsletter from "./dashboard/pages/newsletter/DasNewsletter"
+import AddProject from "./dashboard/pages/Projects/AddProject"
+import EditProject from "./dashboard/pages/Projects/EditProject"
+import DasProjectDetail from "./dashboard/pages/Projects/DasProjectDetail"
+import DasSubProjectDetail from "./dashboard/pages/Projects/SubProject/DasSubProjectDetail"
+import AddSubProject from "./dashboard/pages/Projects/SubProject/AddSubProject"
+import EditSubProject from "./dashboard/pages/Projects/SubProject/EditSubProject"
+import EventDetails from "./pages/Events/EventDetails"
 
 const App = () => {
 
@@ -58,14 +67,15 @@ const App = () => {
         { path: '/division/:slug', element: <ResearchDetails /> },
         { path: '/publication', element: <Publication /> },
         { path: '/team', element: <Team /> },
-        { path: '/team/:id', element: <MemberDetail /> },
+        { path: '/team/:slug', element: <MemberDetail /> },
         { path: '/project', element: <Project /> },
-        { path: '/projects/signlanguage', element: <ProjectDetails /> },
-        { path: '/projects/signlanguage/wordbase', element: <SingleProject /> },
+        { path: '/projects/:slug', element: <ProjectDetails /> },
+        { path: '/projects/:mainSlug/:slug', element: <SingleProject /> },
         { path: '/demos', element: <Product /> },
         { path: '/contact', element: <Contact /> },
         { path: '/blog', element: <Blog /> },
         { path: '/events', element: <Events /> },
+        { path: '/event/:slug', element: <EventDetails /> },
         { path: '/news', element: <News /> },
         { path: '/newsletter', element: <Newsletter /> },
         { path: '/gallery', element: <Gallery /> },
@@ -103,6 +113,12 @@ const App = () => {
 
             //project
             { path: "projects", element: <DasProjects /> },
+            { path: "projects/addProject", element: <AddProject /> },
+            { path: "project/editproject/:slug", element: <EditProject /> },
+            { path: "project/:slug", element: <DasProjectDetail /> },
+            { path: "project/:mainSlug/:slug", element: <DasSubProjectDetail /> },
+            { path: "project/:mainSlug/addProject", element: <AddSubProject /> },
+            { path: "project/:mainSlug/:slug/editProject", element: <EditSubProject /> },
 
             //events
             { path: "events", element: <DasEvent /> },
@@ -115,6 +131,11 @@ const App = () => {
             { path: "news/addnews", element: <AddNews /> },
             { path: "news/editnews/:slug", element: <EditNews /> },
             { path: "news/:slug", element: <DasNewsDetail /> },
+
+            //newsletter
+            { path: "newsletter", element: <DasNewsletter /> },
+
+            { path: "gallery", element: <DasGallery /> }
           ]
         }
       ]

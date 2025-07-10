@@ -24,7 +24,7 @@ const About = () => {
       <div className="container mx-auto px-4 md:px-8 pt-10 pb-20">
 
         <h3 className="font-quicksand font-bold text-3xl md:text-4xl text-cyan-400">Vision</h3>
-        <p className="p-8 rounded mt-5 uppercase text-2xl font-semibold tracking-wide rounded leading-9 bg-gradient-to-t from-[#37ecba] to-[#72afd3] text-white">To become a global AI R&D hub focused on empowering differently abled and underserved communities through deep research, thoughtful engineering, and real-world innovation.</p>
+        <p className="p-8 rounded mt-5 uppercase text-2xl font-semibold tracking-wide leading-9 bg-gradient-to-t from-[#37ecba] to-[#72afd3] text-white">To become a global AI R&D hub focused on empowering differently abled and underserved communities through deep research, thoughtful engineering, and real-world innovation.</p>
       </div>
 
       <div className="bg-[#f9f7f6]">
@@ -39,7 +39,7 @@ const About = () => {
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
             {
               aboutList?.map((item) => (
-                <AboutCard item={item} key={item?.id} />
+                <AboutCard key={item?.id} item={item} />
               ))
             }
           </div>

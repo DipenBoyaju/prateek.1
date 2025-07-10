@@ -49,14 +49,14 @@ const DasNews = () => {
       <div className="bg-white p-4 flex justify-between shadow rounded-md">
         <p className="text-sm text-blue-500 flex items-center">News</p>
         <div className="">
-          <button onClick={() => nav('/dashboard/news/addnews')} className="bg-blue-500 text-white text-sm p-2 px-4 rounded-sm tracking-wider flex items-center gap-1 font-quicksand cursor-pointer hover:bg-blue-600 transition-colors ease-in-out"><Plus size={16} />Add News</button>
+          <button onClick={() => nav('/dashboard/news/addnews')} className="bg-blue-500 text-white text-xs md:text-sm p-2 px-2 md:px-4 rounded-sm tracking-wider flex items-center gap-1 font-quicksand cursor-pointer hover:bg-blue-600 transition-colors ease-in-out"><Plus size={16} />Add News</button>
         </div>
       </div>
 
-      <div className="pt-5">
-        <div className="w-full overflow-x-auto shadow-md rounded-lg border border-zinc-200">
-          <table className="min-w-full bg-white rounded-lg">
-            <thead className="bg-blue-100 text-zinc-700 text-sm uppercase">
+      <div className="pt-5 w-[310px] overflow-x-auto sm:w-[650px] md:w-full">
+        <div className="min-w-[800px] shadow-md rounded-lg border border-zinc-200">
+          <table className="w-full bg-white rounded-lg overflow-hidden">
+            <thead className="bg-blue-100 text-zinc-700 text-sm uppercase border-l-4 border-blue-100">
               <tr>
                 <th className="text-left px-6 py-4">Title</th>
                 <th className="text-left px-6 py-4">Date</th>
@@ -71,9 +71,25 @@ const DasNews = () => {
                     <NewsList news={newsItem} key={newsItem._id} onDeleteClick={handleConfirmDelete} />
                   ))
                   : (
-                    <tr><td className="px-6 py-4" colSpan={4}>{
-                      isFetching ? 'Loading..' : 'No News Found.'
-                    }</td></tr>
+                    <tr>
+                      {isFetching ?
+                        <>
+                          <td className="px-6 py-4">
+                            <p className="bg-zinc-300 h-3 w-full rounded-full animate-pulse"></p>
+                          </td>
+                          <td className="px-6 py-4">
+                            <p className="bg-zinc-300 h-3 w-full rounded-full animate-pulse"></p>
+                          </td>
+                          <td className="px-6 py-4">
+                            <p className="bg-zinc-300 h-3 w-full rounded-full animate-pulse"></p>
+                          </td>
+                          <td className="px-6 py-4">
+                            <p className="bg-zinc-300 h-3 w-full rounded-full animate-pulse"></p>
+                          </td>
+                        </> :
+                        <td className="px-6 py-4" colSpan={4}>No News Found</td>
+                      }
+                    </tr>
                   )
               }
             </tbody>

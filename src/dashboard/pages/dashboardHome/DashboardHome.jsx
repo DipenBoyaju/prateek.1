@@ -7,6 +7,7 @@ import NewsEventsPanel from "./NewsEventPanel";
 import axios from "axios";
 import { baseUrl } from "../../../utils/baseUrl";
 import { useQuery } from "@tanstack/react-query";
+import ProjectsPanel from "./ProjectsPanel";
 
 
 const getAllTeam = async () => {
@@ -14,11 +15,21 @@ const getAllTeam = async () => {
   return res.data.count;
 };
 
+const getAllSubProjects = async () => {
+  const res = await axios.get(`${baseUrl}/api/subProject/getAllProjects`);
+  return res.data.count;
+}
+
 const DashboardHome = () => {
   const user = useAuthStore((state) => state.user);
-  const { data: teamCount } = useQuery({
-    queryKey: ['team-count'],
+  const { data: teamCount, isLoading } = useQuery({
+    queryKey: ['team'],
     queryFn: getAllTeam
+  });
+
+  const { data: projectCount } = useQuery({
+    queryKey: ['subProject'],
+    queryFn: getAllSubProjects
   });
 
   return (
@@ -48,8 +59,8 @@ const DashboardHome = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-5 mt-5">
-            <QuickStatCard Icon={FaProjectDiagram} title="Projects" count={1} color="blue" />
-            <QuickStatCard Icon={FaUsers} title="Team Members" count={teamCount} color="yellow" />
+            <QuickStatCard Icon={FaProjectDiagram} title="Projects" count={projectCount?.count} color="blue" isLoading={isLoading} />
+            <QuickStatCard Icon={FaUsers} title="Team Members" count={teamCount} color="yellow" isLoading={isLoading} />
             <QuickStatCard Icon={RiBloggerFill} title="Published Blogs" count={0} color="emerald" />
           </div>
         </div>
@@ -82,44 +93,8 @@ const DashboardHome = () => {
 
 
       <div className="grid md:grid-cols-3 gap-5">
-
-        <div className="col-span-3 lg:col-span-2 bg-white shadow-md rounded-2xl p-6">
-          <h3 className="text-xl font-semibold text-blue-600 mb-5">Recent Projects</h3>
-          <ul className="space-y-4 text-sm text-gray-800">
-            {[
-              {
-                icon: "🧑‍🦯",
-                title: "Smart Navigation for the Visually Impaired",
-                status: "Ongoing",
-                color: "bg-yellow-100 text-yellow-800",
-              },
-              {
-                icon: "🤝",
-                title: "AI-Based Sign Language Translator",
-                status: "Deployed",
-                color: "bg-green-100 text-green-800",
-              },
-            ].map((project, idx) => (
-              <li
-                key={idx}
-                className="flex items-start justify-between bg-gray-50 border border-gray-200 rounded-xl p-4 hover:shadow transition"
-              >
-                <div className="flex items-start gap-3">
-                  <span className="text-2xl">{project.icon}</span>
-                  <div>
-                    <p className="font-medium leading-snug">{project.title}</p>
-                    <span className={`inline-block mt-1 px-2 py-0.5 text-xs rounded-full ${project.color}`}>
-                      {project.status}
-                    </span>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-
+        <ProjectsPanel />
         <NewsEventsPanel />
-
       </div>
     </div>
   );

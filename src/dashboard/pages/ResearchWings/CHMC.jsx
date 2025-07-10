@@ -17,12 +17,17 @@ const updateResearchData = async ({ id, description }) => {
   return res.data;
 };
 
+const getProject = async (symbol) => {
+  const res = await axios.get(`${baseUrl}/api/subProject/getProjectByDivision?divisionSymbol=${symbol}`)
+  return res.data;
+}
+
 const CHMC = () => {
   const queryClient = useQueryClient();
   const [isEditing, setIsEditing] = useState(false);
   const [content, setContent] = useState("");
 
-  const { data, isLoading, isError } = useQuery({
+  const { data: research, isLoading, isError } = useQuery({
     queryKey: ["research"],
     queryFn: fetchResearchData,
   });
@@ -35,20 +40,30 @@ const CHMC = () => {
     },
   });
 
+  const symbol = research && Array.isArray(research) && research.length > 0 ? research[0].symbol : null;
+
   // Update local content state when data is loaded
   useEffect(() => {
-    if (data && data[0]) {
-      setContent(data[0].description);
+    if (research && research[0]) {
+      setContent(research[0]?.description);
     }
-  }, [data]);
+  }, [research]);
+
+  const { data: projects, isPending } = useQuery({
+    queryFn: () => getProject(symbol),
+    queryKey: ['subProject'],
+    enabled: !!symbol,
+  })
 
   if (isLoading) return <p>Loading research info...</p>;
   if (isError) return <p>Failed to load research info.</p>;
 
+  if (!research || research.length === 0) return <p>No research data found.</p>;
+
   const handleSave = () => {
     mutation.mutate(
       {
-        id: data[0]._id,
+        id: research[0]._id,
         description: content,
       },
       {
@@ -67,28 +82,39 @@ const CHMC = () => {
       <div className="bg-white p-4 flex justify-between shadow rounded-md">
         <p className="text-sm text-zinc-800/90 flex items-center gap-1">
           Research Wings <HiMiniSlash className="text-base" />
-          <span className="text-blue-500">{data[0]?.symbol}</span>
+          <span className="text-blue-500">{research[0]?.symbol}</span>
         </p>
         <button
           onClick={() => setIsEditing(true)}
-          className="bg-blue-500 text-white text-sm p-2 px-4 rounded-sm tracking-wider flex items-center gap-1 font-quicksand hover:bg-blue-600 transition"
+          className="bg-blue-500 text-white text-xs md:text-sm p-2 px-2 md:px-4 rounded-sm tracking-wider flex items-center gap-1 font-quicksand hover:bg-blue-600 transition cursor-pointer"
         >
-          <Pen size={16} /> Edit
+          <Pen className="size-3 md:size-4" /> Edit
         </button>
       </div>
 
       <div className="my-5 bg-white p-4 rounded-md ">
         <div className="">
-          <h1 className="text-2xl text-blue-600 font-semibold">{data[0]?.title}</h1>
-          <p className="pt-3 font-poppins font-light">{data[0]?.description}</p>
+          <h1 className="text-xl md:text-2xl text-blue-600 font-semibold">{research[0]?.title}</h1>
+          <p className="pt-3 font-poppins font-light text-sm">{research[0]?.description}</p>
         </div>
 
         <div className="pt-10">
           <h3 className="text-lg font-semibold uppercase text-zinc-800">Projects</h3>
-          <div className="pt-2">
-            <div className="shadow p-3 bg-blue-200 rounded-sm">
-              <p className="text-white">Inclusive Real time Sign Language Translation Platform</p>
-            </div>
+          <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+            {
+              isPending ? (
+                <p>Loading</p>
+              ) : projects?.length > 0 ?
+                projects?.map((project) => (
+                  <div className="shadow p-3 bg-indigo-500 rounded-sm" key={project._id}>
+                    <p className="text-white text-lg font-semibold tracking-wide">{project?.title}</p>
+                    <p className="text-sm font-light text-white py-4">{project?.description.slice(0, 50)}...</p>
+                    <p className="text-xs bg-white w-fit rounded-full py-0.5 px-2 mt-2 text-indigo-500 font-semibold font-quicksand">{project?.divisionSymbol}</p>
+                  </div>
+                )) : (
+                  <p>No Projects</p>
+                )
+            }
           </div>
         </div>
       </div>

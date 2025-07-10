@@ -41,7 +41,7 @@ const EventList = ({ event }) => {
 
   return (
     <tr onClick={() => nav(`/dashboard/events/${event?.slug}`)} className="hover:bg-zinc-50 transition duration-150 cursor-pointer">
-      <td className="px-6 py-4 font-semibold">{event?.title}
+      <td className={`px-6 py-4 font-semibold border-l-4 ${event?.publish ? 'border-emerald-400' : 'border-zinc-500'}`}>{event?.title}
       </td>
       <td className="px-6 py-4">{event?.location}</td>
       <td className="px-6 py-4">{formatDate(event?.startDate)}</td>

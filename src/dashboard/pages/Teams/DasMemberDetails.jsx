@@ -34,19 +34,19 @@ const DasMemberDetails = () => {
 
   return (
     <div>
-      <div className="bg-white p-4 flex justify-between shadow mx-4 mt-4 rounded-md">
-        <p className="text-sm text-zinc-800/90 flex items-center">Team <HiMiniSlash className="text-base" /> <span className="text-blue-500 ">{department}</span></p>
+      <div className="bg-white p-4 flex justify-between shadow md:mx-4 md:mt-4 rounded-md">
+        <p className=" text-xs md:text-sm text-zinc-800/90 flex items-center">Team <HiMiniSlash className="text-base" /> <span className="text-blue-500 ">{department}</span></p>
         <div className="flex items-center gap-3">
-          <button onClick={() => nav(`/dashboard/team/editMember/${slug}`)} className="bg-blue-500 text-white text-sm p-2 px-4 rounded-sm tracking-wider flex items-center gap-1 font-quicksand cursor-pointer hover:bg-blue-600 transition-colors ease-in-out"><Pencil size={16} />Edit</button>
-          <button onClick={() => setShowConfirmPopup("true")} className="bg-red-400 text-white text-sm p-2 px-4 rounded-sm tracking-wider flex items-center gap-1 font-quicksand cursor-pointer hover:bg-red-500 transition-colors ease-in-out"><Trash size={16} />Delete</button>
+          <button onClick={() => nav(`/dashboard/team/editMember/${slug}`)} className="bg-blue-500 text-white text-sm p-2 px-2 md:px-4 rounded-sm tracking-wider flex items-center gap-1 font-quicksand cursor-pointer hover:bg-blue-600 transition-colors ease-in-out"><Pencil size={16} /><span className="md:block hidden">Edit</span></button>
+          <button onClick={() => setShowConfirmPopup("true")} className="bg-red-400 text-white text-sm p-2 px-2 md:px-4 rounded-sm tracking-wider flex items-center gap-1 font-quicksand cursor-pointer hover:bg-red-500 transition-colors ease-in-out"><Trash size={16} /><span className="hidden md:block">Delete</span></button>
         </div>
       </div>
       {
         showConfirmPopup && <DeleteConfirmPopUp id={member?._id} setShowConfirmPopup={setShowConfirmPopup} />
       }
-      <div className="px-4 py-6 bg-white my-6 mx-4 rounded-lg">
-        <div className="grid md: grid-cols-3 gap-8">
-          <div className="md:col-span-1 rounded-lg overflow-hidden h-[50vh]">
+      <div className="px-4 py-4 md:py-6 bg-white my-6 md:mx-4 rounded-lg">
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="md:col-span-1 rounded-lg overflow-hidden md:h-[50vh]">
             <div className="relative">
               <img src={member?.image} alt="" className="object-cover h-full w-full" />
               {
@@ -62,7 +62,7 @@ const DasMemberDetails = () => {
             }
             <div className="">
               <p className="font-semibold text-zinc-800 pt-2 text-lg">Bio</p>
-              <p className="font-light">{member?.bio}</p>
+              <p className="font-light text-justify md:text-left">{member?.bio}</p>
             </div>
             <div className="mt-5">
               <div className="flex gap-2">

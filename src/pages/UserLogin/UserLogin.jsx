@@ -20,7 +20,7 @@ export default function UserLogin() {
     resolver: zodResolver(loginSchema),
   });
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: async (data) => {
       const res = await axios.post(`${baseUrl}/api/login`, data, { withCredentials: true });
       return res.data;
@@ -63,10 +63,10 @@ export default function UserLogin() {
 
           <button
             type="submit"
-            disabled={isLoading}
+            disabled={isPending}
             className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700 cursor-pointer"
           >
-            {isLoading ? 'Logging in...' : 'Login'}
+            {isPending ? 'Logging in...' : 'Login'}
           </button>
         </form>
       </div>

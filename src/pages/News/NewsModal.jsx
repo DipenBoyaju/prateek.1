@@ -1,21 +1,62 @@
-import { X } from "lucide-react"
+import { X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const NewsModal = ({ news, onClose }) => {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    // Trigger fade-in when mounted
+    setShow(true);
+  }, []);
+
+  const formatDate = (dateString) => {
+    if (!dateString) return '--';
+    const date = new Date(dateString);
+    return date.toLocaleString('en-US', {
+      dateStyle: 'long',
+      timeStyle: 'short',
+    });
+  };
+
+  const fullDate = formatDate(news?.createdAt);
+
   return (
-    <div className="fixed inset-0 backdrop-blur-xl flex items-center justify-center z-50">
-      <div className="bg-white max-w-2xl w-full p-6 rounded-xl shadow-lg relative">
+    <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
+      {/* Animated container */}
+      <div
+        className={`
+          bg-white max-w-3xl w-full p-8 rounded-xl shadow-xl relative transform transition-all duration-300
+          ${show ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
+        `}
+      >
+        {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-2 right-3 text-zinc-500 hover:text-red-500 pt-4 text-xl cursor-pointer"
+          className="absolute top-4 right-4 text-zinc-500 hover:text-red-500 transition"
         >
-          <X strokeWidth={1.25} />
+          <X strokeWidth={1.5} size={24} />
         </button>
-        <h2 className="text-xl font-bold mb-2">{news.title}</h2>
-        <p className="text-sm text-zinc-600 mb-4">{news.date.day} {news.date.month}</p>
-        <p className="text-zinc-700">{news.details}</p>
+
+        {/* Title & Date */}
+        <div className="mb-4">
+          <h2 className="text-xl md:text-3xl font-bold text-zinc-800 mb-1">
+            {news.title}
+          </h2>
+          <p className="text-xs text-zinc-500">{fullDate}</p>
+        </div>
+
+        {/* Description */}
+        {news.description && (
+          <p className="text-zinc-600 mb-4">{news.description}</p>
+        )}
+
+        {/* Details */}
+        {news.details && (
+          <p className="text-zinc-700 leading-relaxed">{news.details}</p>
+        )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NewsModal
+export default NewsModal;

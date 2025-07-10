@@ -24,6 +24,7 @@ const categories = ["Staff", "Intern", "Consultant"];
 const socialOptions = ["linkedin", "github", "googleScholar", "website", "researchGate"];
 
 const TeamForm = ({ onSubmit, defaultValues = {}, isEditMode = false, loading }) => {
+  const nav = useNavigate();
   const navigate = useNavigate();
   const {
     register,
@@ -182,7 +183,7 @@ const TeamForm = ({ onSubmit, defaultValues = {}, isEditMode = false, loading })
             <label className='text-sm text-zinc-700 tracking-wide font-semibold'>Social Links</label>
             <div>
               {fields.map((item, index) => (
-                <div key={item.id} className="flex items-center gap-2 mb-2">
+                <div key={item.id} className="flex items-center flex-wrap gap-2 mb-2">
                   <select {...register(`socials.${index}.platform`)} className="p-2 border border-zinc-200 rounded-md focus:outline-none text-zinc-500">
                     <option value="">Select</option>
                     {socialOptions.map((option) => (
@@ -201,13 +202,16 @@ const TeamForm = ({ onSubmit, defaultValues = {}, isEditMode = false, loading })
             <button type="button" onClick={() => append({ platform: '', url: '' })} className="bg-blue-600 text-sm py-1 px-4 rounded-sm text-white cursor-pointer">+ Add</button>
           </div>
         </div>
-        <button
-          type="submit"
-          className={`py-2 px-4 rounded-sm text-white ${isEditMode ? 'bg-emerald-500' : 'bg-blue-600'
-            }`}
-        >
-          {isEditMode ? "Save" : "Add Member"}
-        </button>
+        <div className="flex items-center justify-between gap-5 flex-col md:flex-row">
+          <button
+            type="submit"
+            className={`py-2 px-4 rounded-sm text-white w-full cursor-pointer ${isEditMode ? 'bg-emerald-500' : 'bg-blue-600'
+              }`}
+          >
+            {isEditMode ? "Save" : "Add Member"}
+          </button>
+          <p className='py-2 px-4 rounded-sm text-white w-full bg-zinc-500 cursor-pointer text-center' onClick={() => nav(-1)}>Cancel</p>
+        </div>
 
       </form>
     </div>

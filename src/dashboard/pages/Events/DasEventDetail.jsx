@@ -16,6 +16,11 @@ const deleteEventById = async (id) => {
   return res.data;
 };
 
+const publishStatus = async ({ id, publish }) => {
+  const res = await axios.patch(`${baseUrl}/api/events/publishStatus/${id}`, { publish });
+  return res.data;
+}
+
 const formatDate = (dateString) => {
   const date = new Date(dateString)
   return date.toLocaleDateString('en-US', {
@@ -40,7 +45,7 @@ const DasEventDetail = () => {
   const nav = useNavigate();
   const { slug } = useParams();
   const queryClient = useQueryClient();
-  const { data: event, isPending } = useQuery({
+  const { data: event, isLoading } = useQuery({
     queryFn: () => getEventBySlug(slug),
     queryKey: ['event'],
     enabled: !!slug,
@@ -58,18 +63,34 @@ const DasEventDetail = () => {
     },
   });
 
+  const publishMutation = useMutation({
+    mutationFn: publishStatus,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['event'] });
+      toast.success('Publish status updated!');
+    },
+    onError: (error) => {
+      toast.error('Failed to update publish status: ' + error.message);
+    },
+  });
+
   const handleDelete = () => {
     mutation.mutate(event._id);
     nav('/dashboard/events')
   }
+
+  if (isLoading) return <p>Loading Event</p>
 
   return (
     <div>
       <div className="flex justify-between items-center">
         <button className="text-sm bg-blue-500 text-white flex items-center gap-1 py-1 px-2 rounded-sm cursor-pointer" onClick={() => nav(-1)}><ArrowLeft size={14} />Back</button>
         <div className="flex items-center gap-2">
-          <button onClick={() => nav(`/dashboard/events/updateEvent/${slug}`)} className="bg-blue-500 text-white text-sm p-2 px-4 rounded-sm tracking-wider flex items-center gap-1 font-quicksand cursor-pointer hover:bg-blue-600 transition-colors ease-in-out"><Pen size={16} />Edit</button>
-          <button onClick={() => setShowPopup(true)} className="bg-red-400 text-white text-sm p-2 px-4 rounded-sm tracking-wider flex items-center gap-1 font-quicksand cursor-pointer hover:bg-red-500 transition-colors ease-in-out"><Trash size={16} />Delete</button>
+          <button onClick={() => {
+            publishMutation.mutate({ id: event._id, publish: !event.publish });
+          }} className={`${event?.publish ? 'bg-zinc-500' : 'bg-emerald-500'} text-white text-sm p-2 px-2 md:px-4 rounded-sm tracking-wider flex items-center gap-1 font-quicksand cursor-pointer hover:emerald-blue-600 transition-colors ease-in-out`}>{event?.publish ? 'Published' : 'Publish'}</button>
+          <button onClick={() => nav(`/dashboard/events/updateEvent/${slug}`)} className="bg-blue-500 text-white text-sm p-2 px-2 md:px-4 rounded-sm tracking-wider flex items-center gap-1 font-quicksand cursor-pointer hover:bg-blue-600 transition-colors ease-in-out"><Pen size={16} /><span className="hidden md:block">Edit</span></button>
+          <button onClick={() => setShowPopup(true)} className="bg-red-400 text-white text-sm p-2 px-2 md:px-4 rounded-sm tracking-wider flex items-center gap-1 font-quicksand cursor-pointer hover:bg-red-500 transition-colors ease-in-out"><Trash size={16} /><span className="hidden md:block">Delete</span></button>
         </div>
       </div>
       <div className="mt-5 bg-white p-5 rounded-lg h-full">

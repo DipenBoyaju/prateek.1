@@ -10,7 +10,7 @@ const TeamCards = ({ item }) => {
 
   return (
     <article className="relative rounded-xl overflow-hidden shadow-lg group">
-      <Link to={`/team/${item.id}`} className="block">
+      <Link to={`/team/${item.slug}`} className="block">
         <img
           src={item.image || defaultImg}
           alt={item.name}
@@ -23,12 +23,12 @@ const TeamCards = ({ item }) => {
       {/* Info Box */}
       <div className="absolute bottom-0 left-0 w-full p-4 text-white z-30 backdrop-blur-lg shadow-lg border-t border-white/20 rounded-b-xl">
         <h3 className="text-white font-semibold">{item.name}</h3>
-        <p className="text-sm opacity-90">{item.role}</p>
+        <p className="text-sm opacity-90">{item.designation}</p>
 
         <div className="mt-2 flex items-center gap-3 text-sm">
-          {item?.linkedin && (
+          {item?.socials.linkedin && (
             <a
-              href={item.linkedin}
+              href={item?.socials.linkedin}
               aria-label="LinkedIn profile"
               className="text-white"
               target="_blank"
@@ -37,9 +37,9 @@ const TeamCards = ({ item }) => {
               <FaLinkedin className="size-4 hover:text-zinc-200" />
             </a>
           )}
-          {item.googleScholar && (
+          {item?.socials.googleScholar && (
             <a
-              href={item.googleScholar}
+              href={item?.socials.googleScholar}
               aria-label="Google Scholar profile"
               target="_blank"
               rel="noreferrer"
@@ -47,9 +47,9 @@ const TeamCards = ({ item }) => {
               <FaGoogleScholar className="size-4 hover:text-zinc-200" />
             </a>
           )}
-          {item.researchGate && (
+          {item?.socials.researchGate && (
             <a
-              href={item.researchGate}
+              href={item?.socials.researchGate}
               aria-label="ResearchGate profile"
               target="_blank"
               rel="noreferrer"
@@ -57,9 +57,9 @@ const TeamCards = ({ item }) => {
               <SiResearchgate className="size-4 hover:text-zinc-200" />
             </a>
           )}
-          {item.github && (
+          {item?.socials.github && (
             <a
-              href={item.github}
+              href={item?.socials.github}
               aria-label="GitHub profile"
               target="_blank"
               rel="noreferrer"
@@ -67,9 +67,9 @@ const TeamCards = ({ item }) => {
               <FaGithub className="size-4 hover:text-zinc-200" />
             </a>
           )}
-          {item.website && (
+          {item?.socials.website && (
             <a
-              href={item.website}
+              href={item?.socials.website}
               aria-label="Personal website"
               target="_blank"
               rel="noreferrer"

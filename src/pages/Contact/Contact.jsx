@@ -1,7 +1,6 @@
 import { MdAlternateEmail, MdSupportAgent } from "react-icons/md"
 import Title from "../../components/Title"
 import ContactForm from "./ContactForm"
-import NewsLetter from "../../components/NewsLetter"
 import { Facebook, Instagram, Linkedin, Mail, PhoneCall } from "lucide-react"
 
 const Contact = () => {
@@ -33,8 +32,8 @@ const Contact = () => {
                 <p className="text-lg font-bold font-quicksand text-zinc-800 mt-3">Social Media</p>
                 <div className="flex items-center gap-3 mt-2">
                   <a href="https://www.facebook.com/profile.php?id=100091857246327&_rdr" className="bg-zinc-200 p-2 rounded-sm text-[#1877F2] hover:text-white hover:bg-[#1877F2] transition-colors ease-linear" target="_blank"><Facebook strokeWidth={1.5} size={18} /></a>
-                  {/* <a href="" className="bg-zinc-200 p-2 rounded-sm text-[#FD1D1D] hover:text-white hover:bg-[#FD1D1D] transition-colors ease-linear"><Instagram strokeWidth={1.5} size={18} /></a>
-                  <a href="" className="bg-zinc-200 p-2 rounded-sm text-[#0077B5] hover:text-white hover:bg-[#0077B5] transition-colors ease-linear"><Linkedin strokeWidth={1.5} size={18} /></a> */}
+                  {/* <a href="" className="bg-zinc-200 p-2 rounded-sm text-[#FD1D1D] hover:text-white hover:bg-[#FD1D1D] transition-colors ease-linear"><Instagram strokeWidth={1.5} size={18} /></a>*/}
+                  <a href="https://www.linkedin.com/company/prateek-innovations/" className="bg-zinc-200 p-2 rounded-sm text-[#0077B5] hover:text-white hover:bg-[#0077B5] transition-colors ease-linear"><Linkedin strokeWidth={1.5} size={18} /></a>
                 </div>
               </div>
             </div>

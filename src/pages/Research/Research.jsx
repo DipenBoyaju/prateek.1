@@ -14,7 +14,7 @@ const Research = () => {
   const { data, isPending } = useQuery({
     queryKey: ['research'],
     queryFn: fetchResearchData,
-    staleTime: 10 * 60 * 1000,
+    staleTime: 1000 * 60 * 60,
   });
 
   return (

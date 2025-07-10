@@ -1,4 +1,4 @@
-import { ChevronDown, FlaskConical, LayoutDashboard, Newspaper, Users } from "lucide-react";
+import { ChevronDown, FlaskConical, Images, LayoutDashboard, Newspaper, Users } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { LiaProjectDiagramSolid } from "react-icons/lia";
@@ -209,8 +209,25 @@ const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
                       News
                     </NavLink>
                   </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/newsletter"
+                      className={({ isActive }) =>
+                        `${isActive ? activeClass : normalClass} block pl-6 py-2 w-full`} onClick={handleNavLinkClick}>
+                      Newsletter
+                    </NavLink>
+                  </li>
                 </ul>
               )}
+            </li>
+
+            <li className="">
+              <NavLink
+                to="/dashboard/gallery" end
+                className={({ isActive }) => `${isActive ? activeClass : normalClass} flex items-center gap-2 px-4 py-3`} onClick={handleNavLinkClick}>
+                <Images className="size-5" />
+                Gallery
+              </NavLink>
             </li>
 
             {/* <li>

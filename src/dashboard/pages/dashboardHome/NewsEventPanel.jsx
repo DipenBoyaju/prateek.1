@@ -35,15 +35,19 @@ const NewsEventsPanel = () => {
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
   );
 
-  if (loadingEvents || loadingNews) return <p>Loading...</p>;
-
   return (
     <div className="col-span-3 lg:col-span-1 bg-white shadow-md rounded-2xl pb-5">
       <h3 className="text-xl font-semibold text-blue-600 mb-5 px-6 pt-6">News & Events</h3>
-      <ul className="space-y-4 text-sm text-gray-800 h-[60vh] overflow-auto px-6">
+      <ul className="space-y-4 text-sm text-gray-800 max-h-[60vh] overflow-auto px-6">
         {
           loadingEvents || loadingNews ? (
-            <p>Loading</p>
+            <li className="border border-gray-200 rounded-xl p-4 bg-gray-50 hover:shadow transition space-y-3">
+              <div className='w-full bg-zinc-400 h-3 rounded-full animate-pulse'></div>
+              <div className="flex justify-between items-center">
+                <div className="w-[6vw] bg-zinc-300 h-2 rounded-full animate-pulse"></div>
+                <div className="w-[5vw] bg-blue-200 h-2 rounded-full animate-pulse"></div>
+              </div>
+            </li>
           ) : combined?.slice(0, 5).map((item, i) => (
             <li
               key={i}

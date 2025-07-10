@@ -48,7 +48,7 @@ const Header = ({ toggleSidebar, isSidebarOpen }) => {
               className="size-9 rounded-full"
             />
             <div className="">
-              <p className="font-semibold tracking-wider text-sm text-zinc-800">{user?.username}</p>
+              <p className="font-semibold tracking-wider text-sm text-zinc-800 capitalize">{user?.username}</p>
               <p className="text-xs font-light text-lightGray flex tracking-wider items-center ">Admin <ChevronDown size={10} /></p>
             </div>
           </div>

@@ -114,10 +114,10 @@ const EventForm = ({ onSubmit, defaultValues = {}, isEditMode = false, loading }
   }, [defaultValues, reset]);
 
   const internalSubmit = async (data) => {
-    if (!imageUrl) {
-      toast.error("Please upload an image.");
-      return false;
-    }
+    // if (!imageUrl) {
+    //   toast.error("Please upload an image.");
+    //   return false;
+    // }
     const submissionData = { ...data, image: imageUrl };
     const result = await onSubmit(submissionData);
     navigate(-1)
@@ -145,8 +145,8 @@ const EventForm = ({ onSubmit, defaultValues = {}, isEditMode = false, loading }
         </div>
 
         {/* Dates & Time */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="grid grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             <div>
               <label className="text-sm text-zinc-700 tracking-wide font-semibold">Start Date</label>
               <input
@@ -275,13 +275,16 @@ const EventForm = ({ onSubmit, defaultValues = {}, isEditMode = false, loading }
         </div>
 
         {/* Submit Button */}
-        <button
-          type="submit"
-          disabled={loading || uploading}
-          className={`${isEditMode ? 'bg-emerald-500 hover:bg-emerald-600' : 'bg-blue-600 hover:bg-blue-700'} text-white px-6 py-2 rounded transition w-full`}
-        >
-          {loading ? "Please wait..." : isEditMode ? 'Update Event' : 'Create Event'}
-        </button>
+        <div className="flex items-center justify-between gap-5 flex-col md:flex-row">
+          <button
+            type="submit"
+            disabled={loading || uploading}
+            className={`${isEditMode ? 'bg-emerald-500 hover:bg-emerald-600' : 'bg-blue-600 hover:bg-blue-700'} text-white px-6 py-2 rounded transition w-full`}
+          >
+            {loading ? "Please wait..." : isEditMode ? 'Update Event' : 'Create Event'}
+          </button>
+          <p className='py-2 px-4 rounded-sm text-white w-full bg-zinc-500 cursor-pointer text-center' onClick={() => navigate(-1)}>Cancel</p>
+        </div>
       </form>
     </div>
   );

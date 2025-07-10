@@ -1,15 +1,15 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import { useState } from "react";
-import Sidebar from "../components/Sidebar";
 import Footer from "./Footer";
 import ScrollToTop from "./ScrollToTop";
+import Sidebar from "./Sidebar";
 
 const DashboardLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
-    <div className="flex min-h-screen bg-[#f5f6f7]">
+    <div className="flex min-h-screen bg-white md:bg-[#f5f6f7]">
       {/* Sidebar (visible on md+ and toggled on small screens) */}
       <Sidebar isOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
 

@@ -14,9 +14,9 @@ const DevelopmentTeam = () => {
   return (
     <div>
       <div className="bg-white p-4 flex justify-between shadow rounded-md">
-        <p className="text-sm text-zinc-800/90 flex items-center">Team <HiMiniSlash className="text-base" /> <span className="text-blue-500 ">Management</span></p>
+        <p className="text-sm text-zinc-800/90 flex items-center">Team <HiMiniSlash className="text-base" /> <span className="text-blue-500 ">Development</span></p>
         <div className="">
-          <button onClick={() => nav('/dashboard/team/addmember')} className="bg-blue-500 text-white text-sm p-2 px-4 rounded-sm tracking-wider flex items-center gap-1 font-quicksand cursor-pointer hover:bg-blue-600 transition-colors ease-in-out"><Plus size={16} />Add Member</button>
+          <button onClick={() => nav('/dashboard/team/addmember')} className="bg-blue-500 text-white text-xs md:text-sm p-2 px-2 md:px-4 rounded-sm tracking-wider flex items-center gap-1 font-quicksand cursor-pointer hover:bg-blue-600 transition-colors ease-in-out"><Plus size={16} />Add Member</button>
         </div>
       </div>
       <div className="py-4 flex items-center justify-between">
@@ -37,8 +37,8 @@ const DevelopmentTeam = () => {
               <DasTeamCard key={member?._id} member={member} />
             ))
           ) : (
-            <div className="col-span-full">
-              <div className="overflow-x-auto bg-white rounded-2xl shadow-xl ring-1 ring-zinc-200">
+            <div className="col-span-full overflow-x-auto">
+              <div className="min-w-[1000px] divide-y divide-zinc-200 bg-white rounded-2xl shadow-xl ring-1 ring-zinc-200">
                 <table className="min-w-full divide-y divide-zinc-200">
                   <thead className="bg-blue-100">
                     <tr>
