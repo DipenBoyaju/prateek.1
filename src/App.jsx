@@ -43,7 +43,6 @@ import AddNews from "./dashboard/pages/News/AddNews"
 import EditNews from "./dashboard/pages/News/EditNews"
 import DasNewsDetail from "./dashboard/pages/News/DasNewsDetail"
 import DasEventDetail from "./dashboard/pages/Events/DasEventDetail"
-import Profile from "./dashboard/pages/Profile/Profile"
 import EditEvent from "./dashboard/pages/Events/EditEvent"
 import DasGallery from "./dashboard/pages/gallery/DasGallery"
 import DasNewsletter from "./dashboard/pages/newsletter/DasNewsletter"
@@ -54,6 +53,7 @@ import DasSubProjectDetail from "./dashboard/pages/Projects/SubProject/DasSubPro
 import AddSubProject from "./dashboard/pages/Projects/SubProject/AddSubProject"
 import EditSubProject from "./dashboard/pages/Projects/SubProject/EditSubProject"
 import EventDetails from "./pages/Events/EventDetails"
+import Profile from "./dashboard/pages/profile/Profile"
 
 const App = () => {
 
