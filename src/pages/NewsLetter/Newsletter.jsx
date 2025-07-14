@@ -12,10 +12,14 @@ const fetchNewsletter = async () => {
 }
 
 const Newsletter = () => {
-  const { data: newsletters, isLoading } = useQuery({
+  const { data, isLoading } = useQuery({
     queryFn: fetchNewsletter,
     queryKey: ['newsletter']
   })
+
+  const newsletter = Array.isArray(data) ? data : [];
+
+  const publishedNewsletter = newsletter.filter((e) => e.publish) || [];
 
   return (
     <div>
@@ -27,9 +31,9 @@ const Newsletter = () => {
             <div className="w-full h-full flex items-center justify-center">
               <Mosaic color="#0096FF" size="medium" text="" textColor="" />
             </div>
-          ) : newsletters?.length > 0 ? (
+          ) : publishedNewsletter?.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {newsletters.map((newsletter) => (
+              {publishedNewsletter.map((newsletter) => (
                 <NewsletterCard key={newsletter._id} newsletter={newsletter} />
               ))}
             </div>
