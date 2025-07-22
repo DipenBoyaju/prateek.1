@@ -60,7 +60,7 @@ const NewsletterViewer = ({ newsletter, onClose }) => {
             src={pdfUrl}
             title={newsletter.title}
             className="w-full h-full border rounded"
-          />
+            allowFullScreen />
         ) : (
           <p className="text-center text-gray-500">No preview available.</p>
         )}

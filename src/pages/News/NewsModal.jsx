@@ -25,19 +25,18 @@ const NewsModal = ({ news, onClose }) => {
       {/* Animated container */}
       <div
         className={`
-          bg-white max-w-3xl w-full p-8 rounded-xl shadow-xl relative transform transition-all duration-300
+          bg-white max-w-3xl w-full p-8 rounded-xl shadow-xl relative transform transition-all duration-300 
           ${show ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
         `}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-zinc-500 hover:text-red-500 transition"
+          className="absolute top-4 right-4 text-zinc-500 hover:text-red-500 transition cursor-pointer"
         >
           <X strokeWidth={1.5} size={24} />
         </button>
 
-        {/* Title & Date */}
         <div className="mb-4">
           <h2 className="text-xl md:text-3xl font-bold text-zinc-800 mb-1">
             {news.title}
@@ -45,15 +44,12 @@ const NewsModal = ({ news, onClose }) => {
           <p className="text-xs text-zinc-500">{fullDate}</p>
         </div>
 
-        {/* Description */}
-        {news.description && (
-          <p className="text-zinc-600 mb-4">{news.description}</p>
-        )}
-
-        {/* Details */}
-        {news.details && (
-          <p className="text-zinc-700 leading-relaxed">{news.details}</p>
-        )}
+        {/* Scrollable content */}
+        <div className="overflow-y-auto max-h-[70vh] pr-2">
+          {news.description && (
+            <p className="text-zinc-600 leading-relaxed font-light">{news.description}</p>
+          )}
+        </div>
       </div>
     </div>
   );

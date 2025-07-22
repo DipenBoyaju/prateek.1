@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom";
+import { Loader } from 'lucide-react'
 
 const NewsForm = ({ onSubmit, defaultValues = {}, isEditMode = false, loading }) => {
   const nav = useNavigate()
@@ -52,7 +53,9 @@ const NewsForm = ({ onSubmit, defaultValues = {}, isEditMode = false, loading })
             disabled={loading}
             className={`py-2 px-4 rounded-sm cursor-pointer w-full text-white ${isEditMode ? 'bg-emerald-500' : 'bg-blue-600'} ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
-            {loading ? 'Submitting...' : isEditMode ? "Save" : "Add News"}
+            {loading ? <div className="flex justify-center">
+              <Loader className="animate-spin" />
+            </div> : isEditMode ? "Save" : "Add News"}
           </button>
           <p className='py-2 px-4 rounded-sm text-white w-full bg-zinc-500 cursor-pointer text-center' onClick={() => nav(-1)}>Cancel</p>
         </div>

@@ -54,6 +54,9 @@ import AddSubProject from "./dashboard/pages/Projects/SubProject/AddSubProject"
 import EditSubProject from "./dashboard/pages/Projects/SubProject/EditSubProject"
 import EventDetails from "./pages/Events/EventDetails"
 import Profile from "./dashboard/pages/profile/Profile"
+import DasPublication from "./dashboard/pages/publication/DasPublication"
+import AddPublication from "./dashboard/pages/publication/AddPublication"
+import EditPublication from "./dashboard/pages/publication/EditPublication"
 
 const App = () => {
 
@@ -131,6 +134,11 @@ const App = () => {
             { path: "news/addnews", element: <AddNews /> },
             { path: "news/editnews/:slug", element: <EditNews /> },
             { path: "news/:slug", element: <DasNewsDetail /> },
+
+            //publication
+            { path: "publications", element: <DasPublication /> },
+            { path: "publications/addPublication", element: <AddPublication /> },
+            { path: "publications/editPublication/:slug", element: <EditPublication /> },
 
             //newsletter
             { path: "newsletter", element: <DasNewsletter /> },

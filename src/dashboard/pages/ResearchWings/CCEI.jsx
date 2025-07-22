@@ -18,7 +18,7 @@ const updateResearchData = async ({ id, description }) => {
 };
 
 const getProject = async (symbol) => {
-  const res = await axios.get(`${baseUrl}/api/subProject/getProjectByDivision?divisionSymbol=${symbol}`)
+  const res = await axios.get(`${baseUrl}/api/project/getProjectByDivision?divisionSymbol=${symbol}`)
   return res.data;
 }
 

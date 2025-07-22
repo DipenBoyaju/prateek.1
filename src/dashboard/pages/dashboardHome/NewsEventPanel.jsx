@@ -48,31 +48,34 @@ const NewsEventsPanel = () => {
                 <div className="w-[5vw] bg-blue-200 h-2 rounded-full animate-pulse"></div>
               </div>
             </li>
-          ) : combined?.slice(0, 5).map((item, i) => (
-            <li
-              key={i}
-              className="border border-gray-200 rounded-xl p-4 bg-gray-50 hover:shadow transition"
-            >
-              <p className="font-medium leading-snug">{item.type === 'Event' ? '📢' : '📰'} {item.title}</p>
-              <div className="flex justify-between items-center mt-2 text-xs text-gray-500">
-                <span>
-                  {new Date(item.createdAt).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric',
-                  })}
-                </span>
-                <span
-                  className={`px-2 py-0.5 rounded-full font-semibold ${item.type === 'Event'
-                    ? 'bg-blue-100 text-blue-700'
-                    : 'bg-green-100 text-green-700'
-                    }`}
-                >
-                  {item.type}
-                </span>
-              </div>
-            </li>
-          ))
+          ) : combined?.length < 0 ?
+            combined?.slice(0, 5).map((item, i) => (
+              <li
+                key={i}
+                className="border border-gray-200 rounded-xl p-4 bg-gray-50 hover:shadow transition"
+              >
+                <p className="font-medium leading-snug">{item.type === 'Event' ? '📢' : '📰'} {item.title}</p>
+                <div className="flex justify-between items-center mt-2 text-xs text-gray-500">
+                  <span>
+                    {new Date(item.createdAt).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                    })}
+                  </span>
+                  <span
+                    className={`px-2 py-0.5 rounded-full font-semibold ${item.type === 'Event'
+                      ? 'bg-blue-100 text-blue-700'
+                      : 'bg-green-100 text-green-700'
+                      }`}
+                  >
+                    {item.type}
+                  </span>
+                </div>
+              </li>
+            )) : (
+              <p className='text-center text-zinc-500'>No News & Events</p>
+            )
         }
       </ul>
     </div>

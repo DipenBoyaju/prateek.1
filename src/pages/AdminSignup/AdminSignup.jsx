@@ -50,7 +50,7 @@ export default function AdminSignup() {
   };
 
   return (
-    <div className="py-20 bg-zinc-300">
+    <div className="py-20 bg-blue-200">
       <div className="max-w-md mx-auto mt-10 p-6 rounded-lg shadow-lg bg-white">
         <h2 className="text-2xl font-semibold mb-4 text-zinc-800">Create Admin</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">

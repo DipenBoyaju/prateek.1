@@ -21,14 +21,26 @@ const DevelopmentTeam = () => {
       </div>
       <div className="py-4 flex items-center justify-between">
         <h2 className="text-xl font-bold font-quicksand text-blue-600">Team Members</h2>
-        <div className="flex items-center bg-white">
-          <button className={`${cardLayout ? 'bg-blue-500 rounded-sm text-white' : 'bg-transparent text-zinc-800'} p-1.5 cursor-pointer`} onClick={() => setCardLayout(true)}>
-            <Grid2x2 size={20} />
-          </button>
-          <button className={`${!cardLayout ? 'bg-blue-500 rounded-sm text-white' : 'bg-transparent text-zinc-800'} p-1.5 cursor-pointer `} onClick={() => setCardLayout(false)}>
-            <AlignJustify size={18} />
-          </button>
-        </div>
+        {
+          team?.length > 0 && (
+            <div className="flex items-center bg-white">
+              <button
+                className={`${cardLayout ? 'bg-blue-500 rounded-sm text-white' : 'bg-transparent text-zinc-800'
+                  } p-1.5 cursor-pointer`}
+                onClick={() => setCardLayout(true)}
+              >
+                <Grid2x2 size={20} />
+              </button>
+              <button
+                className={`${!cardLayout ? 'bg-blue-500 rounded-sm text-white' : 'bg-transparent text-zinc-800'
+                  } p-1.5 cursor-pointer`}
+                onClick={() => setCardLayout(false)}
+              >
+                <AlignJustify size={18} />
+              </button>
+            </div>
+          )
+        }
       </div>
       <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
         {

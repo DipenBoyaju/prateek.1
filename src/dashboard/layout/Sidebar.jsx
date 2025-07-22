@@ -1,4 +1,4 @@
-import { ChevronDown, FlaskConical, Images, LayoutDashboard, Newspaper, Users } from "lucide-react";
+import { ChevronDown, FlaskConical, Images, LayoutDashboard, LibraryBig, Newspaper, Users } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { LiaProjectDiagramSolid } from "react-icons/lia";
@@ -223,45 +223,21 @@ const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
 
             <li className="">
               <NavLink
+                to="/dashboard/publications" end
+                className={({ isActive }) => `${isActive ? activeClass : normalClass} flex items-center gap-2 px-4 py-3`} onClick={handleNavLinkClick}>
+                <LibraryBig className="size-5" />
+                Publications
+              </NavLink>
+            </li>
+
+            <li className="">
+              <NavLink
                 to="/dashboard/gallery" end
                 className={({ isActive }) => `${isActive ? activeClass : normalClass} flex items-center gap-2 px-4 py-3`} onClick={handleNavLinkClick}>
                 <Images className="size-5" />
                 Gallery
               </NavLink>
             </li>
-
-            {/* <li>
-            <button
-              onClick={() => toggleSubMenu("users")}
-              className="w-full text-left font-medium"
-            >
-              User Management
-            </button>
-            {openMenu === "users" && (
-              <ul className="ml-4 space-y-1 text-sm">
-                <li>
-                  <NavLink
-                    to="/dashboard/roles"
-                    className={({ isActive }) =>
-                      isActive ? activeClass : normalClass
-                    }
-                  >
-                    Roles
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/dashboard/users"
-                    className={({ isActive }) =>
-                      isActive ? activeClass : normalClass
-                    }
-                  >
-                    Users
-                  </NavLink>
-                </li>
-              </ul>
-            )}
-          </li> */}
           </ul>
         </nav>
       </div>

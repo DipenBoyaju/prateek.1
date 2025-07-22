@@ -35,7 +35,7 @@ const EditSubProject = () => {
       nav(- 1)
     },
     onError: () => {
-      toast.error('Failed to update news')
+      toast.error('Failed to update project')
     },
   })
 

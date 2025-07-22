@@ -34,7 +34,6 @@ const EditEvent = () => {
       toast.success('News updated successfully!')
       queryClient.invalidateQueries({ queryKey: ['events'] }); // Invalidate event list
       queryClient.invalidateQueries({ queryKey: ['events', slug] }); // Invalidate single event
-      nav(- 1)
     },
     onError: () => {
       toast.error('Failed to update news')

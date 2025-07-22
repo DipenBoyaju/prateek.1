@@ -18,7 +18,6 @@ const AddEvent = () => {
     onSuccess: () => {
       toast.success('News added successfully!');
       queryClient.invalidateQueries(['events']);
-      nav(-1);
     },
     onError: () => {
       toast.error('Failed to add news')

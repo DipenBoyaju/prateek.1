@@ -167,8 +167,9 @@ const EventDetails = () => {
               </div>
             )}
 
+
             <article
-              className="prose prose-blue max-w-5xl leading-relaxed font-light text-gray-800"
+              className="prose prose-blue max-w-5xl leading-relaxed font-light text-gray-800 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5"
               dangerouslySetInnerHTML={{ __html: event?.description }}
             />
 

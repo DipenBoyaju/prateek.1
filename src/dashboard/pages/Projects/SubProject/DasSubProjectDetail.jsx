@@ -99,23 +99,24 @@ const DasSubProjectDetail = () => {
                 className="p-3 bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow flex flex-col border border-zinc-800/10"
               >
                 <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2 font-semibold text-base md:text-base text-zinc-800">
-                    {org.name}
+                  <div className="font-semibold text-base md:text-base text-zinc-800">
+                    <span>{org.name}</span>
                     {org.website && (
                       <a
                         href={org.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-indigo-600"
+                        className="inline-block ml-1 text-indigo-600"
                       >
                         <ExternalLink
                           strokeWidth={1.5}
                           size={15}
-                          className="hover:text-indigo-800 transition"
+                          className="hover:text-indigo-800 transition inline"
                         />
                       </a>
                     )}
                   </div>
+
 
                   {org.logo ? (
                     <img

@@ -1,3 +1,4 @@
+import { Loader } from "lucide-react";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -86,7 +87,9 @@ const ProjectForm = ({ onSubmit, defaultValues = {}, isEditMode = false, loading
             className={`px-4 py-2 bg-blue-600 text-white rounded w-full ${loading ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-700 cursor-pointer"
               }`}
           >
-            {isEditMode ? "Update Project" : "Add Project"}
+            {loading ? <div className="flex justify-center">
+              <Loader className="animate-spin" />
+            </div> : isEditMode ? "Update Project" : "Add Project"}
           </button>
           <p className='py-2 px-4 rounded-sm text-white w-full bg-zinc-500 cursor-pointer text-center' onClick={() => nav(-1)}>Cancel</p>
         </div>

@@ -25,7 +25,7 @@ const NewsList = ({ news, onDeleteClick }) => {
   return (
     <>
       <tr className="hover:bg-zinc-50 transition duration-150">
-        <td className={`px-6 py-4 font-semibold border-l-4 ${event?.publish ? 'border-emerald-400' : 'border-zinc-500'}`}>{news?.title}</td>
+        <td className={`px-6 py-4 font-semibold border-l-4 ${news?.publish ? 'border-emerald-400' : 'border-zinc-500'}`}>{news?.title}</td>
         <td className="px-6 py-4">{formattedDate}</td>
         <td className="px-6 py-4">{formattedTime}</td>
         <td className="px-6 py-4 flex gap-1">

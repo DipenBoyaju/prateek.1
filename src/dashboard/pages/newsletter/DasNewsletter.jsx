@@ -15,7 +15,7 @@ const DasNewsletter = () => {
         <div>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-blue-500 text-white text-sm p-2 px-4 rounded-sm tracking-wider flex items-center gap-1 font-quicksand cursor-pointer hover:bg-blue-600 transition-colors"
+            className="bg-blue-500 text-white text-sm p-2 px-4 rounded-sm tracking-wider flex items-center gap-1 font-quicksand hover:bg-blue-600 transition-colors"
           >
             <Plus size={16} /> Add Newsletter
           </button>

@@ -6,7 +6,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { UploadCloud } from 'lucide-react';
+import { Loader, UploadCloud } from 'lucide-react';
 
 const cloudName = "dyrzsqvx2";
 const uploadPreset = "prateek";
@@ -281,7 +281,9 @@ const EventForm = ({ onSubmit, defaultValues = {}, isEditMode = false, loading }
             disabled={loading || uploading}
             className={`${isEditMode ? 'bg-emerald-500 hover:bg-emerald-600' : 'bg-blue-600 hover:bg-blue-700'} text-white px-6 py-2 rounded transition w-full`}
           >
-            {loading ? "Please wait..." : isEditMode ? 'Update Event' : 'Create Event'}
+            {loading ? <div className="flex justify-center">
+              <Loader className="animate-spin" />
+            </div> : isEditMode ? 'Update Event' : 'Create Event'}
           </button>
           <p className='py-2 px-4 rounded-sm text-white w-full bg-zinc-500 cursor-pointer text-center' onClick={() => navigate(-1)}>Cancel</p>
         </div>

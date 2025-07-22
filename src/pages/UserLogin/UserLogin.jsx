@@ -7,6 +7,7 @@ import { loginSchema } from '../../validators/auth';
 import { useAuthStore } from '../../store/authStore';
 import { baseUrl } from '../../utils/baseUrl';
 import toast from 'react-hot-toast';
+import { Loader } from 'lucide-react'
 
 export default function UserLogin() {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ export default function UserLogin() {
   const onSubmit = (data) => mutate(data);
 
   return (
-    <div className="py-20 bg-zinc-300">
+    <div className="py-20 bg-blue-200">
       <div className="max-w-md mx-auto mt-10 p-6 rounded-lg shadow-lg bg-white">
         <h2 className="text-2xl font-semibold text-zinc-800 mb-4">User Login</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
@@ -66,7 +67,9 @@ export default function UserLogin() {
             disabled={isPending}
             className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700 cursor-pointer"
           >
-            {isPending ? 'Logging in...' : 'Login'}
+            {isPending ? <div className='flex justify-center'>
+              <Loader className='animate-spin' />
+            </div> : 'Login'}
           </button>
         </form>
       </div>

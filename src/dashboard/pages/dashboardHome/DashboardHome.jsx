@@ -20,6 +20,11 @@ const getAllSubProjects = async () => {
   return res.data.count;
 }
 
+const getAllPublication = async () => {
+  const res = await axios.get(`${baseUrl}/api/publication/getAllPublication`);
+  return res.data.count;
+}
+
 const DashboardHome = () => {
   const user = useAuthStore((state) => state.user);
   const { data: teamCount, isLoading } = useQuery({
@@ -30,6 +35,11 @@ const DashboardHome = () => {
   const { data: projectCount } = useQuery({
     queryKey: ['subProject'],
     queryFn: getAllSubProjects
+  });
+
+  const { data: publicationCount } = useQuery({
+    queryKey: ['publication'],
+    queryFn: getAllPublication
   });
 
   return (
@@ -61,7 +71,7 @@ const DashboardHome = () => {
           <div className="grid md:grid-cols-2 gap-5 mt-5">
             <QuickStatCard Icon={FaProjectDiagram} title="Projects" count={projectCount?.count} color="blue" isLoading={isLoading} />
             <QuickStatCard Icon={FaUsers} title="Team Members" count={teamCount} color="yellow" isLoading={isLoading} />
-            <QuickStatCard Icon={RiBloggerFill} title="Published Blogs" count={0} color="emerald" />
+            <QuickStatCard Icon={RiBloggerFill} title="Published Blogs" count={publicationCount?.count} color="emerald" />
           </div>
         </div>
 

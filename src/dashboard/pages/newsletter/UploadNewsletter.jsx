@@ -3,6 +3,7 @@ import { baseUrl } from "../../../utils/baseUrl";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Loader } from "lucide-react";
 
 const UploadNewsletter = ({ isOpen, onClose, onSuccess }) => {
   const [title, setTitle] = useState("");
@@ -115,7 +116,9 @@ const UploadNewsletter = ({ isOpen, onClose, onSuccess }) => {
               disabled={uploadNewsletter.isPending}
               className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
             >
-              {uploadNewsletter.isPending ? "Uploading..." : "Upload"}
+              {uploadNewsletter.isPending ? <div className="flex justify-center">
+                <Loader className="animate-spin" />
+              </div> : "Upload"}
             </button>
           </div>
         </form>

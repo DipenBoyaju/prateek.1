@@ -109,7 +109,12 @@ const DasEventDetail = () => {
           </div>
         </div>
         <div className="mt-5">
-          <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: event?.description }} />
+          <div className="prose max-w-none">
+            <div
+              className="[&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5"
+              dangerouslySetInnerHTML={{ __html: event?.description }}
+            />
+          </div>
         </div>
       </div>
 

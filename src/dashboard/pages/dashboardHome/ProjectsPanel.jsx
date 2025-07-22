@@ -41,7 +41,7 @@ const ProjectsPanel = () => {
                 </div>
               </li>
             )) : (
-              <p>No Projects</p>
+              <p className='text-center text-zinc-500'>No Projects</p>
             )}
       </ul>
     </div>

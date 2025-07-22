@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import axios from "axios";
-import { X, UploadCloud } from "lucide-react";
+import { X, UploadCloud, Loader } from "lucide-react";
 import { baseUrl } from "../../../utils/baseUrl";
 import toast from "react-hot-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -140,7 +140,9 @@ const UploadGalleryImage = ({ onClose }) => {
               : "bg-blue-600 hover:bg-blue-700"
               }`}
           >
-            {mutation.isPending ? "Uploading..." : "Upload"}
+            {mutation.isPending ? <div className="flex justify-center">
+              <Loader className="animate-spin" />
+            </div> : "Upload"}
           </button>
         </div>
       </div>

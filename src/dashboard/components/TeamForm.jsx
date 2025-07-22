@@ -1,12 +1,15 @@
-import { Trash, UploadCloud } from 'lucide-react';
+import { Loader, Trash, UploadCloud } from 'lucide-react';
 import { useState } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import toast from 'react-hot-toast'
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const cloudName = "dyrzsqvx2";
-const uploadPreset = "prateek";
+// const cloudName = "dyrzsqvx2";
+// const uploadPreset = "prateek";
+
+const cloudName = import.meta.env.VITE_CLOUD_NAME;
+const uploadPreset = import.meta.env.VITE_UPLOAD_PRESET;
 
 const departments = [
   "Executive", "Research", "Product Development", "Management", "Consultants"
@@ -207,8 +210,9 @@ const TeamForm = ({ onSubmit, defaultValues = {}, isEditMode = false, loading })
             type="submit"
             className={`py-2 px-4 rounded-sm text-white w-full cursor-pointer ${isEditMode ? 'bg-emerald-500' : 'bg-blue-600'
               }`}
-          >
-            {isEditMode ? "Save" : "Add Member"}
+          >  {loading ? <div className="flex justify-center">
+            <Loader className="animate-spin" />
+          </div> : isEditMode ? "Save" : "Add Member"}
           </button>
           <p className='py-2 px-4 rounded-sm text-white w-full bg-zinc-500 cursor-pointer text-center' onClick={() => nav(-1)}>Cancel</p>
         </div>

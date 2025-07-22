@@ -1,14 +1,13 @@
 import { useForm, useFieldArray } from "react-hook-form";
-import { Plus, Trash } from "lucide-react";
+import { Loader, Plus, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-// ✅ Your Cloudinary config
-const cloudName = "dyrzsqvx2";
-const uploadPreset = "prateek";
+const cloudName = import.meta.env.VITE_CLOUD_NAME;
+const uploadPreset = import.meta.env.VITE_UPLOAD_PRESET;
 
-// ✅ Utility: Upload to Cloudinary
+
 const uploadToCloudinary = async (file) => {
   const formData = new FormData();
   formData.append("file", file);
@@ -88,7 +87,6 @@ const SubProjectForm = ({ onSubmit, defaultValues = {}, loading, isEditMode = fa
 
   const [uploading, setUploading] = useState(false);
 
-  // ✅ Handle main image upload
   const handleMainImageUpload = async (file) => {
     try {
       setUploading(true);
@@ -103,7 +101,6 @@ const SubProjectForm = ({ onSubmit, defaultValues = {}, loading, isEditMode = fa
     }
   };
 
-  // ✅ Handle team member image upload
   const handleTeamImageUpload = async (file, index) => {
     try {
       setUploading(true);
@@ -118,7 +115,6 @@ const SubProjectForm = ({ onSubmit, defaultValues = {}, loading, isEditMode = fa
     }
   };
 
-  // ✅ Handle partner logo upload
   const handlePartnerLogoUpload = async (file, index) => {
     try {
       setUploading(true);
@@ -151,13 +147,14 @@ const SubProjectForm = ({ onSubmit, defaultValues = {}, loading, isEditMode = fa
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
             <label className='text-sm text-zinc-700 tracking-wide font-semibold'>Division</label>
-            <select {...register("division")} className="w-full p-2 border border-zinc-200 rounded-md focus:outline-none text-zinc-500">
+            <select {...register("division", { required: true })} className="w-full p-2 border border-zinc-200 rounded-md focus:outline-none text-zinc-500">
               {divisions.map((div) => (
                 <option key={div} value={div}>
                   {div === "" ? "None" : div}
                 </option>
               ))}
             </select>
+            {errors.division && <p className="text-red-500 text-sm">Division is required</p>}
           </div>
 
           <div>
@@ -193,7 +190,7 @@ const SubProjectForm = ({ onSubmit, defaultValues = {}, loading, isEditMode = fa
                 className="w-full p-2 border border-zinc-200 rounded-md focus:outline-none text-zinc-500 col-span-4"
               />
               <input
-                {...register(`teamMember.${index}.role`, { required: true })}
+                {...register(`teamMember.${index}.role`)}
                 placeholder="Role"
                 className="w-full p-2 border border-zinc-200 rounded-md focus:outline-none text-zinc-500 col-span-4"
               />
@@ -227,7 +224,7 @@ const SubProjectForm = ({ onSubmit, defaultValues = {}, loading, isEditMode = fa
           {partnerFields.map((partner, index) => (
             <div key={partner.id} className="border border-zinc-800/20 p-4 rounded mb-4 grid md:grid-cols-13 gap-5">
               <input
-                {...register(`partnerOrganization.${index}.name`, { required: true })}
+                {...register(`partnerOrganization.${index}.name`)}
                 placeholder="Name"
                 className="w-full p-2 border border-zinc-200 rounded-md focus:outline-none text-zinc-500 col-span-3"
               />
@@ -291,7 +288,9 @@ const SubProjectForm = ({ onSubmit, defaultValues = {}, loading, isEditMode = fa
             disabled={loading || uploading}
             className="bg-blue-600 text-white px-6 py-2 rounded cursor-pointer w-full"
           >
-            {loading || uploading ? "Uploading..." : isEditMode ? "Save Project" : "Add Project"}
+            {loading ? <div className="flex justify-center">
+              <Loader className="animate-spin" />
+            </div> : isEditMode ? "Save Project" : "Add Project"}
           </button>
           <p className='py-2 px-4 rounded-sm text-white w-full bg-zinc-500 cursor-pointer text-center' onClick={() => nav(-1)}>Cancel</p>
         </div>
