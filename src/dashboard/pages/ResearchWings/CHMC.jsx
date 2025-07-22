@@ -22,6 +22,11 @@ const getProject = async (symbol) => {
   return res.data;
 }
 
+const getPublication = async (symbol) => {
+  const res = await axios.get(`${baseUrl}/api/publication/getPublicationByDivision?divisionSymbol=${symbol}`)
+  return res.data;
+}
+
 const CHMC = () => {
   const queryClient = useQueryClient();
   const [isEditing, setIsEditing] = useState(false);
@@ -52,6 +57,12 @@ const CHMC = () => {
   const { data: projects, isPending } = useQuery({
     queryFn: () => getProject(symbol),
     queryKey: ['subProject'],
+    enabled: !!symbol,
+  })
+
+  const { data: publications, isLoading: publicationLoading } = useQuery({
+    queryFn: () => getPublication(symbol),
+    queryKey: ['publication'],
     enabled: !!symbol,
   })
 
@@ -112,11 +123,62 @@ const CHMC = () => {
                     <p className="text-xs bg-white w-fit rounded-full py-0.5 px-2 mt-2 text-indigo-500 font-semibold font-quicksand">{project?.divisionSymbol}</p>
                   </div>
                 )) : (
-                  <p>No Projects</p>
+                  <p className="text-sm text-zinc-600">No Projects</p>
                 )
             }
           </div>
         </div>
+
+        <div className="pt-10">
+          <h3 className="text-lg font-semibold uppercase text-zinc-800">Publications</h3>
+          <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-5">
+            {
+              publicationLoading ? (
+                <p>Loading</p>
+              ) : publications?.length > 0 ?
+                publications?.map((publication) => (
+                  <div
+                    className="flex items-stretch shadow-md border border-zinc-300 rounded bg-white w-full overflow-hidden cursor-pointer hover:shadow-lg transition"
+                  >
+                    {/* Left vertical tag */}
+                    <div className="bg-emerald-500 text-white font-semibold px-4 flex items-center justify-center">
+                      <p className="text-xl uppercase">{publication.code}</p>
+                    </div>
+
+                    {/* Right content area */}
+                    <div className="flex flex-col justify-between flex-1">
+                      <div>
+                        <div className="border-b border-zinc-900/20 pb-1 px-4 pt-4 flex items-center justify-between">
+                          <p className="text-sm text-gray-500 font-medium ">
+                            {publication.year}
+                            {publication.divisionSymbol && `, ${publication.divisionSymbol}`}
+                          </p>
+                        </div>
+                        <p className="text-lg font-semibold text-zinc-800 leading-snug pl-4 py-2">
+                          {publication.title}
+                        </p>
+                      </div>
+
+                      {/* Bottom: authors list and conference */}
+                      <div>
+                        <ul className="flex flex-wrap gap-x-4 text-sm font-medium text-gray-600 pl-4 mt-8">
+                          {publication.authors.map((author, idx) => (
+                            <li key={idx}>{author.name}</li>
+                          ))}
+                        </ul>
+                        <p className="text-sm pl-4 py-3 bg-emerald-300 text-white mt-2">
+                          {publication.conference}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )) : (
+                  <p className="text-sm text-zinc-600">No Publication</p>
+                )
+            }
+          </div>
+        </div>
+
       </div>
 
       {/* Modal */}
