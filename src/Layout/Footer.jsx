@@ -30,7 +30,7 @@ const Footer = () => {
                 <ul className="mt-3 uppercase font-[400] text-zinc-700 text-sm space-y-3">
                   <li className="flex gap-1 items-center group">
                     <TiArrowRight className={`${arrowStyle}`} />
-                    <Link to={'/projects/signlanguage'} className={`${linkStyle}`}>Sign Language</Link>
+                    <Link to={'/projects/inclusive-real-time-sign-language-translation-platform/word-based-nepali-sign-language-dataset'} className={`${linkStyle}`}>Sign Language</Link>
                   </li>
                 </ul>
               </div>

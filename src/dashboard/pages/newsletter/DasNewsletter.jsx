@@ -29,7 +29,8 @@ const DasNewsletter = () => {
         />
       )}
 
-      <div className="">
+      <div className="mt-4">
+        <h2 className="text-2xl font-semibold ">Newsletters</h2>
         <NewsletterList onSelect={setSelectedNewsletter} />
       </div>
 

@@ -16,6 +16,11 @@ const colorMap = {
     border: 'border-emerald-200',
     icon: 'bg-emerald-500',
   },
+  red: {
+    gradient: 'from-purple-100',
+    border: 'border-purple-200',
+    icon: 'bg-purple-500',
+  },
 };
 
 const QuickStatCard = ({ Icon, title, count, color = 'blue', isLoading }) => {
@@ -30,7 +35,7 @@ const QuickStatCard = ({ Icon, title, count, color = 'blue', isLoading }) => {
       <div>
         <p className="text-zinc-600 text-sm uppercase tracking-wider font-medium">{title}</p>
         <p className="text-3xl font-bold text-zinc-800 mt-1">{
-          isLoading ? <span className='size-6 bg-zinc-300 rounded-sm animate-pulse'></span> : count
+          isLoading ? <span className='size-6 bg-zinc-300 rounded-sm animate-pulse'></span> : typeof count === 'number' ? count : 0
         }</p>
       </div>
       <div className={clsx(styles.icon, 'p-4 rounded-full text-white shadow-lg')}>

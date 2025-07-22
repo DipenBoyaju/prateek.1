@@ -8,6 +8,7 @@ import axios from "axios";
 import { baseUrl } from "../../../utils/baseUrl";
 import { useQuery } from "@tanstack/react-query";
 import ProjectsPanel from "./ProjectsPanel";
+import { LibraryBig } from "lucide-react";
 
 
 const getAllTeam = async () => {
@@ -15,7 +16,7 @@ const getAllTeam = async () => {
   return res.data.count;
 };
 
-const getAllSubProjects = async () => {
+const getAllSubProject = async () => {
   const res = await axios.get(`${baseUrl}/api/subProject/getAllProjects`);
   return res.data.count;
 }
@@ -32,12 +33,12 @@ const DashboardHome = () => {
     queryFn: getAllTeam
   });
 
-  const { data: projectCount } = useQuery({
-    queryKey: ['subProject'],
-    queryFn: getAllSubProjects
+  const { data: projectCount, isLoading: projectLoading } = useQuery({
+    queryKey: ['subProjectCount'],
+    queryFn: getAllSubProject
   });
 
-  const { data: publicationCount } = useQuery({
+  const { data: publicationCount, isLoading: publicationLoading } = useQuery({
     queryKey: ['publication'],
     queryFn: getAllPublication
   });
@@ -69,9 +70,13 @@ const DashboardHome = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-5 mt-5">
-            <QuickStatCard Icon={FaProjectDiagram} title="Projects" count={projectCount?.count} color="blue" isLoading={isLoading} />
+            <QuickStatCard Icon={FaProjectDiagram} title="Projects" count={projectCount ?? 0} color="blue" isLoading={projectLoading} />
+
             <QuickStatCard Icon={FaUsers} title="Team Members" count={teamCount} color="yellow" isLoading={isLoading} />
-            <QuickStatCard Icon={RiBloggerFill} title="Published Blogs" count={publicationCount?.count} color="emerald" />
+
+            <QuickStatCard Icon={LibraryBig} title="Published Papers" count={publicationCount ?? 0} color="red" isLoading={publicationLoading} />
+
+            <QuickStatCard Icon={RiBloggerFill} title="Published Blogs" count={0} color="emerald" />
           </div>
         </div>
 

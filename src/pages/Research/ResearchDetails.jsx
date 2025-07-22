@@ -9,6 +9,10 @@ const fetchResearchDetailBySlug = async (slug) => {
   return res.data;
 };
 
+const getPublication = async (symbol) => {
+  const res = await axios.get(`${baseUrl}/api/publication/getPublicationByDivision?divisionSymbol=${symbol}`)
+  return res.data;
+}
 
 const ResearchDetails = () => {
   const { slug } = useParams()
@@ -19,24 +23,28 @@ const ResearchDetails = () => {
     enabled: !!slug,
   });
 
+  const symbol = data ? data.symbol : null;
+
+  const { data: publications, isLoading: publicationLoading } = useQuery({
+    queryFn: () => getPublication(symbol),
+    queryKey: ['publication', symbol],
+    enabled: !!symbol,
+  })
+
   return (
     <div>
       <Title tag="Research Wing" title={data?.title} />
       <div className="container mx-auto px-4 md:px-8 py-20">
         <div className="">
-          <p className="text-lg font-light">
-            {
-              isLoading ? (
-                <div className="space-y-2 animate-pulse">
-                  <div className="w-full h-3 bg-zinc-300 rounded-full"></div>
-                  <div className="w-full h-3 bg-zinc-300 rounded-full"></div>
-                  <div className="w-1/2 h-3 bg-zinc-300 rounded-full"></div>
-                </div>
-              ) : (
-                data?.description
-              )
-            }
-          </p>
+          {isLoading ? (
+            <div className="space-y-2 animate-pulse">
+              <div className="w-full h-3 bg-zinc-300 rounded-full"></div>
+              <div className="w-full h-3 bg-zinc-300 rounded-full"></div>
+              <div className="w-1/2 h-3 bg-zinc-300 rounded-full"></div>
+            </div>
+          ) : (
+            <p className="text-lg font-light">{data?.description}</p>
+          )}
         </div>
         <div className="mt-10 grid md:grid-cols-3 gap-10">
           <div className="col-span-2">
@@ -52,7 +60,7 @@ const ResearchDetails = () => {
                   data.projects.map((project, index) => (
                     <div
                       key={index}
-                      className="block border-l-4 border-l-emerald-400 rounded shadow p-3 bg-emerald-500/10 border border-emerald-500/30 hover:scale-101 transition-all duration-300 ease-in-out"
+                      className="block border-l-4 border-l-emerald-400 rounded shadow p-3 bg-emerald-500/10 border border-emerald-500/30 hover:scale-101 transition-all duration-300 ease-in-out mb-5"
                     >
                       <p className="tracking-wider text-lg">{project.name}</p>
                       <p className="text-sm font-light text-zinc-800/80">
@@ -74,7 +82,31 @@ const ResearchDetails = () => {
               </h4>
             </div>
             <div className="">
-              <p className="font-light">No Publications</p>
+              {publicationLoading ? (
+                <p>Loading</p>
+              ) : publications?.length > 0 ?
+                publications?.map((publication) => (
+                  <div className="ring ring-zinc-600/30 flex items-stretch mb-5">
+                    <div className="bg-emerald-500 text-white font-semibold px-2 flex items-center justify-center">
+                      <p className="text-sm uppercase">{publication.code}</p>
+                    </div>
+                    <div className="flex flex-col justify-between flex-1">
+                      <div className="">
+                        <p className="text-lg font-semibold text-zinc-800 leading-snug pl-4 py-2">
+                          {publication.title}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-sm pl-4 py-3 bg-emerald-300 text-white mt-2">
+                          {publication.conference}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )) : (
+                  <p className="text-sm text-zinc-600">No Publication</p>
+                )
+              }
             </div>
           </div>
         </div>
